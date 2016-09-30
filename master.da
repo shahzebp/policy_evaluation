@@ -1,0 +1,28 @@
+import sys
+
+class Coordinator(process):
+    def setup(total:int, coordinators:list): pass
+
+    def run():
+        total = 0
+        await(received(('fromsubject',)))
+    
+    def receive(msg=('frommaster',), from_=p):
+        output("request received")
+        send(('fromsubject',), to=(coordinators[1]))
+
+    def receive(msg=('fromsubject',), from_=p):
+        output("fromsubject received")
+        total = 1
+
+def main():
+    coordinators_set = new(Coordinator, num=2)
+    global coordinators 
+    coordinators = list(coordinators_set)
+
+    for p in coordinators: setup(p, (3, coordinators,))
+
+    start(coordinators)
+
+    send(('frommaster',),to=(coordinators[0]))
+    
