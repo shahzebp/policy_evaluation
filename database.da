@@ -20,4 +20,3 @@ class Database(process):
         await(status == True)
 
     def receive(msg=('GET_ATTRIBUTE', request), from_=p): pass
-

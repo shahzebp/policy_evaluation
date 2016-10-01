@@ -5,6 +5,10 @@ def main():
    
     total_coords = 2
     
+    database = new(Database, num = 1)
+    setup(database, ("initFile.xml",))
+    start(database)   
+    
     coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
 
@@ -17,7 +21,3 @@ def main():
     rid = request.subject_id % len(coordinators)
     
     send(('FROM_CLIENT', request),to=(coordinators[rid]))
-
-    database = new(Database, num = 1)
-    setup(database, ("initFile.xml",))
-    start(database)
