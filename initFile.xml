@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data>
+    <subject id="11101">
+        <attribute position= "Employee" history=""/>
+    </subject>
+    <subject id="11102">
+        <attribute position= "Student" history=""/>
+    </subject>
+    <subject id="11103">
+        <attribute position= "Nurse" history=""/>
+    </subject>
+    <resource id="44401">
+        <attribute name= "Bank A"/>
+    </resource>
+    <resource id="44402">
+        <attribute type= "Movie" count="1"/>
+    </resource>    
+</data>

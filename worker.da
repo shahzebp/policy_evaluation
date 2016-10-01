@@ -1,0 +1,19 @@
+from common import Request
+
+class Worker(process):
+    def setup(coordinators:list):
+        self.status = False
+        self.coordinators = coordinators
+
+    def run():
+        await(status == True)
+
+    def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
+        output("received inside worker", request.subject_id)
+        
+        """
+        evaluate policy here
+        """
+        
+        rid = request.subject_id % len(coordinators)
+        send(('FROM_WORKER',request), to = (coordinators[rid]))

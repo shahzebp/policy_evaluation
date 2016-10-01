@@ -1,0 +1,34 @@
+from worker import Worker
+from common import Request
+
+class Coordinator(process):
+    def setup(coordinators:list):
+        self.status = False
+        
+        self.sub_tent_cache = {}
+        self.res_tent_cache = {}
+
+        workers_set     = new(Worker, num = 1)
+        self.workers    = list(workers_set)
+        setup(self.workers, (coordinators,))
+        start(workers)
+    
+    def run():
+        await(status == True)
+    
+    def receive(msg=('FROM_CLIENT', request), from_=p):
+        print("received")
+        output("Request recevied", request.subject_id)
+        #request.sub_tent_updates = sub_tent_cache[request.subject_id]
+        rid = request.resource_id % len(coordinators)
+
+        send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
+
+    def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
+        output("Request received", request.resource_id)
+        #request.res_tent_updates = res_tent_cache[request.resource_id]
+
+        send(('FROM_RECEIVE_COORD', request), to = (workers))
+
+    def receive(msg=('FROM_WORKER', request), from_=p):
+        output("received from worker", request.subject_id)

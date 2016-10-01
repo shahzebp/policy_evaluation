@@ -1,0 +1,7 @@
+class Request(object):
+    def __init__(self, subject_id, resource_id, action):
+        self.subject_id = subject_id
+        self.resource_id = resource_id
+        self.action = action
+        self.sub_tent_updates = {}
+        self.res_tent_updates = {}

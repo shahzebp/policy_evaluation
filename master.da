@@ -1,28 +1,23 @@
-import sys
-
-class Coordinator(process):
-    def setup(total:int, coordinators:list): pass
-
-    def run():
-        total = 0
-        await(received(('fromsubject',)))
-    
-    def receive(msg=('frommaster',), from_=p):
-        output("request received")
-        send(('fromsubject',), to=(coordinators[1]))
-
-    def receive(msg=('fromsubject',), from_=p):
-        output("fromsubject received")
-        total = 1
-
+from coordinator import Coordinator
+from common import Request
+from database import Database
 def main():
-    coordinators_set = new(Coordinator, num=2)
-    global coordinators 
+   
+    total_coords = 2
+    
+    coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
 
-    for p in coordinators: setup(p, (3, coordinators,))
+    for p in coordinators: setup(p, (coordinators,))
 
     start(coordinators)
 
-    send(('frommaster',),to=(coordinators[0]))
+    request = Request(9, 10, "read")
+
+    rid = request.subject_id % len(coordinators)
     
+    send(('FROM_CLIENT', request),to=(coordinators[rid]))
+
+    database = new(Database, num = 1)
+    setup(database, ("initFile.xml",))
+    start(database)

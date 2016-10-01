@@ -1,0 +1,23 @@
+import xml.etree.ElementTree as ET
+
+class Database(process):
+    def setup(initFile:str):
+        self.root = ET.parse(initFile).getroot()
+        self.status = False
+        self.database = {}
+       
+    def run():
+        for child in self.root:
+            innerdict = {}
+            for attribute in child:
+                for k,v in attribute.attrib.items():
+                    innerdict[k] = v
+                for k,v in child.attrib.items():
+                    self.database[v] = innerdict
+       
+        print(self.database)
+
+        await(status == True)
+
+    def receive(msg=('GET_ATTRIBUTE', request), from_=p): pass
+
