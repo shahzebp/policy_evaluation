@@ -29,7 +29,8 @@ def main():
     coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
 
-    for p in coordinators: setup(p, (coordinators,))
+    for p in coordinators: setup(p, (coordinators, database, config, ))
+
     start(coordinators)
 
     request = Request(9, 10, "read")
