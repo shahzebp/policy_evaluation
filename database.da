@@ -23,38 +23,47 @@ class Database(process):
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
 
+
+        db_response = DataBaseResponse(request)
+        db_response_sub_attribute_map = {}
+
         """
         Retrieving the attributes keys from the database
         For both Subject and Resource
         """
-        subject_database_attribute_keys = set(self.database[str(request.subject_id)].keys())
-        resource_database_attribute_keys = set(self.database[str(request.resource_id)].keys())
+        try:
+            subject_database_attribute_keys = set(self.database[str(request.subject_id)].keys())
 
-        """
-        Finding the diff of the attributes which are present
-        in the database and in the tentative update map in the request
-        for the subject
-        """
+            """
+            Finding the diff of the attributes which are present
+            in the database and in the tentative update map in the request
+            for the subject
+            """
+            sub_attribute_diff = set(subject_database_attribute_keys - set(request.sub_tent_updates.keys()))
 
-        sub_attribute_diff = set(subject_database_attribute_keys - set(request.sub_tent_updates.keys()))
-        db_response_sub_attribute_map = {}
-        for attr in sub_attribute_diff:
-            db_response_sub_attribute_map[attr] = self.database[str(request.subject_id)][attr]
+            for attr in sub_attribute_diff:
+                db_response_sub_attribute_map[attr] = self.database[str(request.subject_id)][attr]
+        except:
+            db_response.result = False
 
-        """
-        Finding the diff of the attributes which are present
-        in the database and in the tentative update map in the request
-        for the Resource
-        """
-
-        res_attribute_diff = set(resource_database_attribute_keys - set(request.res_tent_updates.keys()))
         db_response_res_attribute_map = {}
-        for attr in res_attribute_diff:
-            db_response_res_attribute_map[attr] = self.database[str(request.resource_id)][attr]
+
+        try:
+            resource_database_attribute_keys = set(self.database[str(request.resource_id)].keys())
+            """
+            Finding the diff of the attributes which are present
+            in the database and in the tentative update map in the request
+            for the Resource
+            """
+
+            res_attribute_diff = set(resource_database_attribute_keys - set(request.res_tent_updates.keys()))
+
+            for attr in res_attribute_diff:
+                db_response_res_attribute_map[attr] = self.database[str(request.resource_id)][attr]
+        except:
+            db_response.result = False
 
         #Populating the request object in the Database Response object
-        db_response = DataBaseResponse(request)
-
         #Populating the subject and resource attributes maps which have been
         #calculated earlier in this function
         db_response.sub_database_attributes = db_response_sub_attribute_map
