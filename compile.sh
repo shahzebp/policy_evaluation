@@ -1,3 +1,5 @@
+rm -rf *.py
+
 dac common.da
 dac worker.da
 dac coordinator.da

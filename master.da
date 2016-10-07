@@ -1,6 +1,7 @@
 from coordinator import Coordinator
 from common import Request
 from database import Database
+
 def main():
    
     total_coords = 2

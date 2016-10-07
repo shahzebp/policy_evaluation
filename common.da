@@ -1,7 +1,25 @@
 class Request(object):
     def __init__(self, subject_id, resource_id, action):
-        self.subject_id = subject_id
-        self.resource_id = resource_id
-        self.action = action
-        self.sub_tent_updates = {}
-        self.res_tent_updates = {}
+        self.subject_id 		= subject_id
+        self.resource_id 		= resource_id
+        
+        self.action 			= action
+        
+        self.sub_tent_updates 	= {}
+        self.res_tent_updates 	= {}
+
+
+class Response(object):
+	def __init__(self, subject_id, resource_id, result):
+		self.subject_id 		= subject_id
+		self.resource_id 		= resource_id
+		self.result				= result
+
+		self.sub_changelist		= []
+		self.res_changelist		= []
+
+		self.sub_tent_updates 	= {}
+		self.res_tent_updates	= {}
+
+		self.sub_to_update		= {}
+		self.res_to_update		= {}
