@@ -1,3 +1,7 @@
+import sys
+from time import sleep
+from collections import deque
+
 from worker import Worker
 from common import Request, Response
 
@@ -8,6 +12,8 @@ class Coordinator(process):
         
         self.sub_tent_cache = {}
         self.res_tent_cache = {}
+        self.sequence       = 0
+        self.pending_queue  = deque()
 
         # Each coordinator intantiates its own workers
         # It is one as of now
@@ -15,7 +21,8 @@ class Coordinator(process):
         self.workers    = list(workers_set)
         setup(self.workers, (coordinators,))
         start(workers)
-    
+
+
     def run():
         await(status == True)
 
@@ -40,19 +47,24 @@ class Coordinator(process):
                 and attributes_in_sync(changelist_map, latest_tentative_map))
 
     def receive(msg=('FROM_CLIENT', request), from_=p):
-        print("received")
         output("Subject coord request ", request.subject_id)
 
         if request.subject_id in sub_tent_cache:
             request.sub_tent_updates = sub_tent_cache[request.subject_id]
 
-        request.owner = p
+        request.owner       = p
+        request.timestamp   = sequence
+        sequence            = sequence + 1
 
         rid = request.resource_id % len(coordinators)
 
+        pending_queue.append(request)
+
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
+
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
+
         output("Resource coord request", request.resource_id)
 
         if request.resource_id in res_tent_cache:
@@ -64,6 +76,9 @@ class Coordinator(process):
         output("resolving subject conflict", response.subject_id)
 
         retval = True
+
+        while(pending_queue[0].timestamp > response.timestamp):
+            sleep(0.05)
 
         if response.subject_id in sub_tent_cache:
             retval = check_conflict(sub_tent_cache[response.subject_id],
@@ -78,7 +93,7 @@ class Coordinator(process):
         output("resolving resource conflict", response.resource_id)
 
         retval = True
-        
+
         if response.resource_id in res_tent_cache:
             retval = check_conflict(res_tent_cache[response.resource_id],
                                     response.res_tent_cache, response.changelist)
@@ -92,3 +107,4 @@ class Coordinator(process):
         output("succesfull evaluation", response.resource_id)
 
         send(('OUTCOME', response), to = (response.owner))
+        pending_queue.popleft()
