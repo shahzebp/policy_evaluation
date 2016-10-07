@@ -48,12 +48,15 @@ class Worker(process):
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
         output("received inside worker", request.subject_id)
-        
+        send(('FROM_WORKER', request), to = (database))
+
+    def receive(msg=('FROM_DATABASE', database_response), from_ = p):
+        output("Received from database")
         """
         evaluate policy here
         """
-        response = Response(request.subject_id, request.resource_id, True,
-                            request.owner, request.timestamp)
-
-        rid = request.subject_id % len(coordinators)
-        send(('FROM_WORKER',response), to = (coordinators[rid]))
+        print(database_response)
+        response = Response(100, 200, True,
+                            "request.owner", 6)
+        rid = database_response.request.subject_id % len(coordinators)
+        #send(('FROM_WORKER',response), to = (coordinators[rid]))

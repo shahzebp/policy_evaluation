@@ -12,6 +12,9 @@ class Request(object):
 
         self.timestamp			= None
 
+    def __str__(self):
+    	return "Subject ID: {0}\nResource ID {1}\nAction: {2}\nSubject Tentative Attributes: {3}\nResource Tentative Attributes: {4}\nOwner: {5}\nTimeStamp: {6}\n" \
+    		.format(str(self.subject_id), str(self.resource_id), str(self.action), str(self.sub_tent_updates), str(self.res_tent_updates), str(self.owner), str(self.timestamp))
 class Response(object):
 	def __init__(self, subject_id, resource_id, result, owner, timestamp):
 		self.subject_id 		= subject_id
@@ -29,3 +32,13 @@ class Response(object):
 
 		self.owner				= owner
 		self.timestamp			= timestamp
+
+class DataBaseResponse(object):
+	def __init__(self, request):
+		self.request = request
+		self.sub_database_attributes = {}
+		self.res_database_attributes = {}
+
+	def __str__(self):
+		return self.request.__str__() + "Subject Database Attributes: {0}\nResource Database Attributes: {1}" \
+			.format(str(self.sub_database_attributes), str(self.res_database_attributes))

@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from common import DataBaseResponse
 
 class Database(process):
     def setup(initFile:str):
@@ -19,4 +20,43 @@ class Database(process):
 
         await(status == True)
 
-    def receive(msg=('GET_ATTRIBUTE', request), from_=p): pass
+    def receive(msg=('FROM_WORKER', request), from_ = p):
+        value = {}
+
+        """
+        Retrieving the attributes keys from the database
+        For both Subject and Resource
+        """
+        subject_database_attribute_keys = set(self.database[str(request.subject_id)].keys())
+        resource_database_attribute_keys = set(self.database[str(request.resource_id)].keys())
+
+        """
+        Finding the diff of the attributes which are present
+        in the database and in the tentative update map in the request
+        for the subject
+        """
+
+        sub_attribute_diff = set(subject_database_attribute_keys - set(request.sub_tent_updates.keys()))
+        db_response_sub_attribute_map = {}
+        for attr in sub_attribute_diff:
+            db_response_sub_attribute_map[attr] = self.database[str(request.subject_id)][attr]
+
+        """
+        Finding the diff of the attributes which are present
+        in the database and in the tentative update map in the request
+        for the Resource
+        """
+
+        res_attribute_diff = set(resource_database_attribute_keys - set(request.res_tent_updates.keys()))
+        db_response_res_attribute_map = {}
+        for attr in res_attribute_diff:
+            db_response_res_attribute_map[attr] = self.database[str(request.resource_id)][attr]
+
+        #Populating the request object in the Database Response object
+        db_response = DataBaseResponse(request)
+
+        #Populating the subject and resource attributes maps which have been
+        #calculated earlier in this function
+        db_response.sub_database_attributes = db_response_sub_attribute_map
+        db_response.res_database_attributes = db_response_res_attribute_map
+        send(('FROM_DATABASE',db_response), to = p)
