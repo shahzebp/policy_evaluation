@@ -15,7 +15,7 @@ class Database(process):
                 for k,v in child.attrib.items():
                     self.database[v] = innerdict
        
-        print(self.database)
+        #print(self.database)
 
         await(status == True)
 

@@ -1,5 +1,13 @@
 import xml.etree.ElementTree as ET
-from common import Request
+from common import Request, Response
+
+class Rule(object):
+    def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
+        self.subject_condition = subject_condition
+        self.resource_condition = resource_condition
+        self.action = action
+        self.subject_update = subject_update
+        self.resource_update = resource_update
 
 class Worker(process):
     def setup(coordinators:list):
@@ -44,14 +52,8 @@ class Worker(process):
         """
         evaluate policy here
         """
-        
-        rid = request.subject_id % len(coordinators)
-        send(('FROM_WORKER',request), to = (coordinators[rid]))
+        response = Response(request.subject_id, request.resource_id, True,
+                            request.owner)
 
-class Rule(object):
-    def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
-        self.subject_condition = subject_condition
-        self.resource_condition = resource_condition
-        self.action = action
-        self.subject_update = subject_update
-        self.resource_update = resource_update
+        rid = request.subject_id % len(coordinators)
+        send(('FROM_WORKER',response), to = (coordinators[rid]))

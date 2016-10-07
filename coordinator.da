@@ -18,20 +18,42 @@ class Coordinator(process):
     
     def run():
         await(status == True)
-    
+
+    def attributes_in_sync(map1, map2):
+        for key in map1:
+            val1 = map1[key]
+
+            if key in map2:
+                val2 = map2[key]
+
+                if(val1 != val2):
+                    return False
+
+
+        return True
+
+    def check_conflict(latest_tentative_map, sent_tent_map, changelist_map):
+        if not sent_tent_map:
+            return attributes_in_sync(changelist_map, latest_tentative_map)
+        else:
+            return (attributes_in_sync(sent_tent_map, latest_tentative_map)
+                and attributes_in_sync(changelist_map, latest_tentative_map))
+
     def receive(msg=('FROM_CLIENT', request), from_=p):
         print("received")
-        output("Request recevied", request.subject_id)
+        output("Subject coord request ", request.subject_id)
 
         if request.subject_id in sub_tent_cache:
             request.sub_tent_updates = sub_tent_cache[request.subject_id]
+
+        request.owner = p
 
         rid = request.resource_id % len(coordinators)
 
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
-        output("Request received", request.resource_id)
+        output("Resource coord request", request.resource_id)
 
         if request.resource_id in res_tent_cache:
             request.res_tent_updates = res_tent_cache[request.resource_id]
@@ -39,4 +61,34 @@ class Coordinator(process):
         send(('FROM_RECEIVE_COORD', request), to = (workers))
 
     def receive(msg=('FROM_WORKER', response), from_=p):
-        output("received from worker", response.subject_id)
+        output("resolving subject conflict", response.subject_id)
+
+        retval = True
+
+        if response.subject_id in sub_tent_cache:
+            retval = check_conflict(sub_tent_cache[response.subject_id],
+                                    response.sub_tent_updates, response.changelist)
+
+        if (retval == True):
+            rid = response.resource_id % len(coordinators)
+            send(('FROM_SUBJECT_COORD_RESPONSE', response), to=(coordinators[rid]))
+        # else restart
+
+    def receive(msg=('FROM_SUBJECT_COORD_RESPONSE', response), from_ = p):
+        output("resolving resource conflict", response.resource_id)
+
+        retval = True
+        
+        if response.resource_id in res_tent_cache:
+            retval = check_conflict(res_tent_cache[response.resource_id],
+                                    response.res_tent_cache, response.changelist)
+
+        if (retval == True):
+            rid = response.subject_id % len(coordinators)
+            send(('FROM_RESOURCE_COORD_RESPONSE', response), to=(coordinators[rid]))
+        # else restart
+
+    def receive(msg=('FROM_RESOURCE_COORD_RESPONSE', response), from_ = p):
+        output("succesfull evaluation", response.resource_id)
+
+        send(('OUTCOME', response), to = (response.owner))
