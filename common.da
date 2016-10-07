@@ -10,8 +10,10 @@ class Request(object):
 
         self.owner				= None
 
+        self.timestamp			= None
+
 class Response(object):
-	def __init__(self, subject_id, resource_id, result, owner):
+	def __init__(self, subject_id, resource_id, result, owner, timestamp):
 		self.subject_id 		= subject_id
 		self.resource_id 		= resource_id
 		self.result				= result
@@ -26,3 +28,4 @@ class Response(object):
 		self.res_to_update		= {}
 
 		self.owner				= owner
+		self.timestamp			= timestamp

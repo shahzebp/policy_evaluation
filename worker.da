@@ -17,7 +17,7 @@ class Worker(process):
         read_policy("policy-example.xml")
 
     def read_policy(policy_xml):
-        output("Policy file is:", policy_xml)
+        #output("Policy file is:", policy_xml)
         tree = ET.parse(policy_xml)
         root = tree.getroot()
         for rule in root.iter('rule'):
@@ -53,7 +53,7 @@ class Worker(process):
         evaluate policy here
         """
         response = Response(request.subject_id, request.resource_id, True,
-                            request.owner)
+                            request.owner, request.timestamp)
 
         rid = request.subject_id % len(coordinators)
         send(('FROM_WORKER',response), to = (coordinators[rid]))

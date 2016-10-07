@@ -5,13 +5,14 @@ from database import Database
 def main():
    
     total_coords = 2
-    
+            
     database = new(Database, num = 1)
     setup(database, ("initFile.xml",))
     start(database)   
     
     coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
+
 
     for p in coordinators: setup(p, (coordinators,))
 
