@@ -7,19 +7,18 @@ from common import Request, Response
 
 class Coordinator(process):
  
-    def setup(coordinators:list):
+    def setup(coordinators:list, database):
         self.status = False
         
         self.sub_tent_cache = {}
         self.res_tent_cache = {}
         self.sequence       = 0
         self.pending_queue  = deque()
-
         # Each coordinator intantiates its own workers
         # It is one as of now
         workers_set     = new(Worker, num = 1)
         self.workers    = list(workers_set)
-        setup(self.workers, (coordinators,))
+        setup(self.workers, (coordinators, database,))
         start(workers)
 
 

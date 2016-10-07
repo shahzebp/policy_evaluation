@@ -14,7 +14,7 @@ def main():
     coordinators = list(coordinators_set)
 
 
-    for p in coordinators: setup(p, (coordinators,))
+    for p in coordinators: setup(p, (coordinators, database,))
 
     start(coordinators)
 
