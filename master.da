@@ -4,6 +4,7 @@ import configparser
 from coordinator import Coordinator
 from common import Request
 from database import Database
+from client import Client
 
 def main():
  
@@ -20,19 +21,27 @@ def main():
         output("ERR: Cannot read config file. Please check structure")
         exit(1)
 
+    # creating database process
     database = new(Database, num = 1)
     database_init_file = str(config.get("setup", "database_init_file"))
     setup(database, (database_init_file,))
     start(database)   
 
-    total_coords = config.get("setup", "num_coords")    
+    # creating coordinators
+    total_coords = int(config.get("setup", "num_coords"))
     coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
 
     for p in coordinators: setup(p, (coordinators, database, config, ))
-
     start(coordinators)
 
-    request = Request(9, 10, "read")
-    rid = request.subject_id % len(coordinators)
-    send(('FROM_CLIENT', request),to=(coordinators[rid]))
+    # creating clients
+    total_clients = int(config.get("setup", "num_clients"))
+
+    clients = new(Client, num = total_clients)
+    i = 0
+    for p in clients : 
+        setup(p, (coordinators, i + 1, config, ))
+        i = i + 1
+
+    start(clients)
