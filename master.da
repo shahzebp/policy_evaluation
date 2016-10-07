@@ -1,25 +1,38 @@
+import sys
+import configparser
+
 from coordinator import Coordinator
 from common import Request
 from database import Database
 
 def main():
-   
-    total_coords = 2
-            
+ 
+    if (len(sys.argv) < 2):
+        output("ERR: Please provide a config file")
+        exit(1)
+
+    config = configparser.ConfigParser()
+
+    # it fails if the config file is not a ini file with sections
+    config.read(str(sys.argv[1]))
+
+    if not config:
+        output("ERR: Cannot read config file. Please check structure")
+        exit(1)
+
     database = new(Database, num = 1)
-    setup(database, ("initFile.xml",))
+    database_init_file = str(config.get("setup", "database_init_file"))
+    setup(database, (database_init_file,))
     start(database)   
-    
+
+    total_coords = config.get("setup", "num_coords")    
     coordinators_set = new(Coordinator, num = total_coords)
     coordinators = list(coordinators_set)
 
-
-    for p in coordinators: setup(p, (coordinators, database,))
+    for p in coordinators: setup(p, (coordinators, database, config, ))
 
     start(coordinators)
 
     request = Request(9, 10, "read")
-
     rid = request.subject_id % len(coordinators)
-    
     send(('FROM_CLIENT', request),to=(coordinators[rid]))

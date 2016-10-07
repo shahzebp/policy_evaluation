@@ -7,7 +7,7 @@ from common import Request, Response
 
 class Coordinator(process):
  
-    def setup(coordinators:list, database):
+    def setup(coordinators:list, database, config):
         self.status = False
         
         self.sub_tent_cache = {}
@@ -18,7 +18,7 @@ class Coordinator(process):
         # It is one as of now
         workers_set     = new(Worker, num = 1)
         self.workers    = list(workers_set)
-        setup(self.workers, (coordinators, database,))
+        setup(self.workers, (coordinators, database, config))
         start(workers)
 
 
@@ -34,7 +34,6 @@ class Coordinator(process):
 
                 if(val1 != val2):
                     return False
-
 
         return True
 

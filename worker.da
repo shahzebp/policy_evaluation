@@ -10,12 +10,15 @@ class Rule(object):
         self.resource_update = resource_update
 
 class Worker(process):
-    def setup(coordinators:list, database):
+    def setup(coordinators:list, database, config):
         self.status = False
         self.coordinators = coordinators
         self.policy_map = {}
         self.database = database
-        read_policy("policy-example.xml")
+
+        policy_file = config.get("setup", "policy_def_file")
+
+        read_policy(policy_file)
 
     def read_policy(policy_xml):
         tree = ET.parse(policy_xml)
