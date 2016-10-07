@@ -1,9 +1,39 @@
+import xml.etree.ElementTree as ET
 from common import Request
 
 class Worker(process):
     def setup(coordinators:list):
         self.status = False
         self.coordinators = coordinators
+        self.policy_map = {}
+        read_policy("policy-example.xml")
+
+    def read_policy(policy_xml):
+        output("Policy file is:", policy_xml)
+        tree = ET.parse(policy_xml)
+        root = tree.getroot()
+        for rule in root.iter('rule'):
+            sc=rule.find('subjectCondition').attrib
+            rc=rule.find('resourceCondition').attrib
+            act=rule.find('action').attrib
+            su=rule.find('subjectUpdate')
+            if su != None:
+                su = su.attrib
+            ru=rule.find('resourceUpdate')
+            if ru != None:
+                ru = ru.attrib
+
+            rule_object = Rule(sc, rc, act, su, ru)
+
+            """
+            Adding the Rule object to the action map.
+            So each action will have a list of Rule objects
+            that satisfy that action.
+            """
+            if act["name"] in self.policy_map.keys():
+                self.policy_map[act["name"]].append(rule_object)
+            else:
+                self.policy_map[act["name"]] = [rule_object]
 
     def run():
         await(status == True)
@@ -17,3 +47,11 @@ class Worker(process):
         
         rid = request.subject_id % len(coordinators)
         send(('FROM_WORKER',request), to = (coordinators[rid]))
+
+class Rule(object):
+    def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
+        self.subject_condition = subject_condition
+        self.resource_condition = resource_condition
+        self.action = action
+        self.subject_update = subject_update
+        self.resource_update = resource_update
