@@ -1,0 +1,21 @@
+from common import Request, Response
+
+class Client(process):
+	
+	def setup():
+		self.total_tests = 0
+
+
+	def send(): pass
+
+	def run():
+
+		send()
+		
+		await(total_tests == 10)
+
+	def receive(msg=('OUTCOME', response), from_ = p):
+
+		# process
+
+		send()
