@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 from common import Request, Response
+import operator
 
 class Rule(object):
     def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
@@ -21,27 +22,17 @@ class Worker(process):
         read_policy(policy_file)
 
     def does_attribute_value_satisfy_condition(value_in_policy, value_from_db):
-        if value_in_policy[0] == '>':
+        if value_in_policy[0] == '>' or value_in_policy[0] == "<":
+            ops = { ">": operator.gt, "<": operator.lt}
             integer_value_in_policy = int(value_in_policy[1:])
             try:
                 integer_value_from_db = int(value_from_db)
-                if integer_value_from_db > integer_value_in_policy:
+                if ops[value_in_policy[0]](integer_value_from_db, integer_value_in_policy):
                     return True
                 else:
                     return False
             except:
                 return False
-        if value_in_policy[0] == "<":
-            integer_value_in_policy = int(value_in_policy[1:])
-            try:
-                integer_value_from_db = int(value_from_db)
-                if integer_value_from_db < integer_value_in_policy:
-                    return True
-                else:
-                    return False
-            except:
-                return False
-
         if value_in_policy != value_from_db:
             return False
         else:
