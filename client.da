@@ -1,3 +1,5 @@
+import logging
+
 from common import Request, Response
 
 class Client(process):
@@ -35,7 +37,6 @@ class Client(process):
 	    rid = request.subject_id % len(coordinators)
 
 	    send(('FROM_CLIENT', request),to=(coordinators[rid]))
-	    current_request_index  = current_request_index + 1
 
 	def run():
 
@@ -49,6 +50,8 @@ class Client(process):
 			output("Allowed")
 		else:
 			output("Denied")
+
+		current_request_index  = current_request_index + 1
 
 		if (num_requests > current_request_index):
 			sendtask()

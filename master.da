@@ -1,5 +1,6 @@
 import sys
 import configparser
+import logging
 
 from coordinator import Coordinator
 from common import Request
@@ -41,7 +42,7 @@ def main():
     clients = new(Client, num = total_clients)
     i = 0
     for p in clients : 
-        setup(p, (coordinators, i + 1, config, ))
+        setup(p, (coordinators, i + 1, config,))
         i = i + 1
 
     start(clients)
