@@ -36,7 +36,7 @@ class DataBaseResponse(object):
 		self.request 					= request
 		self.sub_database_attributes 	= {}
 		self.res_database_attributes 	= {}
-		self.result = True
+		self.result = False
 
 	def __str__(self):
 		return self.request.__str__() + "Subject Database Attributes: {0}\nResource Database Attributes: {1}" \

@@ -16,14 +16,11 @@ class Database(process):
                     innerdict[k] = v
                 for k,v in child.attrib.items():
                     self.database[v] = innerdict
-       
-        #print(self.database)
 
         await(status == True)
 
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
-
 
         db_response = DataBaseResponse(request)
         db_response_sub_attribute_map = {}
@@ -41,7 +38,6 @@ class Database(process):
             for the subject
             """
             sub_attribute_diff = set(subject_database_attribute_keys - set(request.sub_tent_updates.keys()))
-
             for attr in sub_attribute_diff:
                 db_response_sub_attribute_map[attr] = self.database[str(request.subject_id)][attr]
         except:
@@ -64,7 +60,6 @@ class Database(process):
         except:
             db_response.result = False
 
-        #Populating the request object in the Database Response object
         #Populating the subject and resource attributes maps which have been
         #calculated earlier in this function
         db_response.sub_database_attributes = db_response_sub_attribute_map

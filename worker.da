@@ -20,6 +20,55 @@ class Worker(process):
 
         read_policy(policy_file)
 
+    def does_attribute_value_satisfy_condition(value_in_policy, value_from_db):
+        if value_in_policy[0] == '>':
+            integer_value_in_policy = int(value_in_policy[1:])
+            try:
+                integer_value_from_db = int(value_from_db)
+                if integer_value_from_db > integer_value_in_policy:
+                    return True
+                else:
+                    return False
+            except:
+                return False
+        if value_in_policy[0] == "<":
+            integer_value_in_policy = int(value_in_policy[1:])
+            try:
+                integer_value_from_db = int(value_from_db)
+                if integer_value_from_db < integer_value_in_policy:
+                    return True
+                else:
+                    return False
+            except:
+                return False
+
+        if value_in_policy != value_from_db:
+            return False
+        else:
+            return True
+
+    def validate_attributes_in_policy(rule_map, db_attributes_map):
+        if len(rule_map) == 0 or len(db_attributes_map) == 0:
+            return False
+        key_size = len(rule_map.keys())
+        count = 0
+        for key in rule_map.keys():
+            if key in db_attributes_map:
+
+                """"
+                Here we check for the value of the attributes
+                In case we have < or > operators, we need to evaluate accordingly
+                """
+                if does_attribute_value_satisfy_condition(rule_map[key], db_attributes_map[key]):
+                    count+=1
+                else:
+                    break
+            else:
+                break
+        if count != key_size:
+            return False
+        return True
+
     def read_policy(policy_xml):
         tree = ET.parse(policy_xml)
         root = tree.getroot()
@@ -54,11 +103,47 @@ class Worker(process):
         send(('FROM_WORKER', request), to = (database))
 
     def receive(msg=('FROM_DATABASE', database_response), from_ = p):
-        output("Received from database")
+        output("Received from database") #, database_response)
+
         """
-        evaluate policy here
+        Evaluating the policy here
         """
-        #print(database_response)
-        response = Response(database_response.request, True)
+
+        """
+        Appending the tentative updates with the attributes
+        received from the database to create a new changelist
+        which will be used to evaluate the policy
+        """
+
+        sub_attribute_list_to_evaluate_policy = dict(database_response.request.sub_tent_updates.items() | database_response.sub_database_attributes.items())
+        res_attribute_list_to_evaluate_policy = dict(database_response.request.res_tent_updates.items() | database_response.res_database_attributes.items())
+        """
+        Getting the list of rules which belong to this object
+        from our policy map object
+        """
+
+        rules_list = self.policy_map[database_response.request.action]
+
+        """
+        Checking for rules which match the action in the request
+        """
+        update_rule = None
+        for rule in rules_list:
+            if validate_attributes_in_policy(rule.subject_condition, sub_attribute_list_to_evaluate_policy) == True:
+                if validate_attributes_in_policy(rule.resource_condition, res_attribute_list_to_evaluate_policy) == True:
+                    update_rule = rule
+                    database_response.result = True
+                    break
+
+        response = Response(database_response.request, database_response.result)
+
+        if update_rule:
+            response.sub_to_update = update_rule.subject_update
+            response.res_to_update = update_rule.resource_update
+
+        response.sub_changelist = database_response.sub_database_attributes
+        response.res_changelist = database_response.res_database_attributes
+
         rid = database_response.request.subject_id % len(coordinators)
+
         send(('FROM_WORKER',response), to = (coordinators[rid]))

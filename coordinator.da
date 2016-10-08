@@ -47,6 +47,7 @@ class Coordinator(process):
     def receive(msg=('FROM_CLIENT', request), from_=p):
         output("Subject coord request ", request.subject_id)
 
+        #sub_tent_cache[request.subject_id] = {"history":"80"}
         if request.subject_id in sub_tent_cache:
             request.sub_tent_updates = sub_tent_cache[request.subject_id]
 
@@ -65,6 +66,7 @@ class Coordinator(process):
 
         output("Resource coord request", request.resource_id)
 
+        #res_tent_cache[request.resource_id] = {"id":"bank A"}
         if request.resource_id in res_tent_cache:
             request.res_tent_updates = res_tent_cache[request.resource_id]
 
@@ -80,7 +82,7 @@ class Coordinator(process):
 
         if response.request.subject_id in sub_tent_cache:
             retval = check_conflict(sub_tent_cache[response.request.subject_id],
-                                    response.request.sub_tent_updates, response.changelist)
+                                    response.request.sub_tent_updates, response.sub_changelist)
 
         if (retval == True):
             rid = response.request.resource_id % len(coordinators)
@@ -94,7 +96,7 @@ class Coordinator(process):
 
         if response.request.resource_id in res_tent_cache:
             retval = check_conflict(res_tent_cache[response.request.resource_id],
-                                    response.request.res_tent_cache, response.changelist)
+                                    response.request.res_tent_updates, response.res_changelist)
 
         if (retval == True):
             rid = response.request.subject_id % len(coordinators)

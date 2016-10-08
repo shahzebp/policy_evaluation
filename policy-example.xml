@@ -11,9 +11,10 @@
   </rule>
 
   <rule name="access bank A again">
-    <subjectCondition position="employee" history="bank A"></subjectCondition>
+    <subjectCondition position="employee" history="80"></subjectCondition>
     <resourceCondition id="bank A"></resourceCondition>
     <action name="read"></action>
+    <subjectUpdate history="bank B"></subjectUpdate>
   </rule>
 
   <rule name="access bank B first time">
