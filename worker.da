@@ -60,6 +60,18 @@ class Worker(process):
             return False
         return True
 
+    def update_attributes_after_policy_evaluation(update_condition, attribute_list_to_evaluate_policy):
+        to_update = {}
+        if update_condition:
+            for key, value in update_condition.items():
+                if value == "++":
+                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key]) + 1)
+                elif value == "--":
+                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key]) - 1)
+                else:
+                    to_update[key] = update_condition[key]
+        return to_update
+
     def read_policy(policy_xml):
         tree = ET.parse(policy_xml)
         root = tree.getroot()
@@ -128,9 +140,10 @@ class Worker(process):
 
         response = Response(database_response.request, database_response.result)
 
+
         if update_rule:
-            response.sub_to_update = update_rule.subject_update
-            response.res_to_update = update_rule.resource_update
+            response.sub_to_update = update_attributes_after_policy_evaluation(update_rule.subject_update, sub_attribute_list_to_evaluate_policy)
+            response.res_to_update = update_attributes_after_policy_evaluation(update_rule.resource_update, res_attribute_list_to_evaluate_policy)
 
         response.sub_changelist = database_response.sub_database_attributes
         response.res_changelist = database_response.res_database_attributes
