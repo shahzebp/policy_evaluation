@@ -58,8 +58,7 @@ class Worker(process):
         """
         evaluate policy here
         """
-        print(database_response)
-        response = Response(100, 200, True,
-                            "request.owner", 6)
+        #print(database_response)
+        response = Response(database_response.request, True)
         rid = database_response.request.subject_id % len(coordinators)
-        #send(('FROM_WORKER',response), to = (coordinators[rid]))
+        send(('FROM_WORKER',response), to = (coordinators[rid]))

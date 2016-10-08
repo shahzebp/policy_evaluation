@@ -15,29 +15,27 @@ class Request(object):
     def __str__(self):
     	return "Subject ID: {0}\nResource ID {1}\nAction: {2}\nSubject Tentative Attributes: {3}\nResource Tentative Attributes: {4}\nOwner: {5}\nTimeStamp: {6}\n" \
     		.format(str(self.subject_id), str(self.resource_id), str(self.action), str(self.sub_tent_updates), str(self.res_tent_updates), str(self.owner), str(self.timestamp))
+
 class Response(object):
-	def __init__(self, subject_id, resource_id, result, owner, timestamp):
-		self.subject_id 		= subject_id
-		self.resource_id 		= resource_id
+	def __init__(self, request, result):
+		self.request 			= request
 		self.result				= result
 
 		self.sub_changelist		= {}
 		self.res_changelist		= {}
 
-		self.sub_tent_updates 	= {}
-		self.res_tent_updates	= {}
-
 		self.sub_to_update		= {}
 		self.res_to_update		= {}
 
-		self.owner				= owner
-		self.timestamp			= timestamp
+	def __str__(self):
+		return self.request.__str__() + "Subject Changelist: {0}\nResource Changelist: {1}\nSubject To Update: \{2}\nResource To Update {3}\n" \
+			.format(self.sub_changelist, self.res_changelist, self.sub_to_update, self.res_to_update)
 
 class DataBaseResponse(object):
 	def __init__(self, request):
-		self.request = request
-		self.sub_database_attributes = {}
-		self.res_database_attributes = {}
+		self.request 					= request
+		self.sub_database_attributes 	= {}
+		self.res_database_attributes 	= {}
 		self.result = True
 
 	def __str__(self):
