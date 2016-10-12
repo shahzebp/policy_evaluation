@@ -3,6 +3,9 @@
     <subject id="9">
         <attribute position= "employee" history="20"/>
     </subject>
+    <subject id="11">
+        <attribute position= "employee" history="20"/>
+    </subject>
     <subject id="11102">
         <attribute position= "Student" history=""/>
     </subject>
@@ -12,7 +15,10 @@
     <resource id="44401">
         <attribute name= "Bank A"/>
     </resource>
-    <resource id="44402">
+    <resource id="44403">
         <attribute type= "Movie" count="1"/>
-    </resource>    
+    </resource> 
+    <resource id="44402">
+        <attribute name= "Bank A"/>
+    </resource>   
 </data>

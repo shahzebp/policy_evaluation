@@ -22,6 +22,14 @@ def main():
         output("ERR: Cannot read config file. Please check structure")
         exit(1)
 
+    '''
+    # create logger
+    log_file = str(config.get("setup", "log_file"))
+    logging.basicConfig(filename='example.log',level=logging.DEBUG)
+    logger1 = logging.getLogger('policy_eval')
+    logging.warning('This is warning')
+
+    '''
     # creating database process
     database = new(Database, num = 1)
     database_init_file = str(config.get("setup", "database_init_file"))

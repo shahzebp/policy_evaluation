@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 from common import Request, Response
+from time import sleep
+
 import operator
 
 class Rule(object):
@@ -102,11 +104,12 @@ class Worker(process):
         await(status == True)
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
+        
         output("received inside worker", request.subject_id)
         send(('FROM_WORKER', request), to = (database))
-
+        
     def receive(msg=('FROM_DATABASE', database_response), from_ = p):
-        output("Received from database") #, database_response)
+        output("Received from database ", database_response.request.subject_id) #, database_response)
 
         """
         Evaluating the policy here
@@ -118,8 +121,11 @@ class Worker(process):
         which will be used to evaluate the policy
         """
 
-        sub_attribute_list_to_evaluate_policy = dict(database_response.request.sub_tent_updates.items() | database_response.sub_database_attributes.items())
-        res_attribute_list_to_evaluate_policy = dict(database_response.request.res_tent_updates.items() | database_response.res_database_attributes.items())
+        '''
+        sub_attribute_list_to_evaluate_policy = dict(database_response.request.sub_tent_updates.items()
+            | database_response.sub_database_attributes.items())
+        res_attribute_list_to_evaluate_policy = dict(database_response.request.res_tent_updates.items()
+            | database_response.res_database_attributes.items())
         """
         Getting the list of rules which belong to this object
         from our policy map object
@@ -137,7 +143,8 @@ class Worker(process):
                     update_rule = rule
                     database_response.result = True
                     break
-
+        
+        # Initialize with database response? 
         response = Response(database_response.request, database_response.result)
 
 
@@ -147,6 +154,14 @@ class Worker(process):
 
         response.sub_changelist = database_response.sub_database_attributes
         response.res_changelist = database_response.res_database_attributes
+        '''
+
+        # TODO : short circuit testing. remove this statement
+
+        if (database_response.request.action == "read"):
+            sleep(6)
+
+        response = Response(database_response.request, True)
 
         rid = database_response.request.subject_id % len(coordinators)
 
