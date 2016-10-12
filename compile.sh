@@ -1,4 +1,4 @@
-rm -rf *.py
+rm -rf *.py *.log
 
 dac common.da
 dac worker.da

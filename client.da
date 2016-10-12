@@ -1,10 +1,16 @@
 import logging
+import logging.handlers
+import logging.config
+
+from time import sleep
 
 from common import Request, Response
 
 class Client(process):
 	
 	def setup(coordinators, my_index, config):
+		self.logger = logging.getLogger('sLogger')
+
 		current_section = "client" + str(my_index)
 		
 		request_list = []
@@ -36,9 +42,13 @@ class Client(process):
 
 	    rid = request.subject_id % len(coordinators)
 
+	    logger.info("Sending request: %s ", request)
 	    send(('FROM_CLIENT', request),to=(coordinators[rid]))
 
 	def run():
+
+		if (my_index == 2):
+			sleep(1)
 
 		sendtask()
 		
@@ -46,11 +56,8 @@ class Client(process):
 
 	def receive(msg=('OUTCOME', response), from_ = p):
 
-		if (response.result):
-			output("Allowed")
-		else:
-			output("Denied")
-
+		logger.info("Response received: %s ", str(response))
+		
 		current_request_index  = current_request_index + 1
 
 		if (num_requests > current_request_index):

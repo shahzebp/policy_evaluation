@@ -13,8 +13,8 @@ class Request(object):
         self.timestamp			= None
 
     def __str__(self):
-    	return "Subject ID: {0}\nResource ID {1}\nAction: {2}\nSubject Tentative Attributes: {3}\nResource Tentative Attributes: {4}\nOwner: {5}\nTimeStamp: {6}\n" \
-    		.format(str(self.subject_id), str(self.resource_id), str(self.action), str(self.sub_tent_updates), str(self.res_tent_updates), str(self.owner), str(self.timestamp))
+    	return ("\nSubject ID: {0}\nResource ID {1}\nAction: {2}\nSubject Tentative Attributes: {3}\nResource Tentative Attributes: {4}\nOwner: {5}\nTimeStamp: {6}\n" \
+    		.format(str(self.subject_id), str(self.resource_id), str(self.action), str(self.sub_tent_updates), str(self.res_tent_updates), str(self.owner), str(self.timestamp)))
 
 class Response(object):
 	def __init__(self, request, result):
@@ -28,8 +28,8 @@ class Response(object):
 		self.res_to_update		= {}
 
 	def __str__(self):
-		return self.request.__str__() + "Subject Changelist: {0}\nResource Changelist: {1}\nSubject To Update: \{2}\nResource To Update {3}\n" \
-			.format(self.sub_changelist, self.res_changelist, self.sub_to_update, self.res_to_update)
+		return self.request.__str__() + "Subject Changelist: {0}\nResource Changelist: {1}\nSubject To Update: {2}\nResource To Update: {3}\nResult: {4}\n" \
+			.format(self.sub_changelist, self.res_changelist, self.sub_to_update, self.res_to_update, self.result)
 
 class DataBaseResponse(object):
 	def __init__(self, request):

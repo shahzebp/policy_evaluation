@@ -1,9 +1,14 @@
 import logging
+import logging.handlers
+import logging.config
+
 import xml.etree.ElementTree as ET
 from common import DataBaseResponse
 
 class Database(process):
     def setup(initFile:str):
+        self.logger = logging.getLogger('sLogger')
+
         self.root = ET.parse(initFile).getroot()
         self.status = False
         self.database = {}

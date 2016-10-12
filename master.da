@@ -1,6 +1,8 @@
 import sys
 import configparser
 import logging
+import logging.handlers
+import logging.config
 
 from coordinator import Coordinator
 from common import Request
@@ -22,18 +24,15 @@ def main():
         output("ERR: Cannot read config file. Please check structure")
         exit(1)
 
-    '''
-    # create logger
-    log_file = str(config.get("setup", "log_file"))
-    logging.basicConfig(filename='example.log',level=logging.DEBUG)
-    logger1 = logging.getLogger('policy_eval')
-    logging.warning('This is warning')
+    
+    # set up logging
+    logging.config.fileConfig('log.conf', defaults={'logfilename': 'mylog.log'})
+    logger = logging.getLogger('sLogger')
 
-    '''
     # creating database process
     database = new(Database, num = 1)
     database_init_file = str(config.get("setup", "database_init_file"))
-    setup(database, (database_init_file,))
+    setup(database, (database_init_file, ))
     start(database)   
 
     # creating coordinators
