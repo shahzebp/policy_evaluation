@@ -144,11 +144,15 @@ class Coordinator(process):
     def process_response(response):
         logger.debug("Processing response: %s ", str(response))
 
+        '''
+        # TODO Do we need this?
+
         # Check if evalution result is true, if false, return directly to client
         # as no updates should be processed and no conflicts should be checked
         if response.result == False:
             send(('OUTCOME', response), to = (response.request.owner))
             request_sequence[response.request.subject_id].popleft()
+        '''
 
         logger.debug("Checking subject conflicts: %s ", str(response))
         retval = True
@@ -160,7 +164,7 @@ class Coordinator(process):
 
         if (retval == True):
 
-            # Execute tentative updates            
+            # Execute tentative updates for subject attributes
             current_tent_map = {}
             if response.request.subject_id in sub_tent_cache:
                current_tent_map =  sub_tent_cache[response.request.subject_id]
@@ -205,7 +209,7 @@ class Coordinator(process):
 
         if (retval == True):
 
-            # Execute tentative updates            
+            # Execute tentative updates for resource attributes
             current_tent_map = {}
             if response.request.resource_id in res_main_cache:
                current_tent_map =  res_main_cache[response.request.resource_id]
@@ -215,6 +219,8 @@ class Coordinator(process):
 
             res_main_cache[response.request.subject_id] = current_tent_map
 
+            # TODO:
+            # send update to the database to update the value
         # Need to send result to subject in either conflict or no conflict case
         rid = response.request.subject_id % len(coordinators)
         send(('FROM_RESOURCE_COORD_RESPONSE', response, retval), to=(coordinators[rid]))
@@ -224,6 +230,12 @@ class Coordinator(process):
             # No conflict, propapage the tentative subject updates to main
             logger.debug("Evaluation complete: %s", str(response))
 
+            # Propagate subject tentative updates to main cache
+            for k,v in sub_tent_cache[response.request.subject_id]:
+                sub_main_cache[response.request.subject_id][k]  = v
+
+            # TODO :
+            # send the updates to the database
             send(('OUTCOME', response), to = (response.request.owner))
             request_sequence[response.request.subject_id].popleft()
             # Process next response that was queued
