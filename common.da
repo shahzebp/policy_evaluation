@@ -21,15 +21,18 @@ class Response(object):
 		self.request 			= request
 		self.result				= result
 
-		self.sub_changelist		= {}
-		self.res_changelist		= {}
+		self.sub_tent_attr_used = {}
+		self.res_tent_attr_used	= {}
+
+		self.sub_db_attr_used   = {}
+		self.res_db_attr_used   = {}
 
 		self.sub_to_update		= {}
 		self.res_to_update		= {}
 
 	def __str__(self):
-		return self.request.__str__() + "Subject Changelist: {0}\nResource Changelist: {1}\nSubject To Update: {2}\nResource To Update: {3}\nResult: {4}\n" \
-			.format(self.sub_changelist, self.res_changelist, self.sub_to_update, self.res_to_update, self.result)
+		return self.request.__str__() + "Subject Tentative Attributes Used To Evaluate Policy: {0}\Resource Tentative Attributes Used To Evaluate Policy: {1}\nSubject DB Attributes Used To Evaluate Policy: {2}\Resource DB Attributes Used To Evaluate Policy: {3}\nSubject To Update: {4}\nResource To Update: {5}\nResult: {6}\n" \
+			.format(self.sub_tent_attr_used, self.res_tent_attr_used, self.sub_db_attr_used, self.res_db_attr_used, self.sub_to_update, self.res_to_update, self.result)
 
 class DataBaseResponse(object):
 	def __init__(self, request):
