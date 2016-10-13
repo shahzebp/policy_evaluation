@@ -48,14 +48,12 @@ class Coordinator(process):
         await(status == True)
 
     def attributes_in_sync(map1, map2): 
-        pass
         for key in map1:
             timestamp1 = map1[key][1]
 
             if key in map2:
                 timepstamp2 = map2[key][1]
 
-                # TODO shoule there be other comparison?
                 if(timestamp1 != timepstamp2):
                     return False
 
@@ -77,7 +75,7 @@ class Coordinator(process):
                 and attributes_clash(changelist_map, latest_tentative_map))
 
     def entrypoint(request):
-        logger.debug("Subject coord request received: %s", str(request))
+        logger.debug("Subject Coord - Request received: %s", str(request))
 
         # TODO REMOVE THIS fake test
         # sub_main_cache[request.subject_id] = {"history":("70", time.time())}
@@ -111,7 +109,7 @@ class Coordinator(process):
 
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
 
-        logger.debug("Resource coord request received: %s ", str(request))
+        logger.debug("Resource Coord - Request received: %s ", str(request))
 
         # TODO REMOVE THIS 
         # res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
@@ -142,7 +140,7 @@ class Coordinator(process):
 
 
     def process_response(response):
-        logger.debug("Processing response: %s ", str(response))
+        logger.debug("Subject Coord - Processing response: %s ", str(response))
 
         '''
         # TODO Do we need this?
@@ -154,7 +152,7 @@ class Coordinator(process):
             request_sequence[response.request.subject_id].popleft()
         '''
 
-        logger.debug("Checking subject conflicts: %s ", str(response))
+        logger.debug("Subject Coord - Checking subject conflicts: %s ", str(response))
         retval = True
 
         if response.request.subject_id in sub_main_cache:
@@ -180,15 +178,15 @@ class Coordinator(process):
             
         else:
             # Restart
-            logger.error("Subject conflict detected: %s ", str(response))
-            logger.debug("Restarting: %s ", str(response.request))
+            logger.error("Subject Coord - Subject conflict detected: %s ", str(response))
+            logger.debug("Subject Coord - Restarting: %s ", str(response.request))
             
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
 
     def receive(msg=('FROM_WORKER', response), from_=p):
         
-        logger.debug("From worker: %s ", str(response))
+        logger.debug("Subject Coord - Response from worker: %s ", str(response))
         
         if (response.request.subject_id in request_sequence):
             current_request_sequence = request_sequence[response.request.subject_id]
@@ -200,7 +198,7 @@ class Coordinator(process):
             process_response(response)
  
     def receive(msg=('FROM_SUBJECT_COORD_RESPONSE', response), from_ = p):
-        logger.debug("Checking resource conflict: %s ", str(response))
+        logger.debug("Resource Coord - Checking resource conflict: %s ", str(response))
 
         retval = True
         if response.request.resource_id in res_main_cache:
@@ -221,6 +219,7 @@ class Coordinator(process):
 
             # TODO:
             # send update to the database to update the value
+        
         # Need to send result to subject in either conflict or no conflict case
         rid = response.request.subject_id % len(coordinators)
         send(('FROM_RESOURCE_COORD_RESPONSE', response, retval), to=(coordinators[rid]))
@@ -228,7 +227,7 @@ class Coordinator(process):
     def receive(msg=('FROM_RESOURCE_COORD_RESPONSE', response, retval), from_ = p):
         if (True == retval):
             # No conflict, propapage the tentative subject updates to main
-            logger.debug("Evaluation complete: %s", str(response))
+            logger.debug("Subject Coord - Evaluation complete: %s", str(response))
 
             # Propagate subject tentative updates to main cache
             for k,v in sub_tent_cache[response.request.subject_id]:
@@ -242,7 +241,7 @@ class Coordinator(process):
             extract_next_response()
         else:
             # Restart because of resource conflicts
-            logger.error("Resource conflict detected: %s ", str(response))
-            logger.debug("Restarting: %s ", str(response.request))
+            logger.error("Subject Coord - Resource conflict detected: %s ", str(response))
+            logger.debug("Subject Coord - Restarting: %s ", str(response.request))
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
