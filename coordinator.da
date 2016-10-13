@@ -243,5 +243,9 @@ class Coordinator(process):
             # Restart because of resource conflicts
             logger.error("Subject Coord - Resource conflict detected: %s ", str(response))
             logger.debug("Subject Coord - Restarting: %s ", str(response.request))
+
+            # revert tentative subject cache
+            sub_tent_cache[response.request.subject_id] = {}
+            
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)

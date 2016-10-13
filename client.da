@@ -42,7 +42,7 @@ class Client(process):
 
 	    rid = request.subject_id % len(coordinators)
 
-	    logger.info("Sending request: %s ", request)
+	    logger.info("Client - Sending request: %s ", request)
 	    send(('FROM_CLIENT', request),to=(coordinators[rid]))
 
 	def run():
@@ -54,7 +54,7 @@ class Client(process):
 		
 		await(num_requests == current_request_index)
 
-	def receive(msg=('OUTCOME', response), from_ = p):
+	def receive(msg=('Client - OUTCOME', response), from_ = p):
 
 		logger.info("Response received: %s ", str(response))
 		
