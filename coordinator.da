@@ -84,7 +84,12 @@ class Coordinator(process):
         if request.subject_id in sub_main_cache:
             request.sub_tent_updates = sub_main_cache[request.subject_id]
 
-        
+        # overwrite any update if a tentative update exists for it
+        # because the ones in tentative are more recent
+        if request.subject_id in sub_tent_cache:
+            for k,v in sub_tent_cache[request.subject_id]:
+                request.sub_tent_updates[k] = v 
+
         request.timestamp   = time.time()
 
         rid = request.resource_id % len(coordinators)
@@ -101,8 +106,8 @@ class Coordinator(process):
 
     def receive(msg=('FROM_CLIENT', request), from_=p):
         request.owner       = p
-        entrypoint(request)
 
+        entrypoint(request)
 
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
 
@@ -139,9 +144,6 @@ class Coordinator(process):
     def process_response(response):
         logger.debug("Processing response: %s ", str(response))
 
-        # No need to check in tentative cache. By this time, the tentative
-        # updates for earlier requests has either been resolved or reverted
-
         # Check if evalution result is true, if false, return directly to client
         # as no updates should be processed and no conflicts should be checked
         if response.result == False:
@@ -150,6 +152,7 @@ class Coordinator(process):
 
         logger.debug("Checking subject conflicts: %s ", str(response))
         retval = True
+
         if response.request.subject_id in sub_main_cache:
             retval = check_conflict(sub_main_cache[response.request.subject_id],
                                     response.request.sub_tent_updates,

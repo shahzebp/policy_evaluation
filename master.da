@@ -26,8 +26,16 @@ def main():
 
     
     # set up logging
-    logging.config.fileConfig('log.conf', defaults={'logfilename': 'mylog.log'})
+    logging.config.fileConfig(str(sys.argv[1]), defaults={'logfilename':
+        str(config.get("setup", "log_dump_file"))})
     logger = logging.getLogger('sLogger')
+
+    logger.info("Policy Evaluation Engine started")
+    logger.info("Total coordinators:    %s ", config.get("setup", "num_coords"))
+    logger.info("Workers per coordinator:    %s ", config.get("setup", "num_worker_per_coord"))
+    logger.info("Database init file:    %s ", config.get("setup", "database_init_file"))
+    logger.info("Log dump file:    %s ", config.get("setup", "log_dump_file"))
+    logger.info("Number of clients:    %s ", config.get("setup", "num_clients"))
 
     # creating database process
     database = new(Database, num = 1)
