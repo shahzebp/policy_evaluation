@@ -31,7 +31,8 @@ class Coordinator(process):
         self.response_queue = queue.PriorityQueue(maxsize=0)       
 
         # thread safe implementation 
-        self.pending_queue  = deque()
+        self.request_sequence  = {} #deque()
+        
         # Each coordinator intantiates its own workers
         # It is one as of now
         num_worker = int(config.get("setup", "num_worker_per_coord"))
@@ -78,7 +79,7 @@ class Coordinator(process):
         logger.debug("Subject coord request received: %s", str(request))
 
         # TODO REMOVE THIS fake test
-        sub_main_cache[request.subject_id] = {"history":("70", time.time())}
+        # sub_main_cache[request.subject_id] = {"history":("70", time.time())}
         if request.subject_id in sub_main_cache:
             request.sub_tent_updates = sub_main_cache[request.subject_id]
 
@@ -87,7 +88,13 @@ class Coordinator(process):
 
         rid = request.resource_id % len(coordinators)
 
-        pending_queue.append(request)
+        # Add request to the sequence queue
+        current_request_sequence = deque()
+        if (request.subject_id in request_sequence):
+            current_request_sequence = request_sequence[request.subject_id]
+
+        current_request_sequence.append(request)
+        request_sequence[request.subject_id] = current_request_sequence
 
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
@@ -101,7 +108,7 @@ class Coordinator(process):
         logger.debug("Resource coord request received: %s ", str(request))
 
         # TODO REMOVE THIS 
-        res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
+        # res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
 
@@ -115,10 +122,15 @@ class Coordinator(process):
 
             response = response_queue.get()[1]
 
-            if (pending_queue[0].timestamp < response.request.timestamp):
-                response_queue.put(response.request.timestamp, response)
+            if (response.request.subject_id in request_sequence):
+                current_request_sequence = request_sequence[response.request.subject_id]
+                if (current_request_sequence[0].timestamp < response.request.timestamp):
+                    response_queue.put((response.request.timestamp, response))
+                else:
+                    process_response(response)
             else:
                 process_response(response)
+
 
     def process_response(response):
         logger.debug("Processing response: %s ", str(response))
@@ -130,7 +142,7 @@ class Coordinator(process):
         # as no updates should be processed and no conflicts should be checked
         if response.result == False:
             send(('OUTCOME', response), to = (response.request.owner))
-            pending_queue.popleft()
+            request_sequence[response.request.subject_id].popleft()
 
         logger.debug("Checking subject conflicts: %s ", str(response))
         retval = True
@@ -160,16 +172,19 @@ class Coordinator(process):
             logger.error("Subject conflict detected: %s ", str(response))
             logger.debug("Restarting: %s ", str(response.request))
             
-            pending_queue.popleft()
+            request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
 
     def receive(msg=('FROM_WORKER', response), from_=p):
+        
         logger.debug("From worker: %s ", str(response))
         
-        retval = True
-
-        if (pending_queue[0].timestamp < response.request.timestamp):
-            response_queue.put((response.request.timestamp, response))
+        if (response.request.subject_id in request_sequence):
+            current_request_sequence = request_sequence[response.request.subject_id]
+            if (current_request_sequence[0].timestamp < response.request.timestamp):
+                response_queue.put((response.request.timestamp, response))
+            else:
+                process_response(response)
         else:
             process_response(response)
  
@@ -203,11 +218,12 @@ class Coordinator(process):
             logger.debug("Evaluation complete: %s", str(response))
 
             send(('OUTCOME', response), to = (response.request.owner))
-            pending_queue.popleft()
+            request_sequence[response.request.subject_id].popleft()
             # Process next response that was queued
             extract_next_response()
         else:
+            # Restart because of resource conflicts
             logger.error("Resource conflict detected: %s ", str(response))
             logger.debug("Restarting: %s ", str(response.request))
-            pending_queue.popleft()
+            request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
