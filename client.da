@@ -1,7 +1,9 @@
 import logging
 import logging.handlers
 import logging.config
+import hashlib
 
+import time
 from time import sleep
 
 from common import Request, Response
@@ -34,8 +36,16 @@ class Client(process):
 			sub_id = int(config.get(i, "subject_id"))
 			res_id = int(config.get(i, "resource_id"))
 			action = str(config.get(i, "action"))
+			
+			uuid = hashlib.md5()
+			uuid.update(str(sub_id).encode())
+			uuid.update(str(res_id).encode())
+			uuid.update(str(action).encode())
+			uuid.update(str(time.time()).encode())
+			uuid.update(str(my_index).encode())
 
 			request = Request(sub_id, res_id, action)
+			request.uuid = uuid.hexdigest()
 
 			total_requests.append(request)
 		
@@ -54,11 +64,6 @@ class Client(process):
 		send(('FROM_CLIENT', request),to=(coordinators[rid]))
 
 	def run():
-
-		# TODO
-		# remove the client delay
-		if (my_index == 2):
-			sleep(1)
 
 		sendtask()
 		

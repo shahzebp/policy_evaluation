@@ -131,8 +131,6 @@ class Coordinator(process):
 
         # TODO REMOVE THIS 
         # res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
-        print("Initial resource coordinator")
-        print(res_main_cache)
 
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
@@ -226,8 +224,11 @@ class Coordinator(process):
         recv_sequence = recv_sequence + 1
 
         if (response.request.subject_id in request_sequence):
+
             current_request_sequence = request_sequence[response.request.subject_id]
+
             if (current_request_sequence[0].timestamp < response.request.timestamp):
+                           
                 response_queue.put((response.request.timestamp, response))
             else:
                 process_response(response)
@@ -264,7 +265,6 @@ class Coordinator(process):
             # TODO:
             # send update to the database to update the value
         # Need to send result to subject in either conflict or no conflict case
-        print("Printing res cache ", res_main_cache)
 
         rid = response.request.subject_id % len(coordinators)
         
@@ -302,4 +302,7 @@ class Coordinator(process):
             logger.debug("Restarting: %s ", str(response.request))
             
             request_sequence[response.request.subject_id].popleft()
+
             entrypoint(response.request)
+            extract_next_response()
+
