@@ -10,7 +10,7 @@ from common import Request, Response
 
 class Client(process):
 	
-	def setup(coordinators, my_index, config):
+	def setup(coordinators, my_index, master, config):
 		self.logger = logging.getLogger('sLogger')
 
 		current_section = "client" + str(my_index)
@@ -69,6 +69,8 @@ class Client(process):
 		
 		await(num_requests == current_request_index)
 
+		send(('CLIENT_COMPLETE', my_index),to=(master))
+
 	def receive(msg=('OUTCOME', response), from_ = p):
 
 		logger.info("[Client] Response received (seq. %s) from Subject Coord %s ", 
@@ -80,3 +82,4 @@ class Client(process):
 
 		if (num_requests > current_request_index):
 			sendtask()
+

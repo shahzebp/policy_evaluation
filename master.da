@@ -9,6 +9,22 @@ from common import Request
 from database import Database
 from client import Client
 
+
+class Master(process):
+
+    def setup(total_clients):
+        self.complete_counter = 0
+
+    def run():
+        await(complete_counter == total_clients)
+
+        print("\nTesting Complete. Check log File")
+
+    def receive(msg=('CLIENT_COMPLETE', client_index), from_ = p):
+        print("Client {0} completed!".format(str(client_index)))
+
+        complete_counter = complete_counter + 1
+
 def main():
  
     if (len(sys.argv) < 2):
@@ -42,6 +58,13 @@ def main():
     logger.info("Min DB Latency:    %s ", config.get("setup", "mindblatency"))
     logger.info("Max DB Latency:    %s \n", config.get("setup", "maxdblatency"))
 
+
+    # create master process
+
+    master = new(Master, num = 1)
+    setup(master, (int(config.get("setup", "num_clients")), ))
+    start(master)
+
     # creating database process
     database = new(Database, num = 1)
     database_init_file = str(config.get("setup", "database_init_file"))
@@ -62,7 +85,7 @@ def main():
     clients = new(Client, num = total_clients)
     i = 0
     for p in clients : 
-        setup(p, (coordinators, i + 1, config,))
+        setup(p, (coordinators, i + 1, master, config,))
         i = i + 1
 
     start(clients)
