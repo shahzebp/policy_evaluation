@@ -6,8 +6,8 @@
     <subject id="11">
         <attribute position= "employee" history="20"/>
     </subject>
-    <subject id="11102">
-        <attribute position= "Student" history=""/>
+    <subject id="55">
+        <attribute position= "customer" history=""/>
     </subject>
     <subject id="11103">
         <attribute position= "Nurse" history=""/>
@@ -15,10 +15,10 @@
     <resource id="44401">
         <attribute name= "Bank A"/>
     </resource>
-    <resource id="44403">
-        <attribute type= "Movie" count="1"/>
-    </resource> 
     <resource id="44402">
         <attribute name= "Bank A"/>
-    </resource>   
+    </resource>
+    <resource id="44403">
+        <attribute type= "movie" viewCount="0"/>
+    </resource>    
 </data>

@@ -55,6 +55,8 @@ class Client(process):
 
 	def run():
 
+		# TODO
+		# remove the client delay
 		if (my_index == 2):
 			sleep(1)
 

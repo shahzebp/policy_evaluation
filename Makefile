@@ -8,7 +8,7 @@ all: clean
 
 clean:
 	-@ rm -rf *.py *pycache*
-	-@ rm -f *.log
 
 run:
+	-@ rm -f *.log
 	dar master.da config.ini

@@ -131,6 +131,9 @@ class Coordinator(process):
 
         # TODO REMOVE THIS 
         # res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
+        print("Initial resource coordinator")
+        print(res_main_cache)
+
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
 
@@ -256,11 +259,13 @@ class Coordinator(process):
             for k,v in response.res_to_update.items():
                 current_tent_map[k] = (v, time.time())
 
-            res_main_cache[response.request.subject_id] = current_tent_map
+            res_main_cache[response.request.resource_id] = current_tent_map
 
             # TODO:
             # send update to the database to update the value
         # Need to send result to subject in either conflict or no conflict case
+        print("Printing res cache ", res_main_cache)
+
         rid = response.request.subject_id % len(coordinators)
         
         logger.debug("[Resource Coord] Sending response (seq. %s) to Subject Coord:%s",
