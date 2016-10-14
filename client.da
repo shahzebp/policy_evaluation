@@ -46,7 +46,7 @@ class Client(process):
 
 		rid = request.subject_id % len(coordinators)
 
-		logger.info("[Client] Request sent (seq. %s) from Subject Coord %s ", 
+		logger.info("[Client] Request sent (seq. %s) to Subject Coord %s ", 
 			send_sequence, str(request))
 
 		recv_sequence = recv_sequence + 1

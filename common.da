@@ -14,21 +14,21 @@ class Request(object):
 
     def __str__(self):
         return ("\nSubject ID: {0} \
-                    \nResource ID: {1} \
-                    \nAction: {2} \
-                    \nSubject Tentative Attributes: {3} \
-                    \nResource Tentative Attributes: {4} \
-                    \nOwner: {5} \
-                    \nTimeStamp: {6} \
-                    \n"
-                    .format(
-                        self.subject_id,
-                        self.resource_id,
-                        self.action,
-                        self.sub_tent_updates,
-                        self.res_tent_updates,
-                        self.owner,
-                        self.timestamp))
+                \nResource ID: {1} \
+                \nAction: {2} \
+                \nSubject Cache: {3} \
+                \nResource Cache: {4} \
+                \nOwner: {5} \
+                \nTimeStamp: {6} \
+                \n"
+                .format(
+                    self.subject_id,
+                    self.resource_id,
+                    self.action,
+                    self.sub_tent_updates,
+                    self.res_tent_updates,
+                    self.owner,
+                    self.timestamp))
 
 class Response(object):
     def __init__(self, request, result):
@@ -46,12 +46,12 @@ class Response(object):
 
     def __str__(self):
         return (self.request.__str__() + \
-                "\nSubject Tentative Attributes Used To Evaluate Policy: {0} \
-                \nResource Tentative Attributes Used To Evaluate Policy: {1} \
-                \nSubject DB Attributes Used To Evaluate Policy: {2} \
-                \nResource DB Attributes Used To Evaluate Policy: {3} \
-                \nSubject To Update: {4} \
-                \nResource To Update: {5} \
+                "Sub attribs used from Cache: {0} \
+                \nRes attribs used from Cache: {1} \
+                \nSub attribs used from DB: {2} \
+                \nRes attribs used from DB: {3} \
+                \nSub attribs to Update: {4} \
+                \nRes attrubs to Update: {5} \
                 \nResult: {6} \
                 \n"
                 .format(
@@ -72,8 +72,8 @@ class DataBaseResponse(object):
 
     def __str__(self):
         return (self.request.__str__() + \
-                "\nSubject Database Attributes: {0} \
-                 \nResource Database Attributes: {1} \
+                "Sub DB Attributes: {0} \
+                 \nRes DB Attributes: {1} \
                  \nResult {2} \
                  \n"
                 .format(
@@ -91,14 +91,14 @@ class Rule(object):
 
     def __str__(self):
         return ("\nSubject Condition: {0} \
-                     \nResource Condition: {1} \
-                     \nAction: {2} \
-                     \nSubject Update: {3} \
-                     \nResource Update: {4} \
-                     \n"
-                    .format(
-                        self.subject_condition,
-                        self.resource_condition,
-                        self.action,
-                        self.subject_update,
+                 \nResource Condition: {1} \
+                 \nAction: {2} \
+                 \nSubject Update: {3} \
+                 \nResource Update: {4} \
+                 \n"
+                .format(
+                    self.subject_condition,
+                    self.resource_condition,
+                    self.action,
+                    self.subject_update,
                         self.resource_update))
