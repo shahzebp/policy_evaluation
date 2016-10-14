@@ -27,6 +27,9 @@ class Client(process):
 		self.num_requests = len(request_list)
 		self.current_request_index = 0
 
+		self.send_sequence = 1
+		self.recv_sequence = 1
+
 		for i in request_list:
 			sub_id = int(config.get(i, "subject_id"))
 			res_id = int(config.get(i, "resource_id"))
@@ -38,12 +41,17 @@ class Client(process):
 		
 
 	def sendtask():
-	    request = total_requests[current_request_index]
+		
+		request = total_requests[current_request_index]
 
-	    rid = request.subject_id % len(coordinators)
+		rid = request.subject_id % len(coordinators)
 
-	    logger.info("Client - Sending request: %s ", request)
-	    send(('FROM_CLIENT', request),to=(coordinators[rid]))
+		logger.info("[Client] Request sent (seq. %s) from Subject Coord %s ", 
+			send_sequence, str(request))
+
+		recv_sequence = recv_sequence + 1
+
+		send(('FROM_CLIENT', request),to=(coordinators[rid]))
 
 	def run():
 
@@ -56,7 +64,10 @@ class Client(process):
 
 	def receive(msg=('Client - OUTCOME', response), from_ = p):
 
-		logger.info("Response received: %s ", str(response))
+		logger.info("[Client] Response received (seq. %s) from Subject Coord %s ", 
+			recv_sequence, str(response))
+
+		recv_sequence = recv_sequence + 1
 		
 		current_request_index  = current_request_index + 1
 
