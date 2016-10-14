@@ -12,7 +12,7 @@
 
   <rule name="access bank A again">
     <subjectCondition position="employee" history="&lt;80"></subjectCondition>
-    <resourceCondition id="bank A"></resourceCondition>
+    <resourceCondition name="Bank A"></resourceCondition>
     <action name="read"></action>
     <subjectUpdate history="++"></subjectUpdate>
   </rule>

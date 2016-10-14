@@ -40,11 +40,17 @@ class Worker(process):
         else:
             return True
 
-    def validate_attributes_in_policy(rule_map, db_attributes_map):
+    def validate_attributes_in_policy(rule_map,
+                                      db_attributes_map,
+                                      request_tentative_updates):
+
         if len(rule_map) == 0 or len(db_attributes_map) == 0:
             return False
         key_size = len(rule_map.keys())
         count = 0
+        attributes_used_from_tent = {}
+        attributes_used_from_db = {}
+        
         for key in rule_map.keys():
             if key in db_attributes_map:
 
@@ -52,26 +58,35 @@ class Worker(process):
                 Here we check for the value of the attributes
                 In case we have < or > operators, we need to evaluate accordingly
                 """
-                if does_attribute_value_satisfy_condition(rule_map[key], db_attributes_map[key]):
+                if does_attribute_value_satisfy_condition(rule_map[key], db_attributes_map[key][0]):
                     count+=1
                 else:
                     break
             else:
                 break
+
         if count != key_size:
-            return False
-        return True
+            return False, attributes_used_from_tent, attributes_used_from_db
+        else:
+            for key in rule_map.keys():
+                if db_attributes_map[key][1] == 0:
+                    attributes_used_from_tent[key] = request_tentative_updates[key]
+                else:
+                    attributes_used_from_db[key] = db_attributes_map[key][0]
+            
+            return True, attributes_used_from_tent, attributes_used_from_db
 
     def update_attributes_after_policy_evaluation(update_condition, attribute_list_to_evaluate_policy):
         to_update = {}
         if update_condition:
             for key, value in update_condition.items():
                 if value == "++":
-                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key]) + 1)
+                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key][0]) + 1)
                 elif value == "--":
-                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key]) - 1)
+                    to_update[key] = str(int(attribute_list_to_evaluate_policy[key][0]) - 1)
                 else:
                     to_update[key] = update_condition[key]
+        print(to_update)
         return to_update
 
     def read_policy(policy_xml):
@@ -115,54 +130,99 @@ class Worker(process):
         Evaluating the policy here
         """
 
-        """
-        Appending the tentative updates with the attributes
-        received from the database to create a new changelist
-        which will be used to evaluate the policy
-        """
 
-        '''
-        sub_attribute_list_to_evaluate_policy = dict(database_response.request.sub_tent_updates.items()
-            | database_response.sub_database_attributes.items())
-        res_attribute_list_to_evaluate_policy = dict(database_response.request.res_tent_updates.items()
-            | database_response.res_database_attributes.items())
+        """
+        Creating a new map for the resource and subject attributes
+        which will remove the timestamp field contained in the tuple
+        for the key and replace it with a tuple which indicates
+        whether each attributes is read from database or from
+        tentative cache.
+        In this new map, for the tuple value, 0 indicates value is read from
+        tentative cache 1 indicates value is read from database
+
+        """
+        sub_attribute_list_to_evaluate_policy = {}
+        res_attribute_list_to_evaluate_policy = {}
+        for key, value in database_response.request.sub_tent_updates.items():
+            sub_attribute_list_to_evaluate_policy[key] = (value[0], 0)
+
+        for key, value in database_response.request.res_tent_updates.items():
+            res_attribute_list_to_evaluate_policy[key] = (value[0], 0)
+
+        for key, value in database_response.sub_database_attributes.items():
+            sub_attribute_list_to_evaluate_policy[key] = (value, 1)
+
+        for key, value in database_response.res_database_attributes.items():
+            res_attribute_list_to_evaluate_policy[key] = (value, 1)
+
+        #print(sub_attribute_list_to_evaluate_policy)
+        #print(res_attribute_list_to_evaluate_policy)
+
         """
         Getting the list of rules which belong to this object
         from our policy map object
         """
 
-        rules_list = self.policy_map[database_response.request.action]
+        rules_list = {}
+        try:
+            rules_list = self.policy_map[database_response.request.action]
+        except KeyError:
+            response = Response(database_response.request, False)
+            rid = database_response.request.subject_id % len(coordinators)
+            send(('FROM_WORKER',response), to = (coordinators[rid]))
+            return
+
+        response = Response(database_response.request, False)
 
         """
         Checking for rules which match the action in the request
         """
         update_rule = None
+        sub_result = ()
+        res_result = ()
         for rule in rules_list:
-            if validate_attributes_in_policy(rule.subject_condition, sub_attribute_list_to_evaluate_policy) == True:
-                if validate_attributes_in_policy(rule.resource_condition, res_attribute_list_to_evaluate_policy) == True:
-                    update_rule = rule
-                    database_response.result = True
+            sub_result = validate_attributes_in_policy(
+                            rule.subject_condition,
+                            sub_attribute_list_to_evaluate_policy,
+                            response.request.sub_tent_updates)
+
+            if (sub_result[0] == True):
+                res_result = validate_attributes_in_policy(
+                            rule.resource_condition,
+                            res_attribute_list_to_evaluate_policy,
+                            response.request.res_tent_updates)
+                
+                if(res_result[0] == True):
+                    response.result = True
+
+                    """
+                    Populating the subject and resource to update map
+                    from the rule which matches
+                    """
+                    response.sub_to_update = update_attributes_after_policy_evaluation(
+                                rule.subject_update,
+                                sub_attribute_list_to_evaluate_policy)
+                    
+                    response.res_to_update = update_attributes_after_policy_evaluation(
+                                rule.resource_update,
+                                res_attribute_list_to_evaluate_policy)
+
+                    """
+                    Popluating the read attributes which
+                    have been used to evaulate the policy
+                    """
+                    response.sub_tent_attr_used = sub_result[1]
+                    response.sub_db_attr_used   = sub_result[2]
+
+                    response.res_tent_attr_used = res_result[1]
+                    response.res_db_attr_used   = res_result[2]
                     break
-        
-        # Initialize with database response? 
-        response = Response(database_response.request, database_response.result)
 
-
-        if update_rule:
-            response.sub_to_update = update_attributes_after_policy_evaluation(update_rule.subject_update, sub_attribute_list_to_evaluate_policy)
-            response.res_to_update = update_attributes_after_policy_evaluation(update_rule.resource_update, res_attribute_list_to_evaluate_policy)
-
-        response.sub_changelist = database_response.sub_database_attributes
-        response.res_changelist = database_response.res_database_attributes
-        '''
-
+        print(response)
         # TODO : short circuit testing. remove this statement
-
-        if (database_response.request.action == "read"):
+        if (response.request.action == "read"):
             sleep(6)
 
-        response = Response(database_response.request, True)
-
-        rid = database_response.request.subject_id % len(coordinators)
+        rid = response.request.subject_id % len(coordinators)
 
         send(('FROM_WORKER',response), to = (coordinators[rid]))
