@@ -116,8 +116,6 @@ class Coordinator(process):
         recv_sequence = recv_sequence + 1
 
         request.owner       = p
-
-        sub_main_cache[request.subject_id] = {"history":("70", time.time())}
         
         entrypoint(request)
 
@@ -257,12 +255,12 @@ class Coordinator(process):
 
         if (retval == True):
 
-            # Execute tentative updates for resource attributes
-            current_tent_map = {}
-            if response.request.resource_id in res_main_cache:
-               current_tent_map =  res_main_cache[response.request.resource_id]
-
             if bool(response.res_to_update) == True:
+                # Execute tentative updates for resource attributes
+                current_tent_map = {}
+                if response.request.resource_id in res_main_cache:
+                    current_tent_map =  res_main_cache[response.request.resource_id]
+            
                 for k,v in response.res_to_update.items():
                     current_tent_map[k] = (v, time.time())
 
@@ -276,6 +274,7 @@ class Coordinator(process):
                 commit_to_db[str(response.request.resource_id)] = response.res_to_update
                 send_sequence =  send_sequence + 1
                 send(('FROM_COORDINATOR_ATTR_UPDATE', commit_to_db), to = (database))
+        
         # Need to send result to subject in either conflict or no conflict case
 
         rid = response.request.subject_id % len(coordinators)
@@ -297,11 +296,23 @@ class Coordinator(process):
             # No conflict, propapage the tentative subject updates to main
             logger.debug("[Subject Coord] Evaluation complete: %s", str(response))
 
-            if bool(response.sub_to_update) == True:
-                # Propagate subject tentative updates to main cache
-                for k,v in sub_tent_cache[response.request.subject_id].items():
-                    sub_main_cache[response.request.subject_id][k]  = v
+            # Propagate subject tentative updates to main cache
 
+            if (bool(response.sub_to_update) == True) :
+                current_sub_map = {}
+                
+                if response.request.subject_id in sub_main_cache:
+                    current_sub_map = sub_main_cache[response.request.subject_id]
+
+                current_sub_map.update(sub_tent_cache[response.request.subject_id])
+
+                sub_main_cache[response.request.subject_id] = current_sub_map
+
+                # Revert the sub_tent cache for this id
+                sub_tent_cache[response.request.subject_id] = {}
+
+
+                # Doing database updates
                 logger.info("[Subject Coord] Sending subject updates to commit to DB (UUID: %s)",
                             response.request.uuid)
                 logger.debug("Subject Updates Commited to DB%s",
@@ -311,6 +322,7 @@ class Coordinator(process):
                 commit_to_db[str(response.request.subject_id)] = response.sub_to_update
                 send(('FROM_COORDINATOR_ATTR_UPDATE', commit_to_db), to = (database))
 
+            # Sending response to subject coordinator about conflict status
             logger.info("[Resource Coord] Sending response (UUID: %s) to Subject Coord", response.request.uuid)
             logger.debug("Response (seq. %s) Content:%s", send_sequence, response)
             send_sequence =  send_sequence + 1
@@ -324,7 +336,10 @@ class Coordinator(process):
             logger.error("[Subject Coord] Resource conflict detected: %s ", 
                 str(response))
             logger.debug("Restarting: %s ", str(response.request))
-            
+
+            if response.request.subject_id in sub_tent_cache:
+                sub_tent_cache[response.request.subject_id] = {}
+
             request_sequence[response.request.subject_id].popleft()
 
             entrypoint(response.request)

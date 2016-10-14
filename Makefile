@@ -13,4 +13,4 @@ clean:
 run:
 	-@ rm -rf log/ *.swp
 	-@ mkdir log
-	dar master.da config.ini
+	dar master.da $(ARG)

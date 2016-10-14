@@ -128,6 +128,10 @@ class Worker(process):
     def receive(msg=('FROM_DATABASE', database_response), from_ = p):
         logger.debug("[Worker] Receiving response (seq. %s) from Database Emulator: %s", recv_sequence, database_response)
         recv_sequence += 1
+        
+        # If delay specified sleep for that while
+        sleep(database_response.request.art_delay)
+
         """
         Evaluating the policy here
         """

@@ -37,6 +37,12 @@ class Client(process):
 			res_id = int(config.get(i, "resource_id"))
 			action = str(config.get(i, "action"))
 			
+			art_delay = 0
+			try:
+				art_delay = int(config.get(i, "art_delay"))
+			except:
+				pass
+			
 			uuid = hashlib.md5()
 			uuid.update(str(sub_id).encode())
 			uuid.update(str(res_id).encode())
@@ -45,6 +51,8 @@ class Client(process):
 			uuid.update(str(my_index).encode())
 
 			request = Request(sub_id, res_id, action)
+			request.art_delay = art_delay
+			
 			request.uuid = uuid.hexdigest()
 
 			total_requests.append(request)
@@ -64,6 +72,8 @@ class Client(process):
 		send(('FROM_CLIENT', request),to=(coordinators[rid]))
 
 	def run():
+
+		sleep(my_index / 100.0)
 
 		sendtask()
 		

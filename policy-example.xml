@@ -1,32 +1,35 @@
 <?xml version="1.0"?>
-<!-- sample policy.  CSE 535, Fall 2016, Scott Stoller.  2016-10-03 -->
 <policy>
 
   <rule name="access bank A first time">
     <subjectCondition position="employee" history="empty"></subjectCondition>
-    <resourceCondition id="bank A"></resourceCondition>
-    <!-- the action authorized by this rule. -->
+    <resourceCondition name="bank A"></resourceCondition>
     <action name="read"></action>
     <subjectUpdate history="bank A"></subjectUpdate>
   </rule>
 
   <rule name="access bank A again">
-    <subjectCondition position="employee" history="&lt;80"></subjectCondition>
-    <resourceCondition name="Bank A"></resourceCondition>
+    <subjectCondition position="employee" history="bank A"></subjectCondition>
+    <resourceCondition name="bank A"></resourceCondition>
     <action name="read"></action>
-    <subjectUpdate history="++"></subjectUpdate>
+  </rule>
+
+  <rule name="update bank A again">
+    <subjectCondition position="manager" history="bank A"></subjectCondition>
+    <resourceCondition name="bank A"></resourceCondition>
+    <action name="update"></action>
   </rule>
 
   <rule name="access bank B first time">
-    <subjectCondition position="employee" history="empty"></subjectCondition>
-    <resourceCondition id="bank B"></resourceCondition>
+    <subjectCondition position="employee" history="emtpy"></subjectCondition>
+    <resourceCondition name="bank B"></resourceCondition>
     <action name="read"></action>
     <subjectUpdate history="bank B"></subjectUpdate>
   </rule>
 
   <rule name="access bank B again">
     <subjectCondition position="employee" history="bank B"></subjectCondition>
-    <resourceCondition id="bank B"></resourceCondition>
+    <resourceCondition name="bank B"></resourceCondition>
     <action name="read"></action>
   </rule>
 

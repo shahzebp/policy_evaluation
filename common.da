@@ -13,6 +13,8 @@ class Request(object):
 
         self.timestamp          = None
 
+        self.art_delay          = 0
+
     def __str__(self):
         return ("\nSubject ID: {0} \
                 \nResource ID: {1} \
