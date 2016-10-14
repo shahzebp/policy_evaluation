@@ -216,9 +216,6 @@ class Worker(process):
                     response.res_db_attr_used   = res_result[2]
                     break
 
-        # TODO : short circuit testing. remove this statement
-        if (response.request.action == "read"):
-            sleep(6)
 
         rid = response.request.subject_id % len(coordinators)
         logger.debug("[Worker] Sending response (seq. %s) to Subject Coordinator: %s", send_sequence, response)
