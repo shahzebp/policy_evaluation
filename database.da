@@ -12,7 +12,9 @@ class Database(process):
         self.root = ET.parse(initFile).getroot()
         self.status = False
         self.database = {}
-       
+        self.send_sequence = 1
+        self.recv_sequence = 1
+
     def run():
         for child in self.root:
             innerdict = {}
@@ -26,7 +28,8 @@ class Database(process):
 
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
-
+        logger.debug("[Database Emulator] Receiving request (seq. %s) from Worker: %s", recv_sequence, request)
+        recv_sequence += 1
         db_response = DataBaseResponse(request)
         db_response_sub_attribute_map = {}
 
@@ -69,4 +72,6 @@ class Database(process):
         #calculated earlier in this function
         db_response.sub_database_attributes = db_response_sub_attribute_map
         db_response.res_database_attributes = db_response_res_attribute_map
+        logger.debug("[Database Emulator] Sending database response (seq. %s) to Worker: %s", send_sequence, db_response)
+        send_sequence += 1
         send(('FROM_DATABASE',db_response), to = p)

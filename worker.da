@@ -1,16 +1,21 @@
 import xml.etree.ElementTree as ET
 from common import Request, Response, Rule
 from time import sleep
+import logging
+import logging.handlers
+import logging.config
 
 import operator
 
 class Worker(process):
     def setup(coordinators:list, database, config):
+        self.logger = logging.getLogger('sLogger')
         self.status = False
         self.coordinators = coordinators
         self.policy_map = {}
         self.database = database
-
+        self.send_sequence = 1
+        self.recv_sequence = 1
         policy_file = config.get("setup", "policy_def_file")
 
         read_policy(policy_file)
@@ -110,17 +115,20 @@ class Worker(process):
         await(status == True)
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
-        
-        output("received inside worker", request.subject_id)
+        logger.debug("[Worker] Receiving request (seq. %s) from Resource Coordinator: %s", recv_sequence, request)
+        recv_sequence += 1
+        logger.debug("[Worker] Sending request (seq. %s) to Database Emulator: %s", send_sequence, request)
+        send_sequence += 1
         send(('FROM_WORKER', request), to = (database))
         
     def receive(msg=('FROM_DATABASE', database_response), from_ = p):
-        output("Received from database ", database_response.request.subject_id) #, database_response)
-
+        logger.debug("[Worker] Receiving response (seq. %s) from Database Emulator: %s", recv_sequence, database_response)
+        recv_sequence += 1
         """
         Evaluating the policy here
         """
 
+        logger.debug("[Worker] Evaluating the policy here")
 
         """
         Creating a new map for the resource and subject attributes
@@ -214,5 +222,6 @@ class Worker(process):
             sleep(6)
 
         rid = response.request.subject_id % len(coordinators)
-
+        logger.debug("[Worker] Sending response (seq. %s) to Subject Coordinator: %s", send_sequence, response)
+        send_sequence += 1
         send(('FROM_WORKER',response), to = (coordinators[rid]))

@@ -19,7 +19,8 @@ class Request(object):
                     \nSubject Tentative Attributes: {3} \
                     \nResource Tentative Attributes: {4} \
                     \nOwner: {5} \
-                    \nTimeStamp: {6}"
+                    \nTimeStamp: {6} \
+                    \n"
                     .format(
                         self.subject_id,
                         self.resource_id,
@@ -51,7 +52,8 @@ class Response(object):
                 \nResource DB Attributes Used To Evaluate Policy: {3} \
                 \nSubject To Update: {4} \
                 \nResource To Update: {5} \
-                \nResult: {6}"
+                \nResult: {6} \
+                \n"
                 .format(
                     self.sub_tent_attr_used,
                     self.res_tent_attr_used,
@@ -71,10 +73,13 @@ class DataBaseResponse(object):
     def __str__(self):
         return (self.request.__str__() + \
                 "\nSubject Database Attributes: {0} \
-                 \nResource Database Attributes: {1}"
+                 \nResource Database Attributes: {1} \
+                 \nResult {2} \
+                 \n"
                 .format(
-                    self.sub_database_attributes),
-                    self.res_database_attributes)
+                    self.sub_database_attributes,
+                    self.res_database_attributes,
+                    self.result))
 
 class Rule(object):
     def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
@@ -89,7 +94,8 @@ class Rule(object):
                      \nResource Condition: {1} \
                      \nAction: {2} \
                      \nSubject Update: {3} \
-                     \nResource Update: {4}"
+                     \nResource Update: {4} \
+                     \n"
                     .format(
                         self.subject_condition,
                         self.resource_condition,
