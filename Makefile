@@ -8,8 +8,9 @@ all: clean
 
 clean:
 	-@ rm -rf *.py *pycache*
-	-@ rm -f *.log *.swp
+	-@ rm -rf log/ *.swp
 
 run:
-	-@ rm -f *.log *.swp
+	-@ rm -rf log/ *.swp
+	-@ mkdir log
 	dar master.da config.ini
