@@ -48,7 +48,6 @@ class Coordinator(process):
         await(status == True)
 
     def attributes_in_sync(map1, map2): 
-        pass
         for key in map1:
             timestamp1 = map1[key][1]
 
@@ -169,7 +168,6 @@ class Coordinator(process):
             if response.request.subject_id in sub_tent_cache:
                current_tent_map =  sub_tent_cache[response.request.subject_id]
 
-            print("Inside Coorodinate", type(response.sub_to_update))
             for k,v in response.sub_to_update.items():
                 current_tent_map[k] = (v, time.time())
 
