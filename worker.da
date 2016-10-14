@@ -1,16 +1,8 @@
 import xml.etree.ElementTree as ET
-from common import Request, Response
+from common import Request, Response, Rule
 from time import sleep
 
 import operator
-
-class Rule(object):
-    def __init__(self, subject_condition, resource_condition, action, subject_update, resource_update):
-        self.subject_condition = subject_condition
-        self.resource_condition = resource_condition
-        self.action = action
-        self.subject_update = subject_update
-        self.resource_update = resource_update
 
 class Worker(process):
     def setup(coordinators:list, database, config):
@@ -86,7 +78,6 @@ class Worker(process):
                     to_update[key] = str(int(attribute_list_to_evaluate_policy[key][0]) - 1)
                 else:
                     to_update[key] = update_condition[key]
-        print(to_update)
         return to_update
 
     def read_policy(policy_xml):
@@ -218,7 +209,6 @@ class Worker(process):
                     response.res_db_attr_used   = res_result[2]
                     break
 
-        print(response)
         # TODO : short circuit testing. remove this statement
         if (response.request.action == "read"):
             sleep(6)
