@@ -46,7 +46,7 @@ class Client(process):
 
 		rid = request.subject_id % len(coordinators)
 
-		logger.info("[Client] Request sent (seq. %s) to Subject Coord %s ", 
+		logger.info("[Client] Request sent (seq. %s) total_requests Subject Coord %s ", 
 			send_sequence, str(request))
 
 		recv_sequence = recv_sequence + 1
@@ -62,7 +62,7 @@ class Client(process):
 		
 		await(num_requests == current_request_index)
 
-	def receive(msg=('Client - OUTCOME', response), from_ = p):
+	def receive(msg=('OUTCOME', response), from_ = p):
 
 		logger.info("[Client] Response received (seq. %s) from Subject Coord %s ", 
 			recv_sequence, str(response))
