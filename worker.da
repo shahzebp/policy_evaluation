@@ -128,8 +128,6 @@ class Worker(process):
         Evaluating the policy here
         """
 
-        logger.debug("[Worker] Evaluating the policy here")
-
         """
         Creating a new map for the resource and subject attributes
         which will remove the timestamp field contained in the tuple
@@ -210,6 +208,7 @@ class Worker(process):
                     Popluating the read attributes which
                     have been used to evaulate the policy
                     """
+                    logger.debug("[Worker] Policy Evaluated Using Rule:%s", rule)
                     response.sub_tent_attr_used = sub_result[1]
                     response.sub_db_attr_used   = sub_result[2]
 
