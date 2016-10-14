@@ -216,6 +216,8 @@ class Coordinator(process):
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
 
+            extract_next_response()
+
     def receive(msg=('FROM_WORKER', response), from_=p):
         
         logger.debug("[Subject Coord] Response received (seq. %s) from Worker: %s ", 
