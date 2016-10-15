@@ -40,7 +40,6 @@ def main():
         output("ERR: Cannot read config file. Please check structure")
         exit(1)
 
-    
     # set up logging
     logging.config.fileConfig(str(config.get("setup", "log_conf_file")), 
                                     defaults={'logfilename':
