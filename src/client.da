@@ -29,7 +29,6 @@ class Client(process):
 				random_requests = []
 				for x in range(0,number_requests_to_generate):
 					index = random.randrange(0,len(request_list)-1)
-					print(index)
 					random_requests.append(request_list[index])
 
 				request_list = random_requests
