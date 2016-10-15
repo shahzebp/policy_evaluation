@@ -47,6 +47,11 @@ def main():
                                     str(config.get("setup", "log_dump_file"))})
 
     logger = logging.getLogger('sLogger')
+    logger.setLevel(logging.INFO)
+
+    if (config.get("setup", "num_clients") == "DEBUG" or
+        config.get("setup", "num_clients") == "Debug"):
+        logger.setLevel(logging.DEBUG)
 
     logger.info("Policy Evaluation Engine Configuration :")
     logger.info("Total coordinators:    %s ", config.get("setup", "num_coords"))
@@ -54,6 +59,7 @@ def main():
     logger.info("Database init file:    %s ", config.get("setup", "database_init_file"))
     logger.info("Log conf file:     %s ", config.get("setup", "log_conf_file"))    
     logger.info("Log dump file:    %s ", config.get("setup", "log_dump_file"))
+    #logger.infi("Log leve: %s ", logger.getLevel())
     logger.info("Number of clients:    %s ", int(config.get("setup", "num_clients")))
     logger.info("Min DB Latency:    %s ", config.get("setup", "mindblatency"))
     logger.info("Max DB Latency:    %s \n", config.get("setup", "maxdblatency"))
