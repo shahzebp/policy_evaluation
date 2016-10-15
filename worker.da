@@ -41,9 +41,21 @@ class Worker(process):
         else:
             return True
 
+    def evaluate(value,
+                sub_attribute_list_to_evaluate_policy,
+                res_attribute_list_to_evaluate_policy):
+        dependency = value[1:].split('.')[0]
+        attr_name = value[1:].split('.')[1]
+        if dependency == "subject":
+            return sub_attribute_list_to_evaluate_policy[attr_name][0]
+        else:
+            return res_attribute_list_to_evaluate_policy[attr_name][0]
+
     def validate_attributes_in_policy(rule_map,
                                       db_attributes_map,
-                                      request_tentative_updates):
+                                      request_tentative_updates,
+                                      sub_attribute_list_to_evaluate_policy,
+                                      res_attribute_list_to_evaluate_policy):
 
         if len(rule_map) == 0 or len(db_attributes_map) == 0:
             return (False, None, None)
@@ -56,6 +68,14 @@ class Worker(process):
         for key in rule_map.keys():
             if key in db_attributes_map:
 
+
+                """
+                Here we evalaute all attibutes which have $ symbols in the value
+                """
+                if rule_map[key] != None and len(rule_map[key]) > 0 and rule_map[key][0] == '$':
+                    rule_map[key] = evaluate(rule_map[key],
+                                        sub_attribute_list_to_evaluate_policy,
+                                        res_attribute_list_to_evaluate_policy)
                 """"
                 Here we check for the value of the attributes
                 In case we have < or > operators, we need to evaluate accordingly
@@ -78,7 +98,10 @@ class Worker(process):
             
             return (True, attributes_used_from_tent, attributes_used_from_db)
 
-    def update_attributes_after_policy_evaluation(update_condition, attribute_list_to_evaluate_policy):
+    def update_attributes_after_policy_evaluation(update_condition,
+                                attribute_list_to_evaluate_policy,
+                                sub_attribute_list_to_evaluate_policy,
+                                res_attribute_list_to_evaluate_policy):
         to_update = {}
         if update_condition:
             for key, value in update_condition.items():
@@ -86,6 +109,10 @@ class Worker(process):
                     to_update[key] = str(int(attribute_list_to_evaluate_policy[key][0]) + 1)
                 elif value == "--":
                     to_update[key] = str(int(attribute_list_to_evaluate_policy[key][0]) - 1)
+                elif value != None and len(value) > 0 and value[0] == '$':
+                    to_update[key] = evaluate(update_condition[key],
+                                        sub_attribute_list_to_evaluate_policy,
+                                        res_attribute_list_to_evaluate_policy)
                 else:
                     to_update[key] = update_condition[key]
         return to_update
@@ -161,9 +188,6 @@ class Worker(process):
         for key, value in database_response.res_database_attributes.items():
             res_attribute_list_to_evaluate_policy[key] = (value, 1)
 
-        #print(sub_attribute_list_to_evaluate_policy)
-        #print(res_attribute_list_to_evaluate_policy)
-
         """
         Getting the list of rules which belong to this object
         from our policy map object
@@ -192,13 +216,17 @@ class Worker(process):
             sub_result = validate_attributes_in_policy(
                             rule.subject_condition,
                             sub_attribute_list_to_evaluate_policy,
-                            response.request.sub_tent_updates)
+                            response.request.sub_tent_updates,
+                            sub_attribute_list_to_evaluate_policy,
+                            res_attribute_list_to_evaluate_policy)
 
             if (sub_result[0] == True):
                 res_result = validate_attributes_in_policy(
                             rule.resource_condition,
                             res_attribute_list_to_evaluate_policy,
-                            response.request.res_tent_updates)
+                            response.request.res_tent_updates,
+                            sub_attribute_list_to_evaluate_policy,
+                            res_attribute_list_to_evaluate_policy)
                 
                 if(res_result[0] == True):
                     response.result = True
@@ -209,10 +237,14 @@ class Worker(process):
                     """
                     response.sub_to_update = update_attributes_after_policy_evaluation(
                                 rule.subject_update,
-                                sub_attribute_list_to_evaluate_policy)
+                                sub_attribute_list_to_evaluate_policy,
+                                sub_attribute_list_to_evaluate_policy,
+                                res_attribute_list_to_evaluate_policy)
                     
                     response.res_to_update = update_attributes_after_policy_evaluation(
                                 rule.resource_update,
+                                res_attribute_list_to_evaluate_policy,
+                                sub_attribute_list_to_evaluate_policy,
                                 res_attribute_list_to_evaluate_policy)
 
                     """
