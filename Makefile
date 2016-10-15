@@ -7,10 +7,10 @@ all: clean
 	-@ dac src/database.da
 
 clean:
-	-@ rm -rf *.py *pycache*
-	-@ rm -rf log/ *.swp
+	-@ rm -rf src/*.py src/*pycache*
+	-@ rm -rf log/ src/*.swp
 
 run:
-	-@ rm -rf log/ *.swp
+	-@ rm -rf log/ src/*.swp
 	-@ mkdir log
 	dar src/master.da $(ARG)
