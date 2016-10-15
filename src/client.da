@@ -79,8 +79,10 @@ class Client(process):
 
 		rid = request.subject_id % len(coordinators)
 
-		logger.info("[Client] Request sent (seq. %s) total_requests Subject Coord %s ", 
-			send_sequence, str(request))
+		logger.info("[Client] Request sent (UUID: {0}) to Subject Coord"
+			.format(request.uuid))
+		logger.debug("[Client] Request sent (seq. {0}) to Subject Coord {1}"
+			.format(send_sequence, request))
 
 		recv_sequence = recv_sequence + 1
 
@@ -98,8 +100,10 @@ class Client(process):
 
 	def receive(msg=('OUTCOME', response), from_ = p):
 
-		logger.info("[Client] Final Response received (seq. %s) from Subject Coord %s ", 
-			recv_sequence, str(response))
+		logger.info("[Client] Final Response received (UUID: {0}) from Subject Coord With Result: {1}"
+			.format(response.request.uuid, response.result))
+		logger.debug("[Client] Response received (seq. {0}) from Subject Coord {1}"
+			.format(recv_sequence, response))
 
 		recv_sequence = recv_sequence + 1
 		
