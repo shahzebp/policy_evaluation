@@ -1,19 +1,23 @@
 import logging
 import logging.handlers
 import logging.config
-
+import random
 import xml.etree.ElementTree as ET
 from common import DataBaseResponse
+import threading, time
 
 class Database(process):
-    def setup(initFile:str):
+    def setup(config):
         self.logger = logging.getLogger('sLogger')
-
-        self.root = ET.parse(initFile).getroot()
+        self.database_init_file = str(config.get("setup", "database_init_file"))
+        self.root = ET.parse(database_init_file).getroot()
         self.status = False
         self.database = {}
         self.send_sequence = 1
         self.recv_sequence = 1
+        self.mindblatency = int(config.get("setup", "mindblatency"))
+        self.maxdblatency = int(config.get("setup", "maxdblatency"))
+        self.randvalue = random.randrange(mindblatency, maxdblatency)
 
     def run():
         for child in self.root:
@@ -75,3 +79,24 @@ class Database(process):
         logger.debug("[Database Emulator] Sending database response (seq. %s) to Worker: %s", send_sequence, db_response)
         send_sequence += 1
         send(('FROM_DATABASE',db_response), to = p)
+
+    """"
+    This function finally commits the changes to the database.
+    """
+
+    def commit_to_db(attributes_to_update):
+        logger.debug("[Database Emulator] Commiting changes to database %s", attributes_to_update)
+        res_sub_id, value = attributes_to_update.popitem()
+        self.database[res_sub_id].update(value)
+
+    """"
+    This function recives from both the resource and the subject corordinator
+    the attributes that need to the flushed to the database and starts a thread
+    which calls a function (after a certain random time between mindblatency and maxdblatency)
+    to commit the update values to the database
+    """
+
+    def receive(msg=('FROM_COORDINATOR_ATTR_UPDATE', attributes_to_update)):
+        logger.debug("[Database Emulator] Receiving updates {0} from coordinator to commit to db".
+                    format(attributes_to_update))
+        threading.Timer(randvalue, commit_to_db, [attributes_to_update]).start()

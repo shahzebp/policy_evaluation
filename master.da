@@ -68,7 +68,7 @@ def main():
     # creating database process
     database = new(Database, num = 1)
     database_init_file = str(config.get("setup", "database_init_file"))
-    setup(database, (database_init_file, ))
+    setup(database, (config, ))
     start(database)   
 
     # creating coordinators
