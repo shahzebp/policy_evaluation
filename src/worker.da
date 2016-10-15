@@ -209,7 +209,7 @@ class Worker(process):
         except KeyError:
             response = Response(database_response.request, False)
             rid = database_response.request.subject_id % len(coordinators)
-            logger.info("[Worker] No Rule Found for Action {0} while evaluating Request (UUID: {1})"
+            logger.info("[Worker] No Rule Found for Action [{0}] while evaluating Request (UUID: {1})"
                 .format(database_response.request.action, database_response.request.uuid))
             send(('FROM_WORKER',response), to = (coordinators[rid]))
             return
