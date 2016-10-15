@@ -2,6 +2,7 @@ import logging
 import logging.handlers
 import logging.config
 import hashlib
+import random
 
 import time
 from time import sleep
@@ -19,7 +20,21 @@ class Client(process):
 
 		if (config.options(current_section)):
 			sequence = config.get(current_section, "sequence")
-			request_list = sequence.split(",")
+			if(sequence == "random"):
+				number_requests_to_generate = int(config.get(current_section, "number_requests_to_generate"))
+				request_list = config.get(current_section, "request_list")
+				request_list = request_list.split(",")
+				seed_value = int(config.get(current_section, "seed_value"))
+				random.seed(seed_value)
+				random_requests = []
+				for x in range(0,number_requests_to_generate):
+					index = random.randrange(0,len(request_list)-1)
+					print(index)
+					random_requests.append(request_list[index])
+
+				request_list = random_requests
+			else:
+				request_list = sequence.split(",")
 		else:
 			sequence = None
 			request_list = []
