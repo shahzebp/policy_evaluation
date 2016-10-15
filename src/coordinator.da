@@ -34,6 +34,7 @@ class Coordinator(process):
 
         # thread safe implementation 
         self.request_sequence  = {}
+        self.maxdblatency   = int(config.get("setup", "maxdblatency"))
         
         # Each coordinator intantiates its own workers
         # It is one as of now
@@ -81,9 +82,25 @@ class Coordinator(process):
 
     def entrypoint(request):
         
-        # TODO REMOVE THIS fake test
         if request.subject_id in sub_main_cache:
-            request.sub_tent_updates = sub_main_cache[request.subject_id]
+            keys_to_flush = []
+            for k,v in sub_main_cache[request.subject_id].items():
+
+                # Use only if this update has not yet been committed to DB
+                # We know this by maxdblatency
+
+                if (v[1] + maxdblatency >= time.time()):
+                    request.sub_tent_updates[k] = v
+                else:
+                    # This update has been committed it db.
+                    # Don't append it.
+                    # It is safe to delete it from cache as well.
+
+                    keys_to_flush.append(k)
+
+            # Purge/flush the cache
+            for k in keys_to_flush:
+                del sub_main_cache[request.subject_id][k]
 
         # overwrite any update if a tentative update exists for it
         # because the ones in tentative are more recent
@@ -108,7 +125,6 @@ class Coordinator(process):
 
         send_sequence =  send_sequence + 1
 
-
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
     
@@ -130,12 +146,30 @@ class Coordinator(process):
 
         recv_sequence = recv_sequence + 1
 
-        # TODO REMOVE THIS 
-        # res_main_cache[request.resource_id] = {"id":("bank A", time.time())}
+        if request.resource_id in res_main_cache:
+            keys_to_flush = []
+
+            for k,v in res_main_cache[request.resource_id].items():
+
+                # Use only if this update has not yet been committed to DB
+                # We know this by maxdblatency
+
+                if (v[1] + maxdblatency >= time.time()):
+                    request.res_tent_updates[k] = v
+                else:
+                    # This update has been committed it db.
+                    # Don't append it.
+                    # It is safe to delete it from cache as well.
+                    keys_to_flush.append(k)
+
+            # Purge/flush the cache
+            for k in keys_to_flush:
+                del res_main_cache[request.resource_id][k]
+
+                    
 
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
-
 
         logger.debug("[Resource Coord] Sending request (seq. %s) to Worker:%s", 
             send_sequence, str(request))
