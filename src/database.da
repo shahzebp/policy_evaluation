@@ -32,7 +32,10 @@ class Database(process):
 
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
-        logger.debug("[Database Emulator] Receiving request (seq. %s) from Worker: %s", recv_sequence, request)
+        logger.info("[Database Emulator] Receiving request (UUID: {0}) from Worker"
+            .format(request.uuid))
+        logger.debug("[Database Emulator] Receiving request (seq. {0}) from Worker: {1}"
+            .format(recv_sequence, request))
         recv_sequence += 1
         db_response = DataBaseResponse(request)
         db_response_sub_attribute_map = {}
@@ -76,7 +79,10 @@ class Database(process):
         #calculated earlier in this function
         db_response.sub_database_attributes = db_response_sub_attribute_map
         db_response.res_database_attributes = db_response_res_attribute_map
-        logger.debug("[Database Emulator] Sending database response (seq. %s) to Worker: %s", send_sequence, db_response)
+        logger.info("[Database Emulator] Sending database response (UUID: {0}) to Worker"
+            .format(db_response.request.uuid))
+        logger.debug("[Database Emulator] Sending database response (seq. {0}) to Worker: {1}"
+            .format(send_sequence, db_response))
         send_sequence += 1
         send(('FROM_DATABASE',db_response), to = p)
 

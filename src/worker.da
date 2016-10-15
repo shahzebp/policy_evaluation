@@ -147,14 +147,24 @@ class Worker(process):
         await(status == True)
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
-        logger.debug("[Worker] Receiving request (seq. %s) from Resource Coordinator: %s", recv_sequence, request)
+        logger.info("[Worker] Receiving request (UUID: {0}) from Resource Coordinator"
+            .format(request.uuid))
+        logger.debug("[Worker] Receiving request (seq. {0}) from Resource Coordinator: {1}"
+            .format(recv_sequence, request))
+
         recv_sequence += 1
-        logger.debug("[Worker] Sending request (seq. %s) to Database Emulator: %s", send_sequence, request)
+        logger.info("[Worker] Sending request (UUID: {0}) to Database Emulator"
+            .format(request.uuid))
+        logger.debug("[Worker] Sending request (seq. {0}) to Database Emulator: {1}"
+            .format(send_sequence, request))
         send_sequence += 1
         send(('FROM_WORKER', request), to = (database))
         
     def receive(msg=('FROM_DATABASE', database_response), from_ = p):
-        logger.debug("[Worker] Receiving response (seq. %s) from Database Emulator: %s", recv_sequence, database_response)
+        logger.info("[Worker] Receiving response (UUID: {0}) from Database Emulator"
+            .format(database_response.request.uuid))
+        logger.debug("[Worker] Receiving response (seq. {0}) from Database Emulator: {1}"
+            .format(recv_sequence, database_response))
         recv_sequence += 1
         
         # If delay specified sleep for that while
@@ -199,6 +209,8 @@ class Worker(process):
         except KeyError:
             response = Response(database_response.request, False)
             rid = database_response.request.subject_id % len(coordinators)
+            logger.info("[Worker] No Rule Found for Action {0} while evaluating Request (UUID: {1})"
+                .format(database_response.request.action, database_response.request.uuid))
             send(('FROM_WORKER',response), to = (coordinators[rid]))
             return
 
@@ -261,6 +273,9 @@ class Worker(process):
 
 
         rid = response.request.subject_id % len(coordinators)
-        logger.debug("[Worker] Sending response (seq. %s) to Subject Coordinator: %s", send_sequence, response)
+        logger.info("[Worker] Sending response (UUID: {0}) to Subject Coordinator"
+            .format(response.request.uuid))
+        logger.debug("[Worker] Sending response (seq. {0}) to Subject Coordinator: {1}"
+            .format(send_sequence, response))
         send_sequence += 1
         send(('FROM_WORKER',response), to = (coordinators[rid]))

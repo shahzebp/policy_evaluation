@@ -120,8 +120,10 @@ class Coordinator(process):
         current_request_sequence.append(request)
         request_sequence[request.subject_id] = current_request_sequence
 
-        logger.debug("[Subject Coord] Sending request (seq. %s) to Resource Coord:%s", 
-            send_sequence, str(request))
+        logger.info("[Subject Coord] Sending request (UUID: {0}) to Resource Coord"
+            .format(request.uuid))
+        logger.debug("[Subject Coord] Sending request (seq. {0}) to Resource Coord: {1}"
+            .format(send_sequence, request))
 
         send_sequence =  send_sequence + 1
 
@@ -129,8 +131,10 @@ class Coordinator(process):
 
     
     def receive(msg=('FROM_CLIENT', request), from_=p):
-        logger.debug("[Subject Coord] Request received (seq. %s) from Client:%s", 
-            recv_sequence, str(request))
+        logger.info("[Subject Coord] Request received (UUID: {0}) from Client"
+            .format(request.uuid))
+        logger.debug("[Subject Coord] Request received (seq. {0}) from Client: {1}"
+            .format(recv_sequence, request))
 
         recv_sequence = recv_sequence + 1
 
@@ -141,8 +145,10 @@ class Coordinator(process):
     
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
 
-        logger.debug("[Resource Coord] Request received (seq. %s) from Sub Coord %s ",
-            recv_sequence, str(request))
+        logger.info("[Resource Coord] Request received (UUID: {0}) from Sub Coord"
+            .format(request.uuid))
+        logger.debug("[Resource Coord] Request received (seq. {0}) from Sub Coord {1}"
+            .format(recv_sequence, request))
 
         recv_sequence = recv_sequence + 1
 
@@ -171,8 +177,10 @@ class Coordinator(process):
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
 
-        logger.debug("[Resource Coord] Sending request (seq. %s) to Worker:%s", 
-            send_sequence, str(request))
+        logger.info("[Resource Coord] Sending request (UUID: {0}) to Worker"
+            .format(request.uuid))
+        logger.debug("[Resource Coord] Sending request (seq. {0}) to Worker: {1}"
+            .format(send_sequence, request))
 
         send_sequence =  send_sequence + 1
 
@@ -238,8 +246,10 @@ class Coordinator(process):
             # Check for resource conclicts
             rid = response.request.resource_id % len(coordinators)
 
-            logger.debug("[Subject Coord] Sending response (seq. %s) to Resource Coord:%s", 
-                send_sequence, response)
+            logger.info("[Subject Coord] Sending response (UUID: {0}) to Resource Coord"
+                .format(response.request.uuid))
+            logger.debug("[Subject Coord] Sending response (seq. {0}) to Resource Coord: {1}"
+                .format(send_sequence, response))
 
             send_sequence =  send_sequence + 1
             
@@ -247,8 +257,8 @@ class Coordinator(process):
             
         else:
             # Restart
-            logger.error("[Subject Coord] Restarting: Subject conflict detected: %s ", 
-                str(response))
+            logger.error("[Subject Coord] Restarting: Subject conflict detected (UUID: {0})"
+                .format(response.request.uuid))
             
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
@@ -270,9 +280,9 @@ class Coordinator(process):
 
             if (current_request_sequence[0].timestamp < response.request.timestamp):
                 
-                logger.info("[Sub Coord] Enqueuing response in response queue %s ",
+                logger.info("[Subject Coord] Enqueuing response in response queue %s ",
                     response.request.uuid)           
-                logger.debug("Enqueing response is %s ", response)
+                logger.debug("[Subject Coord] Enqueing response is %s ", response)
                 
                 response_queue.put((response.request.timestamp, response))
             else:
@@ -322,23 +332,27 @@ class Coordinator(process):
         # Need to send result to subject in either conflict or no conflict case
 
         rid = response.request.subject_id % len(coordinators)
-        
-        logger.debug("[Resource Coord] Sending response (seq. %s) to Subject Coord:%s",
-            send_sequence, str(response))
+
+        logger.info("[Resource Coord] Sending response (UUID: {0}) to Subject Coord"
+            .format(response.request.uuid))
+        logger.debug("[Resource Coord] Sending response (seq. {0}) to Subject Coord: {1}"
+            .format(send_sequence, response))
 
         send_sequence =  send_sequence + 1
 
         send(('FROM_RESOURCE_COORD_RESPONSE', response, retval), to=(coordinators[rid]))
 
     def receive(msg=('FROM_RESOURCE_COORD_RESPONSE', response, retval), from_ = p):
-        logger.debug("[Subject Coord] Response received (seq. %s) from Resource Coord: %s ", 
-            recv_sequence, str(response))
+        logger.info("[Subject Coord] Response received (UUID: {0}) from Resource Coord"
+            .format(response.request.uuid))
+        logger.debug("[Subject Coord] Response received (seq. {0}) from Resource Coord: {1}"
+            .format(recv_sequence, response))
 
         recv_sequence = recv_sequence + 1
 
         if (True == retval):
             # No conflict, propapage the tentative subject updates to main
-            logger.info("[Subject Coord] Evaluation complete for request(UUID: %s",
+            logger.info("[Subject Coord] Evaluation complete for request(UUID: %s)",
                             response.request.uuid)
             logger.debug("[Subject Coord] Response is: %s", response)
 
@@ -369,8 +383,8 @@ class Coordinator(process):
                 send(('FROM_COORDINATOR_ATTR_UPDATE', commit_to_db), to = (database))
 
             # Sending response to subject coordinator about conflict status
-            logger.info("[Resource Coord] Sending response (UUID: %s) to Subject Coord", response.request.uuid)
-            logger.debug("Response (seq. %s) Content:%s", send_sequence, response)
+            logger.info("[Subject Coord] Sending response (UUID: %s) to Client", response.request.uuid)
+            logger.debug("[Subject Coord] Sending Response (seq. %s) to Client:%s", send_sequence, response)
             send_sequence =  send_sequence + 1
             send(('OUTCOME', response), to = (response.request.owner))
 
@@ -379,8 +393,8 @@ class Coordinator(process):
             extract_next_response()
         else:
             # Restart because of resource conflicts
-            logger.error("[Subject Coord] Restarting: Resource conflict detected: %s ", 
-                str(response))
+            logger.error("[Subject Coord] Restarting: Resource conflict detected (UUID: {0})"
+                .format(response.request.uuid))
 
             if response.request.subject_id in sub_tent_cache:
                 sub_tent_cache[response.request.subject_id] = {}
