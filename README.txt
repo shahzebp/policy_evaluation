@@ -50,9 +50,12 @@ MAIN FILES:
 	response
 
 
-BUGS AND LIMITATIONS - As per the requirement of [Decat+ 2015], our implementation
-	doesn't pose any limitations. We would be happy to discuss should someone
-	report any.
+ASSUMTIONS
+1.	Every subject and resource has a unique id which serves
+	as the primary key to identify it in database as well. This id represents
+	each entity(subject or object) and is supplied in request.
+
+BUGS / LIMITATIONS - None
 
 CONTRIBUTIONS - 
 	SHAHZEB PATEL:

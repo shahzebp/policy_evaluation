@@ -12,6 +12,9 @@
     <subject id="55">
         <attribute position= "customer" age="22"/>
     </subject>
+    <subject id="56">
+        <attribute position= "customer" age="22"/>
+    </subject>
     <subject id="57">
         <attribute position= "customer" age="24"/>
     </subject>
@@ -26,5 +29,8 @@
     </resource>
     <resource id="44403">
         <attribute type= "movie" viewCount="0"/>
-    </resource>    
+    </resource>
+    <resource id="44409">
+        <attribute type= "show" viewCount="0"/>
+    </resource>   
 </data>
