@@ -2,7 +2,7 @@
 <policy>
 
   <rule name="access bank A first time">
-    <subjectCondition position="employee" history="empty"></subjectCondition>
+    <subjectCondition position="employee" history=""></subjectCondition>
     <resourceCondition name="bank A"></resourceCondition>
     <action name="read"></action>
     <subjectUpdate history="bank A"></subjectUpdate>
@@ -21,7 +21,7 @@
   </rule>
 
   <rule name="access bank B first time">
-    <subjectCondition position="employee" history="emtpy"></subjectCondition>
+    <subjectCondition position="employee" history=""></subjectCondition>
     <resourceCondition name="bank B"></resourceCondition>
     <action name="read"></action>
     <subjectUpdate history="bank B"></subjectUpdate>

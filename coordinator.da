@@ -58,6 +58,7 @@ class Coordinator(process):
 
                 # TODO shoule there be other comparison?
                 if(timestamp1 != timepstamp2):
+                    logger.error("Tentative dependency conflict")
                     return False
 
         return True
@@ -65,6 +66,9 @@ class Coordinator(process):
     def attributes_clash(map1, map2):
         for key in map1:
             if key in map2:
+
+                logger.error("Stale value conflict")
+
                 return False
 
         return True
@@ -210,9 +214,8 @@ class Coordinator(process):
             
         else:
             # Restart
-            logger.error("[Subject Coord] Subject conflict detected: %s ", 
+            logger.error("[Subject Coord] Restarting: Subject conflict detected: %s ", 
                 str(response))
-            logger.debug("[Subject Coord] Restarting: %s ", str(response.request))
             
             request_sequence[response.request.subject_id].popleft()
             entrypoint(response.request)
@@ -333,9 +336,8 @@ class Coordinator(process):
             extract_next_response()
         else:
             # Restart because of resource conflicts
-            logger.error("[Subject Coord] Resource conflict detected: %s ", 
+            logger.error("[Subject Coord] Restarting: Resource conflict detected: %s ", 
                 str(response))
-            logger.debug("Restarting: %s ", str(response.request))
 
             if response.request.subject_id in sub_tent_cache:
                 sub_tent_cache[response.request.subject_id] = {}

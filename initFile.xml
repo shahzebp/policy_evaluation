@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <data>
     <subject id="9">
-        <attribute position= "employee" history="empty"/>
+        <attribute position= "employee" history=""/>
     </subject>
     <subject id="10">
         <attribute position= "manager" history=""/>
@@ -11,6 +11,9 @@
     </subject>
     <subject id="55">
         <attribute position= "customer" age="22"/>
+    </subject>
+    <subject id="57">
+        <attribute position= "customer" age="24"/>
     </subject>
     <subject id="99">
         <attribute position= "nurse" history=""/>

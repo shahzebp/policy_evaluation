@@ -52,7 +52,7 @@ class Client(process):
 
 			request = Request(sub_id, res_id, action)
 			request.art_delay = art_delay
-			
+
 			request.uuid = uuid.hexdigest()
 
 			total_requests.append(request)
@@ -83,7 +83,7 @@ class Client(process):
 
 	def receive(msg=('OUTCOME', response), from_ = p):
 
-		logger.info("[Client] Response received (seq. %s) from Subject Coord %s ", 
+		logger.info("[Client] Final Response received (seq. %s) from Subject Coord %s ", 
 			recv_sequence, str(response))
 
 		recv_sequence = recv_sequence + 1
