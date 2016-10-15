@@ -58,7 +58,7 @@ class Coordinator(process):
 
                 # TODO shoule there be other comparison?
                 if(timestamp1 != timepstamp2):
-                    logger.error("Conflict Reason: Tentative Update Dependency\n %s \nand \n%s ", map1, map2)
+                    logger.error("Conflict Reason: Tentative Update Dependency\n%s \nand \n%s ", map1, map2)
                     return False
 
         return True
@@ -66,7 +66,7 @@ class Coordinator(process):
     def attributes_clash(map1, map2):
         for key in map1:
             if key in map2:
-                logger.error("Conflict Reason: Attribute Conflict - Stale Database Read\n %s \nand \n%s ", map1, map2)
+                logger.error("Conflict Reason: Attribute Conflict - Stale Database Read\n%s \nand \n%s ", map1, map2)
                 return False
 
         return True
@@ -107,6 +107,7 @@ class Coordinator(process):
             send_sequence, str(request))
 
         send_sequence =  send_sequence + 1
+
 
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
@@ -232,7 +233,11 @@ class Coordinator(process):
             current_request_sequence = request_sequence[response.request.subject_id]
 
             if (current_request_sequence[0].timestamp < response.request.timestamp):
-                           
+                
+                logger.info("[Sub Coord] Enqueuing response in response queue %s ",
+                    response.request.uuid)           
+                logger.debug("Enqueing response is %s ", response)
+                
                 response_queue.put((response.request.timestamp, response))
             else:
                 process_response(response)
