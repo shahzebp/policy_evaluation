@@ -222,9 +222,11 @@ class Coordinator(process):
             extract_next_response()
 
     def receive(msg=('FROM_WORKER', response), from_=p):
-        
-        logger.debug("[Subject Coord] Response received (seq. %s) from Worker: %s ", 
-            recv_sequence, str(response))
+
+        logger.info("[Subject Coord] Response received (UUID. {0}) from Worker"
+            .format(response.request.uuid))
+        logger.debug("[Subject Coord] Response received (seq. {0}) from Worker: {1}"
+            .format(recv_sequence, response))
         
         recv_sequence = recv_sequence + 1
 
@@ -245,12 +247,14 @@ class Coordinator(process):
             process_response(response)
  
     def receive(msg=('FROM_SUBJECT_COORD_RESPONSE', response), from_ = p):
-        logger.debug("[Resource Coord] Response received (seq. %s) from Subject Coord: %s ", 
-            recv_sequence, str(response))
+        logger.info("[Resource Coord] Response received (UUID: {0}) from Subject Coord"
+            .format(response.request.uuid))
+        logger.debug("[Resource Coord] Response received (seq. {0}) from Subject Coord: {1}"
+            .format(recv_sequence, response))
 
         recv_sequence = recv_sequence + 1
 
-        logger.debug("Checking resource conflict: %s ", str(response))
+        logger.debug("Checking resource conflict: {0}".format(response))
 
         retval = True
         if response.request.resource_id in res_main_cache:
@@ -300,7 +304,9 @@ class Coordinator(process):
 
         if (True == retval):
             # No conflict, propapage the tentative subject updates to main
-            logger.debug("[Subject Coord] Evaluation complete: %s", str(response))
+            logger.info("[Subject Coord] Evaluation complete for request(UUID: %s",
+                            response.request.uuid)
+            logger.debug("[Subject Coord] Response is: %s", response)
 
             # Propagate subject tentative updates to main cache
 
