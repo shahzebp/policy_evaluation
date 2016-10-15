@@ -21,6 +21,10 @@ class Worker(process):
         read_policy(policy_file)
 
     def does_attribute_value_satisfy_condition(value_in_policy, value_from_db):
+        if(len(value_in_policy) == 0 and len(value_in_policy) == 0):
+            return True
+        if(len(value_in_policy) == 0 and len(value_in_policy) != 0):
+            return False
         if value_in_policy[0] == '>' or value_in_policy[0] == "<":
             ops = { ">": operator.gt, "<": operator.lt}
             integer_value_in_policy = int(value_in_policy[1:])
