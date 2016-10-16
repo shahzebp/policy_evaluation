@@ -11,6 +11,4 @@ clean:
 	-@ rm -rf log/ src/*.swp
 
 run:
-	-@ rm -rf log/ src/*.swp
-	-@ mkdir log
 	dar src/master.da $(ARG)

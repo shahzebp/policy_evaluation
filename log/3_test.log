@@ -1,0 +1,1535 @@
+2016-10-16 16:02:12,409 - INFO - Policy Evaluation Engine Configuration :
+2016-10-16 16:02:12,409 - INFO - Total coordinators:    1 
+2016-10-16 16:02:12,410 - INFO - Workers per coordinator:    2 
+2016-10-16 16:02:12,410 - INFO - Database init file:    config/initFile.xml 
+2016-10-16 16:02:12,410 - INFO - Log conf file:     config/log.conf 
+2016-10-16 16:02:12,410 - INFO - Log dump file:    3_test.log 
+2016-10-16 16:02:12,410 - INFO - Log level: 10 
+2016-10-16 16:02:12,411 - INFO - Number of clients:    2 
+2016-10-16 16:02:12,411 - INFO - Min DB Latency:    1 
+2016-10-16 16:02:12,411 - INFO - Max DB Latency:    4 
+
+2016-10-16 16:02:12,446 - INFO - [Client] Request sent (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Subject Coord
+2016-10-16 16:02:12,446 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,447 - INFO - [Subject Coord] Request received (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Client
+2016-10-16 16:02:12,447 - DEBUG - [Subject Coord] Request received (seq. 1) from Client: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,447 - INFO - [Subject Coord] Sending request (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Resource Coord
+2016-10-16 16:02:12,447 - DEBUG - [Subject Coord] Sending request (seq. 1) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,448 - INFO - [Resource Coord] Request received (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Sub Coord
+2016-10-16 16:02:12,448 - DEBUG - [Resource Coord] Request received (seq. 2) from Sub Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,448 - INFO - [Resource Coord] Sending request (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Worker
+2016-10-16 16:02:12,449 - DEBUG - [Resource Coord] Sending request (seq. 2) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,449 - INFO - [Worker] Receiving request (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Resource Coordinator
+2016-10-16 16:02:12,450 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,450 - INFO - [Worker] Sending request (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Database Emulator
+2016-10-16 16:02:12,450 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,451 - INFO - [Database Emulator] Receiving request (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Worker
+2016-10-16 16:02:12,451 - DEBUG - [Database Emulator] Receiving request (seq. 1) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+
+2016-10-16 16:02:12,451 - INFO - [Database Emulator] Sending database response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Worker
+2016-10-16 16:02:12,451 - DEBUG - [Database Emulator] Sending database response (seq. 1) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game', 'viewCount': '0'}                  
+Result False                  
+
+2016-10-16 16:02:12,452 - INFO - [Worker] Receiving response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Database Emulator
+2016-10-16 16:02:12,453 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game', 'viewCount': '0'}                  
+Result False                  
+
+2016-10-16 16:02:12,455 - INFO - [Client] Request sent (UUID: 009082f403f32108648446afb49257ea) to Subject Coord
+2016-10-16 16:02:12,456 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,457 - INFO - [Subject Coord] Request received (UUID: 009082f403f32108648446afb49257ea) from Client
+2016-10-16 16:02:12,457 - DEBUG - [Subject Coord] Request received (seq. 3) from Client: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,457 - INFO - [Subject Coord] Sending request (UUID: 009082f403f32108648446afb49257ea) to Resource Coord
+2016-10-16 16:02:12,457 - DEBUG - [Subject Coord] Sending request (seq. 3) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,458 - INFO - [Resource Coord] Request received (UUID: 009082f403f32108648446afb49257ea) from Sub Coord
+2016-10-16 16:02:12,458 - DEBUG - [Resource Coord] Request received (seq. 4) from Sub Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,458 - INFO - [Resource Coord] Sending request (UUID: 009082f403f32108648446afb49257ea) to Worker
+2016-10-16 16:02:12,458 - DEBUG - [Resource Coord] Sending request (seq. 4) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,459 - INFO - [Worker] Receiving request (UUID: 009082f403f32108648446afb49257ea) from Resource Coordinator
+2016-10-16 16:02:12,459 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,459 - INFO - [Worker] Sending request (UUID: 009082f403f32108648446afb49257ea) to Database Emulator
+2016-10-16 16:02:12,459 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,460 - INFO - [Database Emulator] Receiving request (UUID: 009082f403f32108648446afb49257ea) from Worker
+2016-10-16 16:02:12,460 - DEBUG - [Database Emulator] Receiving request (seq. 2) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,460 - INFO - [Database Emulator] Sending database response (UUID: 009082f403f32108648446afb49257ea) to Worker
+2016-10-16 16:02:12,460 - DEBUG - [Database Emulator] Sending database response (seq. 2) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game', 'viewCount': '0'}                  
+Result False                  
+
+2016-10-16 16:02:12,461 - INFO - [Worker] Receiving response (UUID: 009082f403f32108648446afb49257ea) from Database Emulator
+2016-10-16 16:02:12,461 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game', 'viewCount': '0'}                  
+Result False                  
+
+2016-10-16 16:02:12,462 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'gameswatched': '<2', 'position': 'player', 'age': '>15'}                  
+Resource Condition: {'type': 'game', 'viewCount': '<3'}                  
+Action: {'name': 'watch'}                  
+Subject Update: {'gameswatched': '++'}                  
+Resource Update: None                  
+
+2016-10-16 16:02:12,463 - INFO - [Worker] Sending response (UUID: 009082f403f32108648446afb49257ea) to Subject Coordinator
+2016-10-16 16:02:12,463 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,464 - INFO - [Subject Coord] Response received (UUID. 009082f403f32108648446afb49257ea) from Worker
+2016-10-16 16:02:12,464 - DEBUG - [Subject Coord] Response received (seq. 5) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,464 - INFO - [Subject Coord] Enqueuing response in response queue 009082f403f32108648446afb49257ea 
+2016-10-16 16:02:12,464 - DEBUG - [Subject Coord] Enqueing response is 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:12,504 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'gameswatched': '<5', 'position': 'player', 'age': '>15'}                  
+Resource Condition: {'type': 'game', 'viewCount': '<5'}                  
+Action: {'name': 'play'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:02:12,506 - INFO - [Worker] Sending response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Subject Coordinator
+2016-10-16 16:02:12,506 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,509 - INFO - [Subject Coord] Response received (UUID. 919e27b25bd6eb12644c83aa9165f3e9) from Worker
+2016-10-16 16:02:12,509 - DEBUG - [Subject Coord] Response received (seq. 6) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,510 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:02:12,510 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:02:12,510 - INFO - [Subject Coord] Sending response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Resource Coord
+2016-10-16 16:02:12,511 - DEBUG - [Subject Coord] Sending response (seq. 5) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,514 - INFO - [Resource Coord] Response received (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Subject Coord
+2016-10-16 16:02:12,514 - DEBUG - [Resource Coord] Response received (seq. 7) from Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,515 - DEBUG - Checking resource conflict: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,515 - INFO - [Resource Coord] Sending resource updates to commit to DB (UUID: 919e27b25bd6eb12644c83aa9165f3e9)
+2016-10-16 16:02:12,516 - DEBUG - Resource Updates Commited to DB{'viewCount': '1'}
+2016-10-16 16:02:12,518 - DEBUG - [Database Emulator] Receiving updates {'44420': {'viewCount': '1'}} from coordinator to commit to db
+2016-10-16 16:02:12,518 - INFO - [Resource Coord] Sending response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Subject Coord
+2016-10-16 16:02:12,519 - DEBUG - [Resource Coord] Sending response (seq. 7) to Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,522 - INFO - [Subject Coord] Response received (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Resource Coord
+2016-10-16 16:02:12,522 - DEBUG - [Subject Coord] Response received (seq. 8) from Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,522 - INFO - [Subject Coord] Evaluation complete for request(UUID: 919e27b25bd6eb12644c83aa9165f3e9)
+2016-10-16 16:02:12,523 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,523 - INFO - [Subject Coord] Sending response (UUID: 919e27b25bd6eb12644c83aa9165f3e9) to Client
+2016-10-16 16:02:12,523 - DEBUG - [Subject Coord] Sending Response (seq. 8) to Client:
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,525 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:12,525 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:12,526 - INFO - [Subject Coord] Sending response (UUID: 009082f403f32108648446afb49257ea) to Resource Coord
+2016-10-16 16:02:12,526 - DEBUG - [Subject Coord] Sending response (seq. 9) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,526 - INFO - [Client] Final Response received (UUID: 919e27b25bd6eb12644c83aa9165f3e9) from Subject Coord With Result: True
+2016-10-16 16:02:12,527 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.4476645                 
+UUID: 919e27b25bd6eb12644c83aa9165f3e9                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:02:12,528 - INFO - [Client] Request sent (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Subject Coord
+2016-10-16 16:02:12,528 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,529 - INFO - [Resource Coord] Response received (UUID: 009082f403f32108648446afb49257ea) from Subject Coord
+2016-10-16 16:02:12,530 - DEBUG - [Resource Coord] Response received (seq. 9) from Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,530 - DEBUG - Checking resource conflict: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,530 - ERROR - Conflict Reason: Attribute Conflict - Stale Database Read
+2016-10-16 16:02:12,531 - DEBUG - {'type': 'game', 'viewCount': '0'} 
+and 
+{'viewCount': ('1', 1476658932.5156646)} 
+2016-10-16 16:02:12,532 - INFO - [Resource Coord] Sending response (UUID: 009082f403f32108648446afb49257ea) to Subject Coord
+2016-10-16 16:02:12,532 - DEBUG - [Resource Coord] Sending response (seq. 10) to Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,534 - INFO - [Subject Coord] Request received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Client
+2016-10-16 16:02:12,534 - DEBUG - [Subject Coord] Request received (seq. 10) from Client: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,535 - INFO - [Subject Coord] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Resource Coord
+2016-10-16 16:02:12,535 - DEBUG - [Subject Coord] Sending request (seq. 11) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,538 - INFO - [Subject Coord] Response received (UUID: 009082f403f32108648446afb49257ea) from Resource Coord
+2016-10-16 16:02:12,538 - DEBUG - [Subject Coord] Response received (seq. 11) from Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.4572775                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game', 'viewCount': '0'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,538 - ERROR - [Subject Coord] Restarting: Resource conflict detected (UUID: 009082f403f32108648446afb49257ea)
+2016-10-16 16:02:12,539 - INFO - [Subject Coord] Sending request (UUID: 009082f403f32108648446afb49257ea) to Resource Coord
+2016-10-16 16:02:12,540 - DEBUG - [Subject Coord] Sending request (seq. 12) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,542 - INFO - [Resource Coord] Request received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Sub Coord
+2016-10-16 16:02:12,542 - DEBUG - [Resource Coord] Request received (seq. 12) from Sub Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,543 - INFO - [Resource Coord] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Worker
+2016-10-16 16:02:12,543 - DEBUG - [Resource Coord] Sending request (seq. 13) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,545 - INFO - [Resource Coord] Request received (UUID: 009082f403f32108648446afb49257ea) from Sub Coord
+2016-10-16 16:02:12,546 - INFO - [Worker] Receiving request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Resource Coordinator
+2016-10-16 16:02:12,546 - DEBUG - [Resource Coord] Request received (seq. 13) from Sub Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,546 - INFO - [Resource Coord] Sending request (UUID: 009082f403f32108648446afb49257ea) to Worker
+2016-10-16 16:02:12,546 - DEBUG - [Worker] Receiving request (seq. 3) from Resource Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,547 - DEBUG - [Resource Coord] Sending request (seq. 14) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,547 - INFO - [Worker] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Database Emulator
+2016-10-16 16:02:12,547 - DEBUG - [Worker] Sending request (seq. 3) to Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,549 - INFO - [Worker] Receiving request (UUID: 009082f403f32108648446afb49257ea) from Resource Coordinator
+2016-10-16 16:02:12,549 - DEBUG - [Worker] Receiving request (seq. 3) from Resource Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,549 - INFO - [Database Emulator] Receiving request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Worker
+2016-10-16 16:02:12,550 - INFO - [Worker] Sending request (UUID: 009082f403f32108648446afb49257ea) to Database Emulator
+2016-10-16 16:02:12,550 - DEBUG - [Database Emulator] Receiving request (seq. 3) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:12,550 - INFO - [Database Emulator] Sending database response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Worker
+2016-10-16 16:02:12,550 - DEBUG - [Worker] Sending request (seq. 3) to Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,550 - DEBUG - [Database Emulator] Sending database response (seq. 3) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub DB Attributes: {'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:12,553 - INFO - [Database Emulator] Receiving request (UUID: 009082f403f32108648446afb49257ea) from Worker
+2016-10-16 16:02:12,553 - INFO - [Worker] Receiving response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Database Emulator
+2016-10-16 16:02:12,553 - DEBUG - [Database Emulator] Receiving request (seq. 4) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+
+2016-10-16 16:02:12,553 - INFO - [Database Emulator] Sending database response (UUID: 009082f403f32108648446afb49257ea) to Worker
+2016-10-16 16:02:12,553 - DEBUG - [Worker] Receiving response (seq. 4) from Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub DB Attributes: {'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:12,554 - DEBUG - [Database Emulator] Sending database response (seq. 4) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:12,556 - INFO - [Worker] Receiving response (UUID: 009082f403f32108648446afb49257ea) from Database Emulator
+2016-10-16 16:02:12,556 - DEBUG - [Worker] Receiving response (seq. 4) from Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub DB Attributes: {'gameswatched': '0', 'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:12,557 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'gameswatched': '<2', 'position': 'player', 'age': '>15'}                  
+Resource Condition: {'type': 'game', 'viewCount': '<3'}                  
+Action: {'name': 'watch'}                  
+Subject Update: {'gameswatched': '++'}                  
+Resource Update: None                  
+
+2016-10-16 16:02:12,557 - INFO - [Worker] Sending response (UUID: 009082f403f32108648446afb49257ea) to Subject Coordinator
+2016-10-16 16:02:12,558 - DEBUG - [Worker] Sending response (seq. 4) to Subject Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,560 - INFO - [Subject Coord] Response received (UUID. 009082f403f32108648446afb49257ea) from Worker
+2016-10-16 16:02:12,561 - DEBUG - [Subject Coord] Response received (seq. 14) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:12,561 - INFO - [Subject Coord] Enqueuing response in response queue 009082f403f32108648446afb49257ea 
+2016-10-16 16:02:12,561 - DEBUG - [Subject Coord] Enqueing response is 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,555 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'gameswatched': '<5', 'position': 'player', 'age': '>15'}                  
+Resource Condition: {'type': 'game', 'viewCount': '<5'}                  
+Action: {'name': 'play'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:02:13,556 - INFO - [Worker] Sending response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Subject Coordinator
+2016-10-16 16:02:13,556 - DEBUG - [Worker] Sending response (seq. 4) to Subject Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:13,559 - INFO - [Subject Coord] Response received (UUID. 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Worker
+2016-10-16 16:02:13,559 - DEBUG - [Subject Coord] Response received (seq. 15) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:13,560 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,560 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,561 - ERROR - [Subject Coord] Tentative Dependency Conflict: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658932.5351548                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,561 - ERROR - [Subject Coord] Restarting: Subject conflict detected (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d)
+2016-10-16 16:02:13,561 - INFO - [Subject Coord] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Resource Coord
+2016-10-16 16:02:13,562 - DEBUG - [Subject Coord] Sending request (seq. 15) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,564 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,564 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 16:02:13,565 - INFO - [Subject Coord] Sending response (UUID: 009082f403f32108648446afb49257ea) to Resource Coord
+2016-10-16 16:02:13,565 - DEBUG - [Subject Coord] Sending response (seq. 16) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,567 - INFO - [Resource Coord] Request received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Sub Coord
+2016-10-16 16:02:13,568 - DEBUG - [Resource Coord] Request received (seq. 16) from Sub Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,569 - INFO - [Resource Coord] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Worker
+2016-10-16 16:02:13,569 - DEBUG - [Resource Coord] Sending request (seq. 17) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,571 - INFO - [Resource Coord] Response received (UUID: 009082f403f32108648446afb49257ea) from Subject Coord
+2016-10-16 16:02:13,571 - INFO - [Worker] Receiving request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Resource Coordinator
+2016-10-16 16:02:13,572 - DEBUG - [Resource Coord] Response received (seq. 17) from Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,572 - DEBUG - [Worker] Receiving request (seq. 5) from Resource Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,572 - DEBUG - Checking resource conflict: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,572 - INFO - [Worker] Sending request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Database Emulator
+2016-10-16 16:02:13,573 - INFO - [Resource Coord] Sending response (UUID: 009082f403f32108648446afb49257ea) to Subject Coord
+2016-10-16 16:02:13,573 - DEBUG - [Resource Coord] Sending response (seq. 18) to Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,573 - DEBUG - [Worker] Sending request (seq. 5) to Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,575 - INFO - [Database Emulator] Receiving request (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Worker
+2016-10-16 16:02:13,576 - DEBUG - [Database Emulator] Receiving request (seq. 5) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+
+2016-10-16 16:02:13,576 - INFO - [Subject Coord] Response received (UUID: 009082f403f32108648446afb49257ea) from Resource Coord
+2016-10-16 16:02:13,576 - INFO - [Database Emulator] Sending database response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Worker
+2016-10-16 16:02:13,576 - DEBUG - [Subject Coord] Response received (seq. 18) from Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,576 - INFO - [Subject Coord] Evaluation complete for request(UUID: 009082f403f32108648446afb49257ea)
+2016-10-16 16:02:13,576 - DEBUG - [Database Emulator] Sending database response (seq. 5) to Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub DB Attributes: {'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:13,577 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,577 - INFO - [Subject Coord] Sending subject updates to commit to DB (UUID: 009082f403f32108648446afb49257ea)
+2016-10-16 16:02:13,577 - DEBUG - Subject Updates Commited to DB{'gameswatched': '1'}
+2016-10-16 16:02:13,579 - INFO - [Subject Coord] Sending response (UUID: 009082f403f32108648446afb49257ea) to Client
+2016-10-16 16:02:13,580 - DEBUG - [Subject Coord] Sending Response (seq. 20) to Client:
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:13,580 - DEBUG - [Database Emulator] Receiving updates {'66': {'gameswatched': '1'}} from coordinator to commit to db
+2016-10-16 16:02:13,580 - INFO - [Worker] Receiving response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Database Emulator
+2016-10-16 16:02:13,581 - DEBUG - [Worker] Receiving response (seq. 6) from Database Emulator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub DB Attributes: {'position': 'player', 'age': '20'}                  
+Res DB Attributes: {'type': 'game'}                  
+Result False                  
+
+2016-10-16 16:02:13,583 - INFO - [Client] Final Response received (UUID: 009082f403f32108648446afb49257ea) from Subject Coord With Result: True
+2016-10-16 16:02:13,583 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: watch                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 12599)                 
+TimeStamp: 1476658932.5393002                 
+UUID: 009082f403f32108648446afb49257ea                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'gameswatched': '0', 'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {'gameswatched': '1'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 16:02:14,584 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'gameswatched': '<5', 'position': 'player', 'age': '>15'}                  
+Resource Condition: {'type': 'game', 'viewCount': '<5'}                  
+Action: {'name': 'play'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:02:14,585 - INFO - [Worker] Sending response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Subject Coordinator
+2016-10-16 16:02:14,585 - DEBUG - [Worker] Sending response (seq. 6) to Subject Coordinator: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,587 - INFO - [Subject Coord] Response received (UUID. 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Worker
+2016-10-16 16:02:14,588 - DEBUG - [Subject Coord] Response received (seq. 19) from Worker: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,588 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:02:14,589 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:02:14,589 - INFO - [Subject Coord] Sending response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Resource Coord
+2016-10-16 16:02:14,589 - DEBUG - [Subject Coord] Sending response (seq. 21) to Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,592 - INFO - [Resource Coord] Response received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Subject Coord
+2016-10-16 16:02:14,593 - DEBUG - [Resource Coord] Response received (seq. 20) from Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,593 - DEBUG - Checking resource conflict: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,593 - INFO - [Resource Coord] Sending resource updates to commit to DB (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d)
+2016-10-16 16:02:14,594 - DEBUG - Resource Updates Commited to DB{'viewCount': '2'}
+2016-10-16 16:02:14,595 - DEBUG - [Database Emulator] Receiving updates {'44420': {'viewCount': '2'}} from coordinator to commit to db
+2016-10-16 16:02:14,596 - INFO - [Resource Coord] Sending response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Subject Coord
+2016-10-16 16:02:14,597 - DEBUG - [Resource Coord] Sending response (seq. 23) to Subject Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,600 - INFO - [Subject Coord] Response received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Resource Coord
+2016-10-16 16:02:14,600 - DEBUG - [Subject Coord] Response received (seq. 21) from Resource Coord: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,601 - INFO - [Subject Coord] Evaluation complete for request(UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d)
+2016-10-16 16:02:14,601 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,601 - INFO - [Subject Coord] Sending response (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) to Client
+2016-10-16 16:02:14,602 - DEBUG - [Subject Coord] Sending Response (seq. 24) to Client:
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,604 - INFO - [Client] Final Response received (UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d) from Subject Coord With Result: True
+2016-10-16 16:02:14,605 - DEBUG - [Client] Response received (seq. 4) from Subject Coord 
+Subject ID: 66                 
+Resource ID: 44420                 
+Action: play                 
+Subject Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Resource Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Owner: ('localhost', 19396)                 
+TimeStamp: 1476658933.5617197                 
+UUID: 88161bdb4c6a1a2bdf6c5ce9fcad5f8d                     
+Sub attribs used from Cache: {'gameswatched': ('1', 1476658932.5261793)}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658932.5156646)}                 
+Sub attribs used from DB: {'position': 'player', 'age': '20'}                 
+Res attribs used from DB: {'type': 'game'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:02:14,611 - INFO - Exiting the Coordinators
+2016-10-16 16:02:14,615 - INFO - Exiting the Workers
+2016-10-16 16:02:14,615 - INFO - [Database Emulator] Dumping database contents to log file
+{   '10': {'history': '', 'position': 'manager'},
+    '11': {'history': 'bank B', 'position': 'employee'},
+    '44401': {'name': 'bank A'},
+    '44402': {'name': 'bank B'},
+    '44403': {'type': 'movie', 'viewCount': '0'},
+    '44409': {'type': 'show', 'viewCount': '0'},
+    '44420': {'type': 'game', 'viewCount': '0'},
+    '55': {'age': '22', 'position': 'customer'},
+    '56': {'age': '22', 'position': 'customer'},
+    '57': {'age': '24', 'position': 'customer'},
+    '66': {'age': '20', 'gameswatched': '0', 'position': 'player'},
+    '9': {'history': '', 'position': 'employee'},
+    '99': {'history': '', 'position': 'nurse'}}
+2016-10-16 16:02:14,618 - INFO - Exiting the Workers

@@ -1,0 +1,340 @@
+2016-10-16 16:09:01,246 - INFO - Policy Evaluation Engine Configuration :
+2016-10-16 16:09:01,246 - INFO - Total coordinators:    1 
+2016-10-16 16:09:01,246 - INFO - Workers per coordinator:    2 
+2016-10-16 16:09:01,246 - INFO - Database init file:    config/initFile.xml 
+2016-10-16 16:09:01,246 - INFO - Log conf file:     config/log.conf 
+2016-10-16 16:09:01,247 - INFO - Log dump file:    11_test.log 
+2016-10-16 16:09:01,247 - INFO - Log level: 10 
+2016-10-16 16:09:01,247 - INFO - Number of clients:    1 
+2016-10-16 16:09:01,247 - INFO - Min DB Latency:    1 
+2016-10-16 16:09:01,247 - INFO - Max DB Latency:    4 
+
+2016-10-16 16:09:01,281 - INFO - [Client] Request sent (UUID: 376754df8f53b409707020518c689680) to Subject Coord
+2016-10-16 16:09:01,281 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,283 - INFO - [Subject Coord] Request received (UUID: 376754df8f53b409707020518c689680) from Client
+2016-10-16 16:09:01,283 - DEBUG - [Subject Coord] Request received (seq. 1) from Client: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,283 - INFO - [Subject Coord] Sending request (UUID: 376754df8f53b409707020518c689680) to Resource Coord
+2016-10-16 16:09:01,283 - DEBUG - [Subject Coord] Sending request (seq. 1) to Resource Coord: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,284 - INFO - [Resource Coord] Request received (UUID: 376754df8f53b409707020518c689680) from Sub Coord
+2016-10-16 16:09:01,284 - DEBUG - [Resource Coord] Request received (seq. 2) from Sub Coord 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,284 - INFO - [Resource Coord] Sending request (UUID: 376754df8f53b409707020518c689680) to Worker
+2016-10-16 16:09:01,284 - DEBUG - [Resource Coord] Sending request (seq. 2) to Worker: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,286 - INFO - [Worker] Receiving request (UUID: 376754df8f53b409707020518c689680) from Resource Coordinator
+2016-10-16 16:09:01,286 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,286 - INFO - [Worker] Sending request (UUID: 376754df8f53b409707020518c689680) to Database Emulator
+2016-10-16 16:09:01,286 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,288 - INFO - [Database Emulator] Receiving request (UUID: 376754df8f53b409707020518c689680) from Worker
+2016-10-16 16:09:01,288 - DEBUG - [Database Emulator] Receiving request (seq. 1) from Worker: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+
+2016-10-16 16:09:01,288 - INFO - [Database Emulator] Sending database response (UUID: 376754df8f53b409707020518c689680) to Worker
+2016-10-16 16:09:01,288 - DEBUG - [Database Emulator] Sending database response (seq. 1) to Worker: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub DB Attributes: {'age': '22', 'position': 'customer'}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 16:09:01,289 - INFO - [Worker] Receiving response (UUID: 376754df8f53b409707020518c689680) from Database Emulator
+2016-10-16 16:09:01,289 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub DB Attributes: {'age': '22', 'position': 'customer'}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 16:09:01,289 - INFO - [Worker] No Rule Found for Action [write] while evaluating Request (UUID: 376754df8f53b409707020518c689680)
+2016-10-16 16:09:01,290 - INFO - [Subject Coord] Response received (UUID. 376754df8f53b409707020518c689680) from Worker
+2016-10-16 16:09:01,291 - DEBUG - [Subject Coord] Response received (seq. 3) from Worker: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,291 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+ 
+2016-10-16 16:09:01,292 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+ 
+2016-10-16 16:09:01,292 - INFO - [Subject Coord] Sending response (UUID: 376754df8f53b409707020518c689680) to Resource Coord
+2016-10-16 16:09:01,292 - DEBUG - [Subject Coord] Sending response (seq. 3) to Resource Coord: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,293 - INFO - [Resource Coord] Response received (UUID: 376754df8f53b409707020518c689680) from Subject Coord
+2016-10-16 16:09:01,293 - DEBUG - [Resource Coord] Response received (seq. 4) from Subject Coord: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,293 - DEBUG - Checking resource conflict: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,293 - INFO - [Resource Coord] Sending response (UUID: 376754df8f53b409707020518c689680) to Subject Coord
+2016-10-16 16:09:01,293 - DEBUG - [Resource Coord] Sending response (seq. 4) to Subject Coord: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,294 - INFO - [Subject Coord] Response received (UUID: 376754df8f53b409707020518c689680) from Resource Coord
+2016-10-16 16:09:01,294 - DEBUG - [Subject Coord] Response received (seq. 5) from Resource Coord: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,294 - INFO - [Subject Coord] Evaluation complete for request(UUID: 376754df8f53b409707020518c689680)
+2016-10-16 16:09:01,294 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,295 - INFO - [Subject Coord] Sending response (UUID: 376754df8f53b409707020518c689680) to Client
+2016-10-16 16:09:01,295 - DEBUG - [Subject Coord] Sending Response (seq. 5) to Client:
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,296 - INFO - [Client] Final Response received (UUID: 376754df8f53b409707020518c689680) from Subject Coord With Result: False
+2016-10-16 16:09:01,296 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 56                 
+Resource ID: 44401                 
+Action: write                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 26135)                 
+TimeStamp: 1476659341.2834926                 
+UUID: 376754df8f53b409707020518c689680                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {}                 
+Res attribs used from DB: {}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: False                 
+
+2016-10-16 16:09:01,298 - INFO - Exiting the Coordinators
+2016-10-16 16:09:01,300 - INFO - [Database Emulator] Dumping database contents to log file
+{   '10': {'history': '', 'position': 'manager'},
+    '11': {'history': 'bank B', 'position': 'employee'},
+    '44401': {'name': 'bank A'},
+    '44402': {'name': 'bank B'},
+    '44403': {'type': 'movie', 'viewCount': '0'},
+    '44409': {'type': 'show', 'viewCount': '0'},
+    '44420': {'type': 'game', 'viewCount': '0'},
+    '55': {'age': '22', 'position': 'customer'},
+    '56': {'age': '22', 'position': 'customer'},
+    '57': {'age': '24', 'position': 'customer'},
+    '66': {'age': '20', 'gameswatched': '0', 'position': 'player'},
+    '9': {'history': '', 'position': 'employee'},
+    '99': {'history': '', 'position': 'nurse'}}
+2016-10-16 16:09:01,300 - INFO - Exiting the Workers
+2016-10-16 16:09:01,300 - INFO - Exiting the Workers

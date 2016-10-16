@@ -1,0 +1,978 @@
+2016-10-16 16:00:19,481 - INFO - Policy Evaluation Engine Configuration :
+2016-10-16 16:00:19,481 - INFO - Total coordinators:    3 
+2016-10-16 16:00:19,481 - INFO - Workers per coordinator:    2 
+2016-10-16 16:00:19,481 - INFO - Database init file:    config/initFile.xml 
+2016-10-16 16:00:19,482 - INFO - Log conf file:     config/log.conf 
+2016-10-16 16:00:19,482 - INFO - Log dump file:    2_test.log 
+2016-10-16 16:00:19,482 - INFO - Log level: 10 
+2016-10-16 16:00:19,482 - INFO - Number of clients:    2 
+2016-10-16 16:00:19,482 - INFO - Min DB Latency:    1 
+2016-10-16 16:00:19,482 - INFO - Max DB Latency:    4 
+
+2016-10-16 16:00:19,525 - INFO - [Client] Request sent (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Subject Coord
+2016-10-16 16:00:19,525 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,527 - INFO - [Subject Coord] Request received (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Client
+2016-10-16 16:00:19,527 - DEBUG - [Subject Coord] Request received (seq. 1) from Client: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,527 - INFO - [Subject Coord] Sending request (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Resource Coord
+2016-10-16 16:00:19,527 - DEBUG - [Subject Coord] Sending request (seq. 1) to Resource Coord: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,528 - INFO - [Resource Coord] Request received (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Sub Coord
+2016-10-16 16:00:19,528 - DEBUG - [Resource Coord] Request received (seq. 1) from Sub Coord 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,528 - INFO - [Resource Coord] Sending request (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Worker
+2016-10-16 16:00:19,528 - DEBUG - [Resource Coord] Sending request (seq. 1) to Worker: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,529 - INFO - [Worker] Receiving request (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Resource Coordinator
+2016-10-16 16:00:19,530 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,530 - INFO - [Worker] Sending request (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Database Emulator
+2016-10-16 16:00:19,530 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,531 - INFO - [Database Emulator] Receiving request (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Worker
+2016-10-16 16:00:19,531 - DEBUG - [Database Emulator] Receiving request (seq. 1) from Worker: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+
+2016-10-16 16:00:19,531 - INFO - [Database Emulator] Sending database response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Worker
+2016-10-16 16:00:19,531 - DEBUG - [Database Emulator] Sending database response (seq. 1) to Worker: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub DB Attributes: {'position': 'customer', 'age': '22'}                  
+Res DB Attributes: {'viewCount': '0', 'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:19,532 - INFO - [Worker] Receiving response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Database Emulator
+2016-10-16 16:00:19,532 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub DB Attributes: {'position': 'customer', 'age': '22'}                  
+Res DB Attributes: {'viewCount': '0', 'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:19,535 - INFO - [Client] Request sent (UUID: 21f10ad828324205d84016f6d0a96d48) to Subject Coord
+2016-10-16 16:00:19,536 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,536 - INFO - [Subject Coord] Request received (UUID: 21f10ad828324205d84016f6d0a96d48) from Client
+2016-10-16 16:00:19,537 - DEBUG - [Subject Coord] Request received (seq. 2) from Client: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,537 - INFO - [Subject Coord] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Resource Coord
+2016-10-16 16:00:19,537 - DEBUG - [Subject Coord] Sending request (seq. 2) to Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,538 - INFO - [Resource Coord] Request received (UUID: 21f10ad828324205d84016f6d0a96d48) from Sub Coord
+2016-10-16 16:00:19,538 - DEBUG - [Resource Coord] Request received (seq. 3) from Sub Coord 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,538 - INFO - [Resource Coord] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Worker
+2016-10-16 16:00:19,538 - DEBUG - [Resource Coord] Sending request (seq. 3) to Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,539 - INFO - [Worker] Receiving request (UUID: 21f10ad828324205d84016f6d0a96d48) from Resource Coordinator
+2016-10-16 16:00:19,539 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,539 - INFO - [Worker] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Database Emulator
+2016-10-16 16:00:19,539 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,540 - INFO - [Database Emulator] Receiving request (UUID: 21f10ad828324205d84016f6d0a96d48) from Worker
+2016-10-16 16:00:19,540 - DEBUG - [Database Emulator] Receiving request (seq. 2) from Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:19,540 - INFO - [Database Emulator] Sending database response (UUID: 21f10ad828324205d84016f6d0a96d48) to Worker
+2016-10-16 16:00:19,540 - DEBUG - [Database Emulator] Sending database response (seq. 2) to Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub DB Attributes: {'position': 'customer', 'age': '24'}                  
+Res DB Attributes: {'viewCount': '0', 'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:19,541 - INFO - [Worker] Receiving response (UUID: 21f10ad828324205d84016f6d0a96d48) from Database Emulator
+2016-10-16 16:00:19,541 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub DB Attributes: {'position': 'customer', 'age': '24'}                  
+Res DB Attributes: {'viewCount': '0', 'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:20,534 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'customer'}                  
+Resource Condition: {'viewCount': '<5', 'type': 'movie'}                  
+Action: {'name': 'view'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:00:20,536 - INFO - [Worker] Sending response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Subject Coordinator
+2016-10-16 16:00:20,536 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,539 - INFO - [Subject Coord] Response received (UUID. 4a011ccb5a54a3bd70c7a97043aa95d0) from Worker
+2016-10-16 16:00:20,540 - DEBUG - [Subject Coord] Response received (seq. 2) from Worker: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,540 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:00:20,541 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:00:20,541 - INFO - [Subject Coord] Sending response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Resource Coord
+2016-10-16 16:00:20,541 - DEBUG - [Subject Coord] Sending response (seq. 2) to Resource Coord: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,544 - INFO - [Resource Coord] Response received (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Subject Coord
+2016-10-16 16:00:20,544 - DEBUG - [Resource Coord] Response received (seq. 4) from Subject Coord: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,545 - DEBUG - Checking resource conflict: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,545 - INFO - [Resource Coord] Sending resource updates to commit to DB (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0)
+2016-10-16 16:00:20,545 - DEBUG - Resource Updates Commited to DB{'viewCount': '1'}
+2016-10-16 16:00:20,547 - INFO - [Resource Coord] Sending response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Subject Coord
+2016-10-16 16:00:20,547 - DEBUG - [Resource Coord] Sending response (seq. 5) to Subject Coord: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,547 - DEBUG - [Database Emulator] Receiving updates {'44403': {'viewCount': '1'}} from coordinator to commit to db
+2016-10-16 16:00:20,550 - INFO - [Subject Coord] Response received (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Resource Coord
+2016-10-16 16:00:20,550 - DEBUG - [Subject Coord] Response received (seq. 3) from Resource Coord: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,551 - INFO - [Subject Coord] Evaluation complete for request(UUID: 4a011ccb5a54a3bd70c7a97043aa95d0)
+2016-10-16 16:00:20,551 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,553 - INFO - [Subject Coord] Sending response (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) to Client
+2016-10-16 16:00:20,553 - DEBUG - [Subject Coord] Sending Response (seq. 3) to Client:
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:20,556 - INFO - [Client] Final Response received (UUID: 4a011ccb5a54a3bd70c7a97043aa95d0) from Subject Coord With Result: True
+2016-10-16 16:00:20,556 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 55                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 11106)                 
+TimeStamp: 1476658819.527487                 
+UUID: 4a011ccb5a54a3bd70c7a97043aa95d0                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,544 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'customer'}                  
+Resource Condition: {'viewCount': '<5', 'type': 'movie'}                  
+Action: {'name': 'view'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:00:21,546 - INFO - [Worker] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Subject Coordinator
+2016-10-16 16:00:21,548 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,551 - INFO - [Subject Coord] Response received (UUID. 21f10ad828324205d84016f6d0a96d48) from Worker
+2016-10-16 16:00:21,551 - DEBUG - [Subject Coord] Response received (seq. 5) from Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,552 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:00:21,552 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+ 
+2016-10-16 16:00:21,552 - INFO - [Subject Coord] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Resource Coord
+2016-10-16 16:00:21,553 - DEBUG - [Subject Coord] Sending response (seq. 6) to Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,555 - INFO - [Resource Coord] Response received (UUID: 21f10ad828324205d84016f6d0a96d48) from Subject Coord
+2016-10-16 16:00:21,556 - DEBUG - [Resource Coord] Response received (seq. 6) from Subject Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,556 - DEBUG - Checking resource conflict: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,556 - ERROR - Conflict Reason: Attribute Conflict - Stale Database Read
+2016-10-16 16:00:21,557 - DEBUG - {'viewCount': '0', 'type': 'movie'} 
+and 
+{'viewCount': ('1', 1476658820.5455332)} 
+2016-10-16 16:00:21,557 - INFO - [Resource Coord] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Subject Coord
+2016-10-16 16:00:21,557 - DEBUG - [Resource Coord] Sending response (seq. 7) to Subject Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,560 - INFO - [Subject Coord] Response received (UUID: 21f10ad828324205d84016f6d0a96d48) from Resource Coord
+2016-10-16 16:00:21,561 - DEBUG - [Subject Coord] Response received (seq. 7) from Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658819.5372124                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'viewCount': '0', 'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '1'}                 
+Result: True                 
+
+2016-10-16 16:00:21,561 - ERROR - [Subject Coord] Restarting: Resource conflict detected (UUID: 21f10ad828324205d84016f6d0a96d48)
+2016-10-16 16:00:21,561 - INFO - [Subject Coord] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Resource Coord
+2016-10-16 16:00:21,561 - DEBUG - [Subject Coord] Sending request (seq. 8) to Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,564 - INFO - [Resource Coord] Request received (UUID: 21f10ad828324205d84016f6d0a96d48) from Sub Coord
+2016-10-16 16:00:21,565 - DEBUG - [Resource Coord] Request received (seq. 8) from Sub Coord 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,565 - INFO - [Resource Coord] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Worker
+2016-10-16 16:00:21,565 - DEBUG - [Resource Coord] Sending request (seq. 9) to Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,567 - INFO - [Worker] Receiving request (UUID: 21f10ad828324205d84016f6d0a96d48) from Resource Coordinator
+2016-10-16 16:00:21,568 - DEBUG - [Worker] Receiving request (seq. 3) from Resource Coordinator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,568 - INFO - [Worker] Sending request (UUID: 21f10ad828324205d84016f6d0a96d48) to Database Emulator
+2016-10-16 16:00:21,569 - DEBUG - [Worker] Sending request (seq. 3) to Database Emulator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,571 - INFO - [Database Emulator] Receiving request (UUID: 21f10ad828324205d84016f6d0a96d48) from Worker
+2016-10-16 16:00:21,571 - DEBUG - [Database Emulator] Receiving request (seq. 3) from Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+
+2016-10-16 16:00:21,572 - INFO - [Database Emulator] Sending database response (UUID: 21f10ad828324205d84016f6d0a96d48) to Worker
+2016-10-16 16:00:21,572 - DEBUG - [Database Emulator] Sending database response (seq. 3) to Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub DB Attributes: {'position': 'customer', 'age': '24'}                  
+Res DB Attributes: {'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:21,574 - INFO - [Worker] Receiving response (UUID: 21f10ad828324205d84016f6d0a96d48) from Database Emulator
+2016-10-16 16:00:21,575 - DEBUG - [Worker] Receiving response (seq. 4) from Database Emulator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub DB Attributes: {'position': 'customer', 'age': '24'}                  
+Res DB Attributes: {'type': 'movie'}                  
+Result False                  
+
+2016-10-16 16:00:23,549 - DEBUG - [Database Emulator] Commiting changes to database {'44403': {'viewCount': '1'}}
+2016-10-16 16:00:23,578 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'customer'}                  
+Resource Condition: {'viewCount': '<5', 'type': 'movie'}                  
+Action: {'name': 'view'}                  
+Subject Update: None                  
+Resource Update: {'viewCount': '++'}                  
+
+2016-10-16 16:00:23,578 - INFO - [Worker] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Subject Coordinator
+2016-10-16 16:00:23,579 - DEBUG - [Worker] Sending response (seq. 4) to Subject Coordinator: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,581 - INFO - [Subject Coord] Response received (UUID. 21f10ad828324205d84016f6d0a96d48) from Worker
+2016-10-16 16:00:23,582 - DEBUG - [Subject Coord] Response received (seq. 9) from Worker: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,582 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:00:23,583 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+ 
+2016-10-16 16:00:23,583 - INFO - [Subject Coord] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Resource Coord
+2016-10-16 16:00:23,583 - DEBUG - [Subject Coord] Sending response (seq. 10) to Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,586 - INFO - [Resource Coord] Response received (UUID: 21f10ad828324205d84016f6d0a96d48) from Subject Coord
+2016-10-16 16:00:23,587 - DEBUG - [Resource Coord] Response received (seq. 10) from Subject Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,587 - DEBUG - Checking resource conflict: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,588 - INFO - [Resource Coord] Sending resource updates to commit to DB (UUID: 21f10ad828324205d84016f6d0a96d48)
+2016-10-16 16:00:23,588 - DEBUG - Resource Updates Commited to DB{'viewCount': '2'}
+2016-10-16 16:00:23,589 - INFO - [Resource Coord] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Subject Coord
+2016-10-16 16:00:23,589 - DEBUG - [Resource Coord] Sending response (seq. 12) to Subject Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,589 - DEBUG - [Database Emulator] Receiving updates {'44403': {'viewCount': '2'}} from coordinator to commit to db
+2016-10-16 16:00:23,592 - INFO - [Subject Coord] Response received (UUID: 21f10ad828324205d84016f6d0a96d48) from Resource Coord
+2016-10-16 16:00:23,592 - DEBUG - [Subject Coord] Response received (seq. 11) from Resource Coord: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,592 - INFO - [Subject Coord] Evaluation complete for request(UUID: 21f10ad828324205d84016f6d0a96d48)
+2016-10-16 16:00:23,593 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,594 - INFO - [Subject Coord] Sending response (UUID: 21f10ad828324205d84016f6d0a96d48) to Client
+2016-10-16 16:00:23,594 - DEBUG - [Subject Coord] Sending Response (seq. 13) to Client:
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,597 - INFO - [Client] Final Response received (UUID: 21f10ad828324205d84016f6d0a96d48) from Subject Coord With Result: True
+2016-10-16 16:00:23,598 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 57                 
+Resource ID: 44403                 
+Action: view                 
+Subject Cache: {}                 
+Resource Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Owner: ('localhost', 17307)                 
+TimeStamp: 1476658821.5615602                 
+UUID: 21f10ad828324205d84016f6d0a96d48                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {'viewCount': ('1', 1476658820.5455332)}                 
+Sub attribs used from DB: {'position': 'customer'}                 
+Res attribs used from DB: {'type': 'movie'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {'viewCount': '2'}                 
+Result: True                 
+
+2016-10-16 16:00:23,606 - INFO - Exiting the Coordinators
+2016-10-16 16:00:23,609 - INFO - Exiting the Coordinators
+2016-10-16 16:00:23,609 - INFO - Exiting the Coordinators
+2016-10-16 16:00:23,613 - INFO - Exiting the Workers
+2016-10-16 16:00:23,615 - INFO - Exiting the Workers
+2016-10-16 16:00:23,618 - INFO - Exiting the Workers
+2016-10-16 16:00:23,619 - INFO - Exiting the Workers
+2016-10-16 16:00:23,620 - INFO - [Database Emulator] Dumping database contents to log file
+{   '10': {'history': '', 'position': 'manager'},
+    '11': {'history': 'bank B', 'position': 'employee'},
+    '44401': {'name': 'bank A'},
+    '44402': {'name': 'bank B'},
+    '44403': {'type': 'movie', 'viewCount': '1'},
+    '44409': {'type': 'show', 'viewCount': '0'},
+    '44420': {'type': 'game', 'viewCount': '0'},
+    '55': {'age': '22', 'position': 'customer'},
+    '56': {'age': '22', 'position': 'customer'},
+    '57': {'age': '24', 'position': 'customer'},
+    '66': {'age': '20', 'gameswatched': '0', 'position': 'player'},
+    '9': {'history': '', 'position': 'employee'},
+    '99': {'history': '', 'position': 'nurse'}}
+2016-10-16 16:00:23,622 - INFO - Exiting the Workers
+2016-10-16 16:00:23,625 - INFO - Exiting the Workers

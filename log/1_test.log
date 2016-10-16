@@ -1,0 +1,880 @@
+2016-10-16 15:59:40,538 - INFO - Policy Evaluation Engine Configuration :
+2016-10-16 15:59:40,538 - INFO - Total coordinators:    1 
+2016-10-16 15:59:40,538 - INFO - Workers per coordinator:    2 
+2016-10-16 15:59:40,538 - INFO - Database init file:    config/initFile.xml 
+2016-10-16 15:59:40,539 - INFO - Log conf file:     config/log.conf 
+2016-10-16 15:59:40,539 - INFO - Log dump file:    1_test.log 
+2016-10-16 15:59:40,539 - INFO - Log level: 10 
+2016-10-16 15:59:40,539 - INFO - Number of clients:    2 
+2016-10-16 15:59:40,539 - INFO - Min DB Latency:    1 
+2016-10-16 15:59:40,539 - INFO - Max DB Latency:    4 
+
+2016-10-16 15:59:40,574 - INFO - [Client] Request sent (UUID: 87d92f3a89de267f4135ffd87ac41612) to Subject Coord
+2016-10-16 15:59:40,574 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,576 - INFO - [Subject Coord] Request received (UUID: 87d92f3a89de267f4135ffd87ac41612) from Client
+2016-10-16 15:59:40,576 - DEBUG - [Subject Coord] Request received (seq. 1) from Client: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,577 - INFO - [Subject Coord] Sending request (UUID: 87d92f3a89de267f4135ffd87ac41612) to Resource Coord
+2016-10-16 15:59:40,577 - DEBUG - [Subject Coord] Sending request (seq. 1) to Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,578 - INFO - [Resource Coord] Request received (UUID: 87d92f3a89de267f4135ffd87ac41612) from Sub Coord
+2016-10-16 15:59:40,578 - DEBUG - [Resource Coord] Request received (seq. 2) from Sub Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,578 - INFO - [Resource Coord] Sending request (UUID: 87d92f3a89de267f4135ffd87ac41612) to Worker
+2016-10-16 15:59:40,578 - DEBUG - [Resource Coord] Sending request (seq. 2) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,579 - INFO - [Worker] Receiving request (UUID: 87d92f3a89de267f4135ffd87ac41612) from Resource Coordinator
+2016-10-16 15:59:40,579 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,579 - INFO - [Worker] Sending request (UUID: 87d92f3a89de267f4135ffd87ac41612) to Database Emulator
+2016-10-16 15:59:40,579 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,580 - INFO - [Database Emulator] Receiving request (UUID: 87d92f3a89de267f4135ffd87ac41612) from Worker
+2016-10-16 15:59:40,581 - DEBUG - [Database Emulator] Receiving request (seq. 1) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+
+2016-10-16 15:59:40,581 - INFO - [Database Emulator] Sending database response (UUID: 87d92f3a89de267f4135ffd87ac41612) to Worker
+2016-10-16 15:59:40,581 - DEBUG - [Database Emulator] Sending database response (seq. 1) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub DB Attributes: {'position': 'employee', 'history': ''}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:40,582 - INFO - [Worker] Receiving response (UUID: 87d92f3a89de267f4135ffd87ac41612) from Database Emulator
+2016-10-16 15:59:40,582 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub DB Attributes: {'position': 'employee', 'history': ''}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:40,586 - INFO - [Client] Request sent (UUID: c1ac08817451abe6e40c228e05dd3732) to Subject Coord
+2016-10-16 15:59:40,586 - DEBUG - [Client] Request sent (seq. 1) to Subject Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,587 - INFO - [Subject Coord] Request received (UUID: c1ac08817451abe6e40c228e05dd3732) from Client
+2016-10-16 15:59:40,587 - DEBUG - [Subject Coord] Request received (seq. 3) from Client: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: None                 
+TimeStamp: None                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,587 - INFO - [Subject Coord] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Resource Coord
+2016-10-16 15:59:40,587 - DEBUG - [Subject Coord] Sending request (seq. 3) to Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,588 - INFO - [Resource Coord] Request received (UUID: c1ac08817451abe6e40c228e05dd3732) from Sub Coord
+2016-10-16 15:59:40,588 - DEBUG - [Resource Coord] Request received (seq. 4) from Sub Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,588 - INFO - [Resource Coord] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Worker
+2016-10-16 15:59:40,588 - DEBUG - [Resource Coord] Sending request (seq. 4) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,589 - INFO - [Worker] Receiving request (UUID: c1ac08817451abe6e40c228e05dd3732) from Resource Coordinator
+2016-10-16 15:59:40,590 - DEBUG - [Worker] Receiving request (seq. 1) from Resource Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,590 - INFO - [Worker] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Database Emulator
+2016-10-16 15:59:40,590 - DEBUG - [Worker] Sending request (seq. 1) to Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,591 - INFO - [Database Emulator] Receiving request (UUID: c1ac08817451abe6e40c228e05dd3732) from Worker
+2016-10-16 15:59:40,591 - DEBUG - [Database Emulator] Receiving request (seq. 2) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:40,591 - INFO - [Database Emulator] Sending database response (UUID: c1ac08817451abe6e40c228e05dd3732) to Worker
+2016-10-16 15:59:40,591 - DEBUG - [Database Emulator] Sending database response (seq. 2) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub DB Attributes: {'position': 'employee', 'history': ''}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:40,592 - INFO - [Worker] Receiving response (UUID: c1ac08817451abe6e40c228e05dd3732) from Database Emulator
+2016-10-16 15:59:40,592 - DEBUG - [Worker] Receiving response (seq. 2) from Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub DB Attributes: {'position': 'employee', 'history': ''}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:41,584 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'employee', 'history': ''}                  
+Resource Condition: {'name': 'bank A'}                  
+Action: {'name': 'read'}                  
+Subject Update: {'history': '$resource.name'}                  
+Resource Update: None                  
+
+2016-10-16 15:59:41,586 - INFO - [Worker] Sending response (UUID: 87d92f3a89de267f4135ffd87ac41612) to Subject Coordinator
+2016-10-16 15:59:41,587 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,589 - INFO - [Subject Coord] Response received (UUID. 87d92f3a89de267f4135ffd87ac41612) from Worker
+2016-10-16 15:59:41,590 - DEBUG - [Subject Coord] Response received (seq. 5) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,590 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:41,591 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:41,591 - INFO - [Subject Coord] Sending response (UUID: 87d92f3a89de267f4135ffd87ac41612) to Resource Coord
+2016-10-16 15:59:41,591 - DEBUG - [Subject Coord] Sending response (seq. 5) to Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,594 - INFO - [Resource Coord] Response received (UUID: 87d92f3a89de267f4135ffd87ac41612) from Subject Coord
+2016-10-16 15:59:41,595 - DEBUG - [Resource Coord] Response received (seq. 6) from Subject Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,595 - DEBUG - Checking resource conflict: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,596 - INFO - [Resource Coord] Sending response (UUID: 87d92f3a89de267f4135ffd87ac41612) to Subject Coord
+2016-10-16 15:59:41,596 - DEBUG - [Resource Coord] Sending response (seq. 6) to Subject Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,599 - INFO - [Subject Coord] Response received (UUID: 87d92f3a89de267f4135ffd87ac41612) from Resource Coord
+2016-10-16 15:59:41,599 - DEBUG - [Subject Coord] Response received (seq. 7) from Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,600 - INFO - [Subject Coord] Evaluation complete for request(UUID: 87d92f3a89de267f4135ffd87ac41612)
+2016-10-16 15:59:41,600 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,602 - INFO - [Subject Coord] Sending subject updates to commit to DB (UUID: 87d92f3a89de267f4135ffd87ac41612)
+2016-10-16 15:59:41,602 - DEBUG - Subject Updates Commited to DB{'history': 'bank A'}
+2016-10-16 15:59:41,603 - INFO - [Subject Coord] Sending response (UUID: 87d92f3a89de267f4135ffd87ac41612) to Client
+2016-10-16 15:59:41,604 - DEBUG - [Subject Coord] Sending Response (seq. 8) to Client:
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:41,604 - DEBUG - [Database Emulator] Receiving updates {'9': {'history': 'bank A'}} from coordinator to commit to db
+2016-10-16 15:59:41,606 - INFO - [Client] Final Response received (UUID: 87d92f3a89de267f4135ffd87ac41612) from Subject Coord With Result: True
+2016-10-16 15:59:41,607 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 31055)                 
+TimeStamp: 1476658780.5770388                 
+UUID: 87d92f3a89de267f4135ffd87ac41612                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:42,595 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'employee', 'history': ''}                  
+Resource Condition: {'name': 'bank A'}                  
+Action: {'name': 'read'}                  
+Subject Update: {'history': '$resource.name'}                  
+Resource Update: None                  
+
+2016-10-16 15:59:42,597 - INFO - [Worker] Sending response (UUID: c1ac08817451abe6e40c228e05dd3732) to Subject Coordinator
+2016-10-16 15:59:42,597 - DEBUG - [Worker] Sending response (seq. 2) to Subject Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:42,600 - INFO - [Subject Coord] Response received (UUID. c1ac08817451abe6e40c228e05dd3732) from Worker
+2016-10-16 15:59:42,600 - DEBUG - [Subject Coord] Response received (seq. 8) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:42,601 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:42,601 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658780.5878427                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee', 'history': ''}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {'history': 'bank A'}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:42,601 - ERROR - Conflict Reason: Attribute Conflict - Stale Database Read
+2016-10-16 15:59:42,602 - DEBUG - {'position': 'employee', 'history': ''} 
+and 
+{'history': ('bank A', 1476658781.5915942)} 
+2016-10-16 15:59:42,602 - ERROR - [Subject Coord] Restarting: Subject conflict detected (UUID: c1ac08817451abe6e40c228e05dd3732)
+2016-10-16 15:59:42,602 - INFO - [Subject Coord] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Resource Coord
+2016-10-16 15:59:42,603 - DEBUG - [Subject Coord] Sending request (seq. 9) to Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,605 - INFO - [Resource Coord] Request received (UUID: c1ac08817451abe6e40c228e05dd3732) from Sub Coord
+2016-10-16 15:59:42,606 - DEBUG - [Resource Coord] Request received (seq. 9) from Sub Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,606 - INFO - [Resource Coord] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Worker
+2016-10-16 15:59:42,606 - DEBUG - [Resource Coord] Sending request (seq. 10) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,608 - INFO - [Worker] Receiving request (UUID: c1ac08817451abe6e40c228e05dd3732) from Resource Coordinator
+2016-10-16 15:59:42,609 - DEBUG - [Worker] Receiving request (seq. 3) from Resource Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,609 - INFO - [Worker] Sending request (UUID: c1ac08817451abe6e40c228e05dd3732) to Database Emulator
+2016-10-16 15:59:42,609 - DEBUG - [Worker] Sending request (seq. 3) to Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,612 - INFO - [Database Emulator] Receiving request (UUID: c1ac08817451abe6e40c228e05dd3732) from Worker
+2016-10-16 15:59:42,612 - DEBUG - [Database Emulator] Receiving request (seq. 3) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+
+2016-10-16 15:59:42,613 - INFO - [Database Emulator] Sending database response (UUID: c1ac08817451abe6e40c228e05dd3732) to Worker
+2016-10-16 15:59:42,613 - DEBUG - [Database Emulator] Sending database response (seq. 3) to Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub DB Attributes: {'position': 'employee'}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:42,616 - INFO - [Worker] Receiving response (UUID: c1ac08817451abe6e40c228e05dd3732) from Database Emulator
+2016-10-16 15:59:42,616 - DEBUG - [Worker] Receiving response (seq. 4) from Database Emulator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub DB Attributes: {'position': 'employee'}                  
+Res DB Attributes: {'name': 'bank A'}                  
+Result False                  
+
+2016-10-16 15:59:43,606 - DEBUG - [Database Emulator] Commiting changes to database {'9': {'history': 'bank A'}}
+2016-10-16 15:59:44,619 - DEBUG - [Worker] Policy Evaluated Using Rule:
+Subject Condition: {'position': 'employee', 'history': 'bank A'}                  
+Resource Condition: {'name': 'bank A'}                  
+Action: {'name': 'read'}                  
+Subject Update: None                  
+Resource Update: None                  
+
+2016-10-16 15:59:44,620 - INFO - [Worker] Sending response (UUID: c1ac08817451abe6e40c228e05dd3732) to Subject Coordinator
+2016-10-16 15:59:44,620 - DEBUG - [Worker] Sending response (seq. 4) to Subject Coordinator: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,623 - INFO - [Subject Coord] Response received (UUID. c1ac08817451abe6e40c228e05dd3732) from Worker
+2016-10-16 15:59:44,623 - DEBUG - [Subject Coord] Response received (seq. 10) from Worker: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,624 - DEBUG - [Subject Coord] Processing response: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:44,624 - DEBUG - [Subject Coord] Checking subject conflicts: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+ 
+2016-10-16 15:59:44,625 - INFO - [Subject Coord] Sending response (UUID: c1ac08817451abe6e40c228e05dd3732) to Resource Coord
+2016-10-16 15:59:44,625 - DEBUG - [Subject Coord] Sending response (seq. 11) to Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,628 - INFO - [Resource Coord] Response received (UUID: c1ac08817451abe6e40c228e05dd3732) from Subject Coord
+2016-10-16 15:59:44,628 - DEBUG - [Resource Coord] Response received (seq. 11) from Subject Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,628 - DEBUG - Checking resource conflict: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,629 - INFO - [Resource Coord] Sending response (UUID: c1ac08817451abe6e40c228e05dd3732) to Subject Coord
+2016-10-16 15:59:44,629 - DEBUG - [Resource Coord] Sending response (seq. 12) to Subject Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,632 - INFO - [Subject Coord] Response received (UUID: c1ac08817451abe6e40c228e05dd3732) from Resource Coord
+2016-10-16 15:59:44,633 - DEBUG - [Subject Coord] Response received (seq. 12) from Resource Coord: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,633 - INFO - [Subject Coord] Evaluation complete for request(UUID: c1ac08817451abe6e40c228e05dd3732)
+2016-10-16 15:59:44,633 - DEBUG - [Subject Coord] Response is: 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,634 - INFO - [Subject Coord] Sending response (UUID: c1ac08817451abe6e40c228e05dd3732) to Client
+2016-10-16 15:59:44,634 - DEBUG - [Subject Coord] Sending Response (seq. 13) to Client:
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,637 - INFO - [Client] Final Response received (UUID: c1ac08817451abe6e40c228e05dd3732) from Subject Coord With Result: True
+2016-10-16 15:59:44,637 - DEBUG - [Client] Response received (seq. 2) from Subject Coord 
+Subject ID: 9                 
+Resource ID: 44401                 
+Action: read                 
+Subject Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Resource Cache: {}                 
+Owner: ('localhost', 13993)                 
+TimeStamp: 1476658782.6025717                 
+UUID: c1ac08817451abe6e40c228e05dd3732                     
+Sub attribs used from Cache: {'history': ('bank A', 1476658781.5915942)}                 
+Res attribs used from Cache: {}                 
+Sub attribs used from DB: {'position': 'employee'}                 
+Res attribs used from DB: {'name': 'bank A'}                 
+Sub attribs to Update: {}                 
+Res attrubs to Update: {}                 
+Result: True                 
+
+2016-10-16 15:59:44,644 - INFO - Exiting the Coordinators
+2016-10-16 15:59:44,647 - INFO - [Database Emulator] Dumping database contents to log file
+{   '10': {'history': '', 'position': 'manager'},
+    '11': {'history': 'bank B', 'position': 'employee'},
+    '44401': {'name': 'bank A'},
+    '44402': {'name': 'bank B'},
+    '44403': {'type': 'movie', 'viewCount': '0'},
+    '44409': {'type': 'show', 'viewCount': '0'},
+    '44420': {'type': 'game', 'viewCount': '0'},
+    '55': {'age': '22', 'position': 'customer'},
+    '56': {'age': '22', 'position': 'customer'},
+    '57': {'age': '24', 'position': 'customer'},
+    '66': {'age': '20', 'gameswatched': '0', 'position': 'player'},
+    '9': {'history': 'bank A', 'position': 'employee'},
+    '99': {'history': '', 'position': 'nurse'}}
+2016-10-16 15:59:44,648 - INFO - Exiting the Workers
+2016-10-16 15:59:44,650 - INFO - Exiting the Workers
