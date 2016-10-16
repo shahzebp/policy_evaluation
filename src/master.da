@@ -48,7 +48,7 @@ def main():
     logger.info("Database init file:    %s ", config.get("setup", "database_init_file"))
     logger.info("Log conf file:     %s ", config.get("setup", "log_conf_file"))    
     logger.info("Log dump file:    %s ", config.get("setup", "log_dump_file"))
-    #logger.infi("Log leve: %s ", logger.getLevel())
+    logger.info("Log level: %s ", logger.getEffectiveLevel())
     logger.info("Number of clients:    %s ", int(config.get("setup", "num_clients")))
     logger.info("Min DB Latency:    %s ", config.get("setup", "mindblatency"))
     logger.info("Max DB Latency:    %s \n", config.get("setup", "maxdblatency"))
@@ -76,9 +76,11 @@ def main():
         setup(p, (coordinators, i + 1, config,))
         i = i + 1
 
+
     start(clients)
-    
+    # Wait for the clients to complete
     for c in clients:  c.join()
 
+    # Send exit message to coordinators and database
     send(('EXIT',), to=(coordinators))
     send(('EXIT',), to=(database))

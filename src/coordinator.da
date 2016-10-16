@@ -30,10 +30,11 @@ class Coordinator(process):
         self.send_sequence  = 1
         self.recv_sequence  = 1
 
+        # Use this queue to seralize the responses
         self.response_queue = queue.PriorityQueue(maxsize=0)       
 
-        # thread safe implementation 
         self.request_sequence  = {}
+
         self.maxdblatency   = int(config.get("setup", "maxdblatency"))
         
         # Each coordinator intantiates its own workers
@@ -47,12 +48,16 @@ class Coordinator(process):
         start(workers)
 
     def run():
+        # Await till exit is issued by the master 
         await(received(('EXIT',)))
         logger.info("Exiting the Coordinators")
+        # Issue await to the clients
         send(('EXIT',), to=(workers))
 
     def attributes_in_sync(map1, map2): 
 
+        # Timestamp for the cache entries should be same
+        # Else it means the main cache has been updated
         for key in map1:
             timestamp1 = map1[key][1]
 
@@ -68,6 +73,7 @@ class Coordinator(process):
 
         return True
 
+    # Check if value used from DB got updated in cache meanwhile
     def attributes_clash(map1, map2):
         for key in map1:
             if key in map2:
@@ -78,14 +84,20 @@ class Coordinator(process):
 
         return True
 
+    # Check conflict for read attributes both from cache and database
     def check_conflict(latest_tentative_map, sent_tent_map, changelist_map): 
 
+        # If there was no cache update sent
         if not sent_tent_map:
             return attributes_clash(changelist_map, latest_tentative_map)
+        # Else compare cache updates as well
         else:
             return (attributes_in_sync(sent_tent_map, latest_tentative_map)
                 and attributes_clash(changelist_map, latest_tentative_map))
 
+
+    # Initial process when request is received.
+    # This is also the point of start for restart
     def entrypoint(request):
         
         if request.subject_id in sub_main_cache:
@@ -102,15 +114,8 @@ class Coordinator(process):
                     # Don't append it.
                     # It is safe to delete it from cache as well.
 
-                    #keys_to_flush.append(k)
-
-            # Purge/flush the cache
-            #for k in keys_to_flush:
-                #del sub_main_cache[request.subject_id][k]
-
         # overwrite any update if a tentative update exists for it
         # because the ones in tentative are more recent
-
 
         if (request.subject_id in sub_tent_cache):
             for k,v in sub_tent_cache[request.subject_id].items():
@@ -120,7 +125,7 @@ class Coordinator(process):
 
         rid = request.resource_id % len(coordinators)
 
-        # Add request to the sequence queue
+        # Add request to the sequence queue to process it in the sequence
         current_request_sequence = deque()
         if (request.subject_id in request_sequence):
             current_request_sequence = request_sequence[request.subject_id]
@@ -137,7 +142,7 @@ class Coordinator(process):
 
         send(('FROM_SUBJECT_COORD', request), to=(coordinators[rid]))
 
-    
+    # Receive the request from the client
     def receive(msg=('FROM_CLIENT', request), from_=p):
         logger.info("[Subject Coord] Request received (UUID: {0}) from Client"
             .format(request.uuid))
@@ -151,6 +156,7 @@ class Coordinator(process):
         entrypoint(request)
 
     
+    # Receive the request from subject coordinator
     def receive(msg=('FROM_SUBJECT_COORD', request), from_=p):
 
         logger.info("[Resource Coord] Request received (UUID: {0}) from Sub Coord"
@@ -176,10 +182,6 @@ class Coordinator(process):
                     # It is safe to delete it from cache as well.
                     #keys_to_flush.append(k)
 
-            # Purge/flush the cache
-            #for k in keys_to_flush:
-                #del res_main_cache[request.resource_id][k]    
-
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
 
@@ -197,6 +199,8 @@ class Coordinator(process):
         if worker_index == len(workers):
             worker_index = 0
 
+    # Extract the next pending response to be processes from the queue and
+    # process it
     def extract_next_response():
 
         if (response_queue.empty() == False):
@@ -215,16 +219,6 @@ class Coordinator(process):
 
     def process_response(response):
         logger.debug("[Subject Coord] Processing response: %s ", str(response))
-
-        '''
-        # TODO Do we need this?
-
-        # Check if evalution result is true, if false, return directly to client
-        # as no updates should be processed and no conflicts should be checked
-        if response.result == False:
-            send(('OUTCOME', response), to = (response.request.owner))
-            request_sequence[response.request.subject_id].popleft()
-        '''
 
         logger.debug("[Subject Coord] Checking subject conflicts: %s ", str(response))
         retval = True
@@ -277,6 +271,9 @@ class Coordinator(process):
 
             extract_next_response()
 
+    # Subject cooridinator receives response from the worker
+    # This response is the evaluation result for the request
+    # There exists a compostion of request inside response
     def receive(msg=('FROM_WORKER', response), from_=p):
 
         logger.info("[Subject Coord] Response received (UUID. {0}) from Worker"
@@ -286,6 +283,8 @@ class Coordinator(process):
         
         recv_sequence = recv_sequence + 1
 
+        # Process the response if there are no response pending ahead of it
+        # in the sequence of the respective requests arrived
         if (response.request.subject_id in request_sequence):
 
             current_request_sequence = request_sequence[response.request.subject_id]
@@ -302,6 +301,9 @@ class Coordinator(process):
         else:
             process_response(response)
  
+    # Resource cooridinator receives the response to check if there exists 
+    # resource conflicts
+    # It sends the result to the subject cooridnator
     def receive(msg=('FROM_SUBJECT_COORD_RESPONSE', response), from_ = p):
         logger.info("[Resource Coord] Response received (UUID: {0}) from Subject Coord"
             .format(response.request.uuid))
@@ -359,6 +361,8 @@ class Coordinator(process):
 
         send(('FROM_RESOURCE_COORD_RESPONSE', response, retval), to=(coordinators[rid]))
 
+    # Subject coordinator receives the response resource conflict evalution
+    # result frm resource coordinator.
     def receive(msg=('FROM_RESOURCE_COORD_RESPONSE', response, retval), from_ = p):
         logger.info("[Subject Coord] Response received (UUID: {0}) from Resource Coord"
             .format(response.request.uuid))
@@ -367,6 +371,8 @@ class Coordinator(process):
 
         recv_sequence = recv_sequence + 1
 
+        # if no resource conflict exists, it sends response to client and executs
+        # db updates
         if (True == retval):
             # No conflict, propapage the tentative subject updates to main
             logger.info("[Subject Coord] Evaluation complete for request(UUID: %s)",
@@ -412,6 +418,7 @@ class Coordinator(process):
             logger.error("[Subject Coord] Restarting: Resource conflict detected (UUID: {0})"
                 .format(response.request.uuid))
 
+            # revert the tentative updates
             if response.request.subject_id in sub_tent_cache:
                 sub_tent_cache[response.request.subject_id] = {}
 
@@ -419,4 +426,3 @@ class Coordinator(process):
 
             entrypoint(response.request)
             extract_next_response()
-
