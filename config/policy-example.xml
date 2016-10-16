@@ -5,7 +5,7 @@
     <subjectCondition position="employee" history=""></subjectCondition>
     <resourceCondition name="bank A"></resourceCondition>
     <action name="read"></action>
-    <subjectUpdate history="bank A"></subjectUpdate>
+    <subjectUpdate history="$resource.name"></subjectUpdate>
   </rule>
 
   <rule name="access bank A again">
