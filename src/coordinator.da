@@ -50,6 +50,7 @@ class Coordinator(process):
     def run():
         # Await till exit is issued by the master 
         await(received(('EXIT',)))
+            
         logger.info("Exiting the Coordinators")
         # Issue await to the clients
         send(('EXIT',), to=(workers))
@@ -316,8 +317,7 @@ class Coordinator(process):
 
         retval = True
 
-        if (str(response.request.action) == "watch"):
-            sleep(0.5)
+        sleep(response.request.res_delay)
 
         # TODO do we need to make this check? 
         if response.request.resource_id in res_main_cache:

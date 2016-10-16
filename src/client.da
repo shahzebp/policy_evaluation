@@ -52,8 +52,11 @@ class Client(process):
 			action = str(config.get(i, "action"))
 			
 			art_delay = 0
+			res_delay = 0
+
 			try:
 				art_delay = float(config.get(i, "art_delay"))
+				res_delay = float(config.get(i, "resource_delay"))
 			except:
 				pass
 			
@@ -66,6 +69,7 @@ class Client(process):
 
 			request = Request(sub_id, res_id, action)
 			request.art_delay = art_delay
+			request.res_delay = res_delay
 
 			request.uuid = uuid.hexdigest()
 
