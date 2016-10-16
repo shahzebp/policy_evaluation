@@ -145,6 +145,7 @@ class Worker(process):
 
     def run():
         await(received(('EXIT',)))
+        logger.info("Exiting the Workers")
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
         logger.info("[Worker] Receiving request (UUID: {0}) from Resource Coordinator"

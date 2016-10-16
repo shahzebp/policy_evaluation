@@ -48,6 +48,7 @@ class Coordinator(process):
 
     def run():
         await(received(('EXIT',)))
+        logger.info("Exiting the Coordinators")
         send(('EXIT',), to=(workers))
 
     def attributes_in_sync(map1, map2): 

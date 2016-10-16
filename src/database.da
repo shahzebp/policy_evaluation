@@ -5,6 +5,7 @@ import random
 import xml.etree.ElementTree as ET
 from common import DataBaseResponse
 import threading, time
+import pprint
 
 class Database(process):
     def setup(config):
@@ -29,6 +30,9 @@ class Database(process):
                     self.database[v] = innerdict
 
         await(received(('EXIT',)))
+        pp = pprint.PrettyPrinter(indent=4)
+        logger.info("[Database Emulator] Dumping database contents to log file\n{0}"
+            .format(pp.pformat(self.database)))
   
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
