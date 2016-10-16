@@ -1,0 +1,59 @@
+Testing scenario description for test files in tests directory.
+
+
+1. 	request1 passes and puts an update. request2 restarts
+	because of the tentative dependency and then takes the
+	cache update and then evaluates consistently
+
+	Both request evaluate to true
+
+2. 	request1 completes and executes resource updates. request2
+	restarts because of the tentative updates and then
+	gets evaluated consistently
+
+	Both request evaluate to true
+
+3. 	request1 does resource update, request2 does subject update
+	but failes because of resource conflict (update done by request1)
+	request3 fails because of tentative dependency on request2
+
+4. 	subject attribute update is made by request1 and request 2 uses
+	those attribute updates. Response 2 arrives before response 1.
+	But processing of response2 is delayed 
+
+	Both evaluate to true
+
+5. 	Normal scenario where 3 requests are sent.
+
+	request1 and request3
+	pass and request2 fail. It is because of the rules
+
+6.  subject attribute update is made by request1 and request 2 uses
+	those attribute updates.
+
+    Both evaluate to true
+
+ 7. Subject doesn't exist in database, neither in cache. 
+	Invalid subject, so outcome should fail
+
+	The evaluation fails
+
+8.  Generates a pesudo-random sequence of requests 
+
+9.  Stress test.
+	Total 90 clients, each client with 17 requests (total 1530 requests)
+	6 coordinators and 6 workers per coordinator
+	They all hit one rule.
+	100 should evaluate to true and 1430 to false.
+
+10. Pseudo Random Stress Tests.
+	450 requests in total
+	100 will pass and 350 will fail
+
+11.	Both Subject and Resource Id exist
+	but the specified action does not exist in the db.
+
+	The evaluation fails
+
+12. Race check. 7 Clients fire same type of request
+	According to rule, 5 should pass and 2 should fail
