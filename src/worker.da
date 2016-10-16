@@ -21,9 +21,9 @@ class Worker(process):
         read_policy(policy_file)
 
     def does_attribute_value_satisfy_condition(value_in_policy, value_from_db):
-        if(len(value_in_policy) == 0 and len(value_in_policy) == 0):
+        if(len(value_in_policy) == 0 and len(value_from_db) == 0):
             return True
-        if(len(value_in_policy) == 0 and len(value_in_policy) != 0):
+        if(len(value_in_policy) == 0 and len(value_from_db) != 0):
             return False
         if value_in_policy[0] == '>' or value_in_policy[0] == "<":
             ops = { ">": operator.gt, "<": operator.lt}
