@@ -3,27 +3,13 @@ import configparser
 import logging
 import logging.handlers
 import logging.config
+import da
 
 from coordinator import Coordinator
 from common import Request
 from database import Database
 from client import Client
 
-
-class Master(process):
-
-    def setup(total_clients):
-        self.complete_counter = 0
-
-    def run():
-        await(complete_counter == total_clients)
-
-        print("\nTesting Complete. Check log File")
-
-    def receive(msg=('CLIENT_COMPLETE', client_index), from_ = p):
-        print("Client {0} completed!".format(str(client_index)))
-
-        complete_counter = complete_counter + 1
 
 def main():
  
@@ -48,9 +34,13 @@ def main():
     logger = logging.getLogger('sLogger')
     logger.setLevel(logging.INFO)
 
-    if (config.get("setup", "num_clients") == "DEBUG" or
-        config.get("setup", "num_clients") == "Debug"):
-        logger.setLevel(logging.DEBUG)
+    try:
+        if (str(config.get("setup", "log_level")) == "DEBUG" or
+            str(config.get("setup", "log_level") == "Debug")):
+
+            logger.setLevel(logging.DEBUG)
+    except:
+        pass
 
     logger.info("Policy Evaluation Engine Configuration :")
     logger.info("Total coordinators:    %s ", config.get("setup", "num_coords"))
@@ -62,13 +52,6 @@ def main():
     logger.info("Number of clients:    %s ", int(config.get("setup", "num_clients")))
     logger.info("Min DB Latency:    %s ", config.get("setup", "mindblatency"))
     logger.info("Max DB Latency:    %s \n", config.get("setup", "maxdblatency"))
-
-
-    # create master process
-
-    master = new(Master, num = 1)
-    setup(master, (int(config.get("setup", "num_clients")), ))
-    start(master)
 
     # creating database process
     database = new(Database, num = 1)
@@ -90,7 +73,12 @@ def main():
     clients = new(Client, num = total_clients)
     i = 0
     for p in clients : 
-        setup(p, (coordinators, i + 1, master, config,))
+        setup(p, (coordinators, i + 1, config,))
         i = i + 1
 
     start(clients)
+    
+    for c in clients:  c.join()
+
+    send(('EXIT',), to=(coordinators))
+    send(('EXIT',), to=(database))

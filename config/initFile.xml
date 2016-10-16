@@ -9,6 +9,9 @@
     <subject id="11">
         <attribute position= "employee" history="bank B"/>
     </subject>
+    <subject id = "66">
+        <attribute position="player" age="20" gameswatched="0"/>
+    </subject>
     <subject id="55">
         <attribute position= "customer" age="22"/>
     </subject>
@@ -32,5 +35,8 @@
     </resource>
     <resource id="44409">
         <attribute type= "show" viewCount="0"/>
-    </resource>   
+    </resource>
+    <resource id="44420">
+        <attribute type= "game" viewCount="0"/>
+    </resource>      
 </data>

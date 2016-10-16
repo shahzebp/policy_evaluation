@@ -20,7 +20,7 @@ class Coordinator(process):
     def setup(coordinators:list, database, config):
         self.logger = logging.getLogger('sLogger')
 
-        self.status = False
+        self.exit = False
         
         self.sub_main_cache = {}
         self.sub_tent_cache = {}
@@ -46,22 +46,24 @@ class Coordinator(process):
         setup(self.workers, (coordinators, database, config))
         start(workers)
 
-
     def run():
-        await(status == True)
+        await(received(('EXIT',)))
+        send(('EXIT',), to=(workers))
 
     def attributes_in_sync(map1, map2): 
+
         for key in map1:
             timestamp1 = map1[key][1]
 
             if key in map2:
                 timepstamp2 = map2[key][1]
 
-                # TODO shoule there be other comparison?
                 if(timestamp1 != timepstamp2):
                     logger.error("Conflict Reason: Tentative Update Dependency")
                     logger.debug("%s \nand \n%s ", map1, map2)
                     return False
+            else:
+                return False
 
         return True
 
@@ -94,20 +96,22 @@ class Coordinator(process):
 
                 if (v[1] + maxdblatency >= time.time()):
                     request.sub_tent_updates[k] = v
-                else:
+                #else:
                     # This update has been committed it db.
                     # Don't append it.
                     # It is safe to delete it from cache as well.
 
-                    keys_to_flush.append(k)
+                    #keys_to_flush.append(k)
 
             # Purge/flush the cache
-            for k in keys_to_flush:
-                del sub_main_cache[request.subject_id][k]
+            #for k in keys_to_flush:
+                #del sub_main_cache[request.subject_id][k]
 
         # overwrite any update if a tentative update exists for it
         # because the ones in tentative are more recent
-        if request.subject_id in sub_tent_cache:
+
+
+        if (request.subject_id in sub_tent_cache):
             for k,v in sub_tent_cache[request.subject_id].items():
                 request.sub_tent_updates[k] = v 
 
@@ -165,17 +169,15 @@ class Coordinator(process):
 
                 if (v[1] + maxdblatency >= time.time()):
                     request.res_tent_updates[k] = v
-                else:
+                #else:
                     # This update has been committed it db.
                     # Don't append it.
                     # It is safe to delete it from cache as well.
-                    keys_to_flush.append(k)
+                    #keys_to_flush.append(k)
 
             # Purge/flush the cache
-            for k in keys_to_flush:
-                del res_main_cache[request.resource_id][k]
-
-                    
+            #for k in keys_to_flush:
+                #del res_main_cache[request.resource_id][k]    
 
         if request.resource_id in res_main_cache:
             request.res_tent_updates = res_main_cache[request.resource_id]
@@ -226,10 +228,16 @@ class Coordinator(process):
         logger.debug("[Subject Coord] Checking subject conflicts: %s ", str(response))
         retval = True
 
-        if response.request.subject_id in sub_main_cache:
-            retval = check_conflict(sub_main_cache[response.request.subject_id],
-                                    response.sub_tent_attr_used,
-                                    response.sub_db_attr_used)
+        # Tentative updates got reverted. Panic!!!!!
+        if (bool(response.sub_tent_attr_used) == True):
+            if (response.request.subject_id not in sub_main_cache):
+                logger.error("[Subject Coord] Tentative Dependency Conflict: %s ", str(response))
+                retval = False
+        else:        
+            if response.request.subject_id in sub_main_cache:
+                retval = check_conflict(sub_main_cache[response.request.subject_id],
+                                        response.sub_tent_attr_used,
+                                        response.sub_db_attr_used)
 
         if (retval == True):
 
@@ -304,6 +312,11 @@ class Coordinator(process):
         logger.debug("Checking resource conflict: {0}".format(response))
 
         retval = True
+
+        if (str(response.request.action) == "watch"):
+            sleep(0.5)
+
+        # TODO do we need to make this check? 
         if response.request.resource_id in res_main_cache:
             retval = check_conflict(
                         res_main_cache[response.request.resource_id],
@@ -373,7 +386,6 @@ class Coordinator(process):
 
                 # Revert the sub_tent cache for this id
                 sub_tent_cache[response.request.subject_id] = {}
-
 
                 # Doing database updates
                 logger.info("[Subject Coord] Sending subject updates to commit to DB (UUID: %s)",

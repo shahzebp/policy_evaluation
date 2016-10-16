@@ -47,4 +47,18 @@
     <resourceUpdate viewCount="++"></resourceUpdate>
   </rule>
 
+ <rule name="player can watch a game atmost 2 times and game can be watched 3 times in total">
+    <subjectCondition position="player" age=">15" gameswatched="&lt;2"></subjectCondition>
+    <resourceCondition type="game" viewCount="&lt;3"></resourceCondition>
+    <action name="watch"></action>
+    <subjectUpdate gameswatched="++"></subjectUpdate>
+  </rule>
+
+  <rule name="player can watch a game atmost 2 times and game can be watched 3 times in total">
+    <subjectCondition position="player" age=">15" gameswatched="&lt;5"></subjectCondition>
+    <resourceCondition type="game" viewCount="&lt;5"></resourceCondition>
+    <action name="play"></action>
+    <resourceUpdate viewCount="++"></resourceUpdate>
+  </rule>
+
 </policy>

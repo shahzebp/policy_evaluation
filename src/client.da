@@ -11,7 +11,7 @@ from common import Request, Response
 
 class Client(process):
 	
-	def setup(coordinators, my_index, master, config):
+	def setup(coordinators, my_index, config):
 		self.logger = logging.getLogger('sLogger')
 
 		current_section = "client" + str(my_index)
@@ -53,7 +53,7 @@ class Client(process):
 			
 			art_delay = 0
 			try:
-				art_delay = int(config.get(i, "art_delay"))
+				art_delay = float(config.get(i, "art_delay"))
 			except:
 				pass
 			
@@ -94,8 +94,6 @@ class Client(process):
 		sendtask()
 		
 		await(num_requests == current_request_index)
-
-		send(('CLIENT_COMPLETE', my_index),to=(master))
 
 	def receive(msg=('OUTCOME', response), from_ = p):
 

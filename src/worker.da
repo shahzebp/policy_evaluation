@@ -10,7 +10,7 @@ import operator
 class Worker(process):
     def setup(coordinators:list, database, config):
         self.logger = logging.getLogger('sLogger')
-        self.status = False
+        self.exit = False
         self.coordinators = coordinators
         self.policy_map = {}
         self.database = database
@@ -144,7 +144,7 @@ class Worker(process):
                 self.policy_map[act["name"]] = [rule_object]
 
     def run():
-        await(status == True)
+        await(received(('EXIT',)))
 
     def receive(msg=('FROM_RECEIVE_COORD', request), from_ = p):
         logger.info("[Worker] Receiving request (UUID: {0}) from Resource Coordinator"

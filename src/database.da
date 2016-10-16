@@ -11,7 +11,7 @@ class Database(process):
         self.logger = logging.getLogger('sLogger')
         self.database_init_file = str(config.get("setup", "database_init_file"))
         self.root = ET.parse(database_init_file).getroot()
-        self.status = False
+        self.exit = False
         self.database = {}
         self.send_sequence = 1
         self.recv_sequence = 1
@@ -28,8 +28,8 @@ class Database(process):
                 for k,v in child.attrib.items():
                     self.database[v] = innerdict
 
-        await(status == True)
-
+        await(received(('EXIT',)))
+  
     def receive(msg=('FROM_WORKER', request), from_ = p):
         value = {}
         logger.info("[Database Emulator] Receiving request (UUID: {0}) from Worker"
